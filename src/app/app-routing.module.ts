@@ -16,7 +16,11 @@ export const Approutes: Routes = [
 			{
 				path: 'component',
 				loadChildren: () => import('./component/component.module').then(m => m.ComponentsModule)
-			}
+			},
+			{
+				path: 'budget028',
+				loadChildren: () => import('./budget028/budget028.module').then(m => m.Budget028Module)
+			},
 		]
 	},
 	{
