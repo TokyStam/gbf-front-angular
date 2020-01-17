@@ -20,9 +20,14 @@ export class CreateComponent implements OnInit {
 
   initForm() {
     this.etablissementForm = this.formBulder.group({
+      typeCompte: ['', Validators.required],
       name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
     });
+  }
+
+  onSubmitForm() {
+    if (this.etablissementForm.valid) {
+        console.log(this.etablissementForm);
+    }
   }
 }
