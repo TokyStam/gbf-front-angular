@@ -17,10 +17,10 @@ export const Approutes: Routes = [
 				path: 'component',
 				loadChildren: () => import('./component/component.module').then(m => m.ComponentsModule)
 			},
-			// {
-			// 	path: 'budget',
-			// 	loadChildren: () => import('./budget/budget.module').then(m => m.BudgetModule)
-			// },
+			{
+				path: 'etablissement',
+				loadChildren: () => import('./etablissement/etablissement.module').then(m => m.EtablissementModule)
+			},
 		]
 	},
 	{

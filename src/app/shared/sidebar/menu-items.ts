@@ -18,8 +18,8 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/budget',
-    title: 'Budget',
+    path: '/etablissement',
+    title: 'Etablissement',
     icon: 'mdi mdi-message-bulleted',
     class: '',
     extralink: false,
