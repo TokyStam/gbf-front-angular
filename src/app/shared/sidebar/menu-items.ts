@@ -25,14 +25,14 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
-  // {
-  //   path: '/component/carousel',
-  //   title: 'Carousel',
-  //   icon: 'mdi mdi-view-carousel',
-  //   class: '',
-  //   extralink: false,
-  //   submenu: []
-  // },
+  {
+    path: '/etablissement/create-budget',
+    title: 'Create budget',
+    icon: 'mdi mdi-view-carousel',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
   // {
   //   path: '/component/dropdown',
   //   title: 'Dropdown',

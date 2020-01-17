@@ -1,0 +1,153 @@
+
+<div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button"  class="btn btn-danger">Annuler</button>
+</div>
+<!-- ============================================================== -->
+<div class="row">
+    <!-- column -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Elaboration du budget prévisionnel</h4>
+            </div>
+
+            <form 
+           
+            (ngSubmit)="onSubmitForm()"
+            class="z-depth-1 p-5" 
+            >
+            <div class="table-responsive">
+                    <h5 class="card-header">Fonctionnement</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="border-top-0">Compte</th>
+                            <th class="border-top-0">Intitulé</th>
+                            <th class="border-top-0">Primitif</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <!-- debut charge personnel -->
+                        <tr>
+                            <th></th>
+                            <th colspan="2" class="border-top-0">Charge de personnel</th>
+                        </tr>   
+
+                        <tr *ngFor="let e of ChargeDePersonnel">
+                            <td class="txt-oflo">{{e.compte}}</td>
+                            <td>{{e.intitule}}</td>
+                            <td>
+                                <input  class="form-control form-control-sm" type="number" placeholder="Montant">
+                            </td>
+                        </tr>
+                       <!-- fin charge personnel -->
+                        <!-- debut Achat des biens -->
+                        <tr>
+                                <th></th>
+                                <th colspan="2" class="border-top-0">Achat de biens</th>
+                            </tr>   
+    
+                            <tr *ngFor="let e of AchatsDeBiens">
+                                <td class="txt-oflo">{{e.compte}}</td>
+                                <td>{{e.intitule}}</td>
+                                <td>
+                                    <input class="form-control form-control-sm" type="number" placeholder="Montant">
+                                </td>
+                        </tr>
+                        <!-- fin achat de bien -->
+                         <!-- debut Achat serv. chrage perma. -->
+                         <tr>
+                                <th></th>
+                                <th colspan="2" class="border-top-0">Achat de services et charges permanantes</th>
+                            </tr>   
+    
+                            <tr *ngFor="let e of AchatsDeServicesEtChargesPermanentes">
+                                <td class="txt-oflo">{{e.compte}}</td>
+                                <td>{{e.intitule}}</td>
+                                <td>
+                                    <input class="form-control form-control-sm" type="number" placeholder="Montant">
+                                </td>
+                            </tr>
+                           <!-- fin Achat serv. chrage perma. -->
+                         <!-- debut TransfertsEtSubventions -->
+                         <tr>
+                                <th></th>
+                                <th colspan="2" class="border-top-0">transferes et subventions</th>
+                            </tr>   
+    
+                            <tr *ngFor="let e of TransfertsEtSubventions">
+                                <td class="txt-oflo">{{e.compte}}</td>
+                                <td>{{e.intitule}}</td>
+                                <td>
+                                    <input class="form-control form-control-sm" type="number" placeholder="Montant">
+                                </td>
+                            </tr>
+                    <!-- fin TransfertsEtSubventions -->
+
+                    
+                    
+                       
+                    </tbody>
+                </table>
+
+
+                    <h5 class="card-header">Investissement</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">Compte</th>
+                                <th class="border-top-0">Intitulé</th>
+                                <th class="border-top-0">Primitif</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            <!-- debut ImmobilisationsIncorporelles -->
+                            <tr>
+                                <th></th>
+                                <th colspan="2" class="border-top-0">Immobitlisations incorporelles</th>
+                            </tr>   
+    
+                            <tr *ngFor="let e of ImmobilisationsIncorporelles">
+                                <td class="txt-oflo">{{e.compte}}</td>
+                                <td>{{e.intitule}}</td>
+                                <td>
+                                    <input class="form-control form-control-sm" type="number" placeholder="Montant">
+                                </td>
+                            </tr>
+                           <!-- fin ImmobilisationsIncorporelles -->
+
+                            <!-- debut ImmobilisationsCorporelles -->
+                            <tr>
+                                    <th></th>
+                                    <th colspan="2" class="border-top-0">Immobitlisations corporelles</th>
+                                </tr>   
+        
+                                <tr *ngFor="let e of ImmobilisationsCorporelles">
+                                    <td class="txt-oflo">{{e.compte}}</td>
+                                    <td>{{e.intitule}}</td>
+                                    <td>
+                                        <input class="form-control form-control-sm" type="number" placeholder="Montant">
+                                    </td>
+                                </tr>
+                               <!-- fin ImmobilisationsCorporelles -->
+
+                        </tbody>
+                    </table>
+                
+        
+
+          
+                    </div>
+
+                    <div class="btn-group" style="text-align: right;" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-danger">Annuler</button>
+                            <button type="button" class="btn btn-secondary" type="submit">Valider</button>
+                    </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
