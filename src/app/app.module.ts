@@ -7,7 +7,7 @@ import {
 } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +21,8 @@ import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 import { Approutes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
+import { BaseUrlInterceptorService } from './services/interceptors/base-url-interceptor.service';
+import { from } from 'rxjs';
 
 @NgModule({
 	declarations: [
@@ -37,9 +39,12 @@ import { SpinnerComponent } from './shared/spinner.component';
 		BrowserAnimationsModule,
 		FormsModule,
 		HttpClientModule,
-		NgbModule,
+    NgbModule,
 		RouterModule.forRoot(Approutes, { useHash: false })
-	],
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptorService, multi: true },
+  ],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

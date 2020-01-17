@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { environment } from './../../../environments/environment';
 
@@ -11,8 +11,7 @@ export class BaseUrlInterceptorService implements HttpInterceptor {
 
   constructor() { }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler):
-    Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
       const modifiedRequest = req.clone({
         url: `${environment.apiUrl}${req.url}`
       });
