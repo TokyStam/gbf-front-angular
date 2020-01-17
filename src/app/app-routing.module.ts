@@ -23,6 +23,7 @@ export const Approutes: Routes = [
 			},
 		]
 	},
+	
 	{
 		path: '**',
 		redirectTo: '/dashboard'
