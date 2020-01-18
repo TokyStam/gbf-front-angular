@@ -13,7 +13,6 @@ import { DemoMaterialModule } from '../material-module';
 import { BudgetModule } from '../budget/budget.module';
 import { ListeBudgetComponent } from './liste-budget/liste-budget.component';
 
-
 @NgModule({
   declarations: [
     EtablissementComponent, 
@@ -28,7 +27,7 @@ import { ListeBudgetComponent } from './liste-budget/liste-budget.component';
 		NgbModule,
     EtablissementRoutingModule,
     DemoMaterialModule,
-    BudgetModule
+    BudgetModule,
   ]
 })
 export class EtablissementModule { }

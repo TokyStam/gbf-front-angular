@@ -19,9 +19,8 @@ const routes: Routes = [
     component: ListeBudgetComponent
   },
   {
-    path: '1/budget',
+    path: 'budget',
     loadChildren: () => import('./budget/budget.module').then(m => m.BudgetModule)
-
   }
 ];
 

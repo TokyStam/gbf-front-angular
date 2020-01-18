@@ -4,11 +4,11 @@
 </div> -->
 <!-- ============================================================== -->
 <!-- <form [formGroup]="budgetForm" (ngSubmit)="onSubmitForm()">
-	<div formArrayName="rows">
+	<div formArrayName="immobCorpo">
 		<table>
 			
 			<tbody>
-				<tr *ngFor="let row of budgetForm.controls.rows.controls; let i = index" [formGroupName]="i">
+				<tr *ngFor="let row of budgetForm.controls.immobCorpo.controls; let i = index" [formGroupName]="i">
 					<td>
 						<div class="form-group row">
 							<div class="col-sm-12">
@@ -48,9 +48,9 @@
               <p class="h4 mb-4">Création du budget previsionnel</p>
               
 
-        <div formArrayName="rows">
+        <div formArrayName="immobCorpo">
               <div class="example-container"
-               *ngFor="let row of budgetForm.controls.rows.controls; let i = index" [formGroupName]="i"
+               *ngFor="let row of budgetForm.controls.immobCorpo.controls; let i = index" [formGroupName]="i"
               >
   
                   <mat-form-field class="example-full-width">
@@ -96,7 +96,7 @@
         <div class="col col-lg-11" >
 
                 <div class="card-header text-white text-center border rounded bg-secondary">
-                       FONCTIONNEMENT - COMPTES DE CHARGES
+                       Investissement - COMPTES D'IMMOBILISATIONS
                 </div>
 
 <form class="z-depth-1 p-5" 
@@ -105,68 +105,20 @@
     style="background-color: rgb(255, 255, 255);"
     > 
 
-    <!-----------------charge de personnel---------------------->
-<!-- debut form static -->
-<div class="card border rounded">
-        <div class="card-header border-bottom">
-                Charges de personnel
-        </div>
-<!-- fin formilaire static         -->
 
-<!-- debut form dynamique -->
-<div formArrayName="rows" style="margin: 5px 5px 5px 10px;">
-        <div class=" form-row border-bottom" 
-        *ngFor="let row of budgetForm.controls.rows.controls; let i = index" [formGroupName]="i">
-        
-          <div class="form- group col-md-4">
-                <label for="inputState">Article</label>
-                <select class="form-control" formControlName="article">
-                    <option>article 1</option>
-                    <option>article 2</option>
-                </select>
-        </div>
-
-                <div class="form-group col-md-4">
-                    <label for="inputState">Compte</label>
-                    <select id="inputState" class="form-control" formControlName="compte">
-                        <option>compte 1</option>
-                        <option>compte 2</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-3">
-                  <label for="inputPassword4">Montant</label>
-                  <input 
-                  #montant formControlName="montant" name="montant" minlength="2" required
-                  type="number" class="form-control" id="inputPassword4">
-                </div>
-                <div class="col-md-1" style="margin-top: 30px;"> 
-                     <button class="btn btn-light mb-2 mx-sm" (click)="onDeleteRow(i, 'rows')">
-                            <i class="ti-trash"></i>
-                     </button>
-                </div>
-                
-        </div>
-</div>
-<!-- fin form static -->
-<button type="button" (click)="initGroup('rows')" class="btn btn-outline-secondary">Ajouter compte</button>
-</div>
-
- <!-----------------Fin charge de personnel---------------------->
-
-
-
+    
      <!-----------------Achat et bien---------------------->
 <!-- debut form static -->
 <div class="card border rounded">
         <div class="card-header border-bottom">
-                Achat de biens
+                Immobilisations incorporelles
         </div>
 <!-- fin formilaire static         -->
 
 <!-- debut form dynamique -->
-<div formArrayName="achatDeBiens" style="margin: 5px 5px 5px 10px;">
+<div formArrayName="immobIncorpo" style="margin: 5px 5px 5px 10px;">
         <div class=" form-row border-bottom" 
-        *ngFor="let row of budgetForm.controls.achatDeBiens.controls; let i = index" [formGroupName]="i">
+        *ngFor="let row of budgetForm.controls.immobIncorpo.controls; let i = index" [formGroupName]="i">
         
         <div class="form-group col-md-4">
                 <label for="inputState">Article</label>
@@ -191,32 +143,33 @@
                   type="number" class="form-control" id="inputPassword4">
                 </div>
                 <div class="col-md-1" style="margin-top: 30px;"> 
-                        <button class="btn btn-light mb-2 mx-sm" (click)="onDeleteRow(i, 'achatDeBiens')"><i class="ti-trash"></i></button>
+                        <button class="btn btn-light mb-2 mx-sm" (click)="onDeleteRow(i, 'immobIncorpo')"><i class="ti-trash"></i></button>
                    </div>
                 
         </div>
 </div>
 <!-- fin form static -->
-<button type="button" (click)="initGroup('achatDeBiens')" class="btn btn-outline-secondary">Ajouter compte</button>
+<button type="button" (click)="initGroup('immobIncorpo')" class="btn btn-outline-secondary">Ajouter compte</button>
 </div>
 
  <!-----------------Fin Achat et bien---------------------->
 
 
-    <!-----------------Achat de services et charges permanents---------------------->
+ 
+    <!-----------------charge de personnel---------------------->
 <!-- debut form static -->
 <div class="card border rounded">
         <div class="card-header border-bottom">
-                Achats de services et charges permanentes
+                Immobilisations corporelles
         </div>
 <!-- fin formilaire static         -->
 
 <!-- debut form dynamique -->
-<div formArrayName="achatServiceChargePerma" style="margin: 5px 5px 5px 10px;">
+<div formArrayName="immobCorpo" style="margin: 5px 5px 5px 10px;">
         <div class=" form-row border-bottom" 
-        *ngFor="let row of budgetForm.controls.achatServiceChargePerma.controls; let i = index" [formGroupName]="i">
-               
-        <div class="form- group col-md-4">
+        *ngFor="let row of budgetForm.controls.immobCorpo.controls; let i = index" [formGroupName]="i">
+        
+          <div class="form- group col-md-4">
                 <label for="inputState">Article</label>
                 <select class="form-control" formControlName="article">
                     <option>article 1</option>
@@ -224,50 +177,6 @@
                 </select>
         </div>
 
-             <div class="form-group col-md-4">
-                    <label for="inputState">Compte</label>
-                    <select id="inputState" class="form-control" formControlName="compte">
-                        <option>compte 1</option>
-                        <option>compte 2</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-3">
-                  <label for="inputPassword4">Montant</label>
-                  <input 
-                  #montant formControlName="montant" name="montant" minlength="2" required
-                  type="number" class="form-control" id="inputPassword4">
-                </div>
-                <div class="col-md-1" style="margin-top: 30px;"> 
-                        <button class="btn btn-light mb-2 mx-sm" (click)="onDeleteRow(i, 'achatServiceChargePerma')"><i class="ti-trash"></i></button>
-                   </div>
-                
-        </div>
-</div>
-<!-- fin form static -->
-<button type="button" (click)="initGroup('achatServiceChargePerma')" class="btn btn-outline-secondary">Ajouter compte</button>
-</div>
-
- <!-----------------Fin Achat de services et charges permanents---------------------->
-
-     <!-----------------Transfert et subvention---------------------->
-<!-- debut form static -->
-<div class="card border rounded">
-        <div class="card-header border-bottom">
-                Transferts et Subventions 
-        </div>
-<!-- fin formilaire static         -->
-
-<!-- debut form dynamique -->
-<div formArrayName="transSub" style="margin: 5px 5px 5px 10px;">
-        <div class=" form-row border-bottom" 
-        *ngFor="let row of budgetForm.controls.transSub.controls; let i = index" [formGroupName]="i">
-        <div class="form- group col-md-4">
-                <label for="inputState">Article</label>
-                <select class="form-control" formControlName="article">
-                    <option>article 1</option>
-                    <option>article 2</option>
-                </select>
-        </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Compte</label>
                     <select id="inputState" class="form-control" formControlName="compte">
@@ -282,16 +191,19 @@
                   type="number" class="form-control" id="inputPassword4">
                 </div>
                 <div class="col-md-1" style="margin-top: 30px;"> 
-                        <button class="btn btn-light mb-2 mx-sm" (click)="onDeleteRow(i, 'transSub')"><i class="ti-trash"></i></button>
-                   </div>
+                     <button class="btn btn-light mb-2 mx-sm" (click)="onDeleteRow(i, 'immobCorpo')">
+                            <i class="ti-trash"></i>
+                     </button>
+                </div>
                 
         </div>
 </div>
 <!-- fin form static -->
-<button type="button" (click)="initGroup('transSub')" class="btn btn-outline-secondary">Ajouter compte</button>
+<button type="button" (click)="initGroup('immobCorpo')" class="btn btn-outline-secondary">Ajouter compte</button>
 </div>
 
- <!-----------------Transfert et subvention---------------------->
+ <!-----------------Fin charge de personnel---------------------->
+
 
 
 
