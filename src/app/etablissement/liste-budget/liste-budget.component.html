@@ -1,6 +1,7 @@
 
 <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" [routerLink]="['/create-budget']" class="btn btn-secondary">Etablir un budget prévisionnel</button>
+        <button type="button" [routerLink]="['/etablissement/1/budget/create-budget']" 
+        class="btn btn-secondary">Etablir un budget prévisionnel</button>
 </div>
 <!-- ============================================================== -->
 <div class="row">
@@ -24,7 +25,7 @@
                         <tr *ngFor="let e of budgets">
                             <td class="txt-oflo">{{e.id}}</td>
                             <td>{{e.date}}</td>
-                            <td><button type="button" [routerLink]="['1/liste-budget']" class="btn btn-sm btn-outline-info">Consulter >></button></td>
+                            <td><button type="button" [routerLink]="['/1/liste-budget']" class="btn btn-sm btn-outline-info">Consulter >></button></td>
                         </tr>
                        
                     </tbody>

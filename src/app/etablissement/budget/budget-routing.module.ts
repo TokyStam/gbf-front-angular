@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListeBudgetComponent } from './liste-budget.component';
+import { CreatBudgetComponent } from './creat-budget/creat-budget.component';
 
 
 const routes: Routes = [
   {
-    path: 'liste-budget',
-    component: ListeBudgetComponent
+    path: 'create-budget',
+    component: CreatBudgetComponent
   }
 ];
 

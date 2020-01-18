@@ -16,6 +16,7 @@ export class ListeBudgetComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

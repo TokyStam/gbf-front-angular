@@ -11,12 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoMaterialModule } from '../material-module';
 import { BudgetModule } from '../budget/budget.module';
+import { ListeBudgetComponent } from './liste-budget/liste-budget.component';
 
 
 @NgModule({
   declarations: [
     EtablissementComponent, 
     CreateComponent, 
+    ListeBudgetComponent
   ],
   imports: [
     ReactiveFormsModule,
