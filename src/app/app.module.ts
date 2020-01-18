@@ -23,6 +23,7 @@ import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
 import { BaseUrlInterceptorService } from './services/interceptors/base-url-interceptor.service';
 import { from } from 'rxjs';
+import { Programme310Module } from './programme310/programme310.module';
 
 @NgModule({
 	declarations: [
@@ -39,7 +40,7 @@ import { from } from 'rxjs';
 		BrowserAnimationsModule,
 		FormsModule,
 		HttpClientModule,
-    NgbModule,
+		NgbModule,
 		RouterModule.forRoot(Approutes, { useHash: false })
   ],
   providers: [

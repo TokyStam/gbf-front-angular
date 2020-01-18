@@ -1,0 +1,38 @@
+
+<!-- ============================================================== -->
+<div class="row">
+    <!-- column -->
+    <div class="col-12">
+        <div class="card">
+
+                <div class="card-header  text-center border rounded ">
+                        <h4 class="card-title">    Liste annuel  des budgets prévisionnels</h4>
+                </div>
+
+            <div class="card-body">
+                <h4 class="card-title">Nom Etablissement: "Etablissement"</h4>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="border-top-0">index</th>
+                            <th class="border-top-0">Année</th>
+                            <th class="border-top-0">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let e of budgets">
+                            <td class="txt-oflo">{{e.id}}</td>
+                            <td>{{e.date}}</td>
+                            <td><button type="button" [routerLink]="['/programme310/budget-annuel']" class="btn btn-sm btn-outline-info">Afficher >></button></td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
