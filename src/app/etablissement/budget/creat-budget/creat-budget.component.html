@@ -20,17 +20,41 @@
               <div class="example-container">
   
                   <mat-form-field class="example-full-width">
-                          <mat-select placeholder="Type compte"  #typeCompte formControlName="categorie">
+                          <mat-select placeholder="Choisir la section"  #typeCompte formControlName="categorie">
                               <mat-option value="" disabled>Choisir la section</mat-option>
                               <mat-option value="fonctionnement">Fonctionnement</mat-option>
                               <mat-option value="investissement">Investissememt</mat-option>
                           </mat-select>
                   </mat-form-field>
+
+                  <mat-form-field >
+                    <mat-select placeholder="Chapitre"  #typeCompte formControlName="chapitre">
+                        <mat-option value="" disabled>Ch</mat-option>
+                        <mat-option value="fonctionnement">Fonctionnement</mat-option>
+                        <mat-option value="investissement">Investissememt</mat-option>
+                    </mat-select>
+                 </mat-form-field>
+
+                    <mat-form-field >
+                            <mat-select placeholder="Type compte"  #typeCompte formControlName="categorie">
+                                <mat-option value="" disabled>Choisir la section</mat-option>
+                                <mat-option value="fonctionnement">Fonctionnement</mat-option>
+                                <mat-option value="investissement">Investissememt</mat-option>
+                            </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-select placeholder="Type compte"  #typeCompte formControlName="categorie">
+                            <mat-option value="" disabled>Choisir la section</mat-option>
+                            <mat-option value="fonctionnement">Fonctionnement</mat-option>
+                            <mat-option value="investissement">Investissememt</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+    
   
                   <mat-form-field class="example-full-width">
                           <input matInput placeholder="Montant" type="number" #montant formControlName="montant" name="montant" minlength="2" required>
                           <mat-error [hidden]="montant.valid || montant.pristine">
-                              
                           </mat-error>
                   </mat-form-field>
   
