@@ -41,6 +41,15 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
+  
+  {
+    path: '/livre-compte/liste-livre-compte',
+    title: 'Livre ccomptable',
+    icon: 'mdi mdi-view-carousel',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
   // {
   //   path: '/component/dropdown',
   //   title: 'Dropdown',

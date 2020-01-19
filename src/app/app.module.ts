@@ -21,7 +21,6 @@ import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 import { Approutes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
-import { BaseUrlInterceptorService } from './services/interceptors/base-url-interceptor.service';
 import { from } from 'rxjs';
 import { Programme310Module } from './programme310/programme310.module';
 
@@ -43,9 +42,7 @@ import { Programme310Module } from './programme310/programme310.module';
 		NgbModule,
 		RouterModule.forRoot(Approutes, { useHash: false })
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptorService, multi: true },
-  ],
+  providers: [],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

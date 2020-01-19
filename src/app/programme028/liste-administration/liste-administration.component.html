@@ -27,7 +27,7 @@
                             <tr *ngFor="let e of budgets">
                                 <td class="txt-oflo">{{e.id}}</td>
                                 <td>{{e.nom}}</td>
-                                <td ><span type="button" class="label label-danger label-rounded" >{{e.annee}}</span> </td>
+                                <td ><span type="button" [routerLink]="['/programme028/budget-annuel']" class="label label-danger label-rounded" >{{e.annee}}</span> </td>
                                 <td><button type="button" [routerLink]="['/programme028/annee-administration']" class="btn btn-sm btn-outline-info">Consulter >></button></td>
                             </tr>
                            
