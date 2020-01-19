@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/shared/authentication';
 declare var $: any;
 
 @Component({

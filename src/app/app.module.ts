@@ -23,6 +23,11 @@ import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
 import { BaseUrlInterceptorService } from './services/interceptors/base-url-interceptor.service';
 import { from } from 'rxjs';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { DemoMaterialModule } from './material-module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
+
 
 @NgModule({
 	declarations: [
@@ -31,19 +36,23 @@ import { from } from 'rxjs';
 		FullComponent,
 		NavigationComponent,
 		BreadcrumbComponent,
-		SidebarComponent
+		SidebarComponent,
+		AuthLayoutComponent
 	],
 	imports: [
 		CommonModule,
 		BrowserModule,
 		BrowserAnimationsModule,
-		FormsModule,
+    FormsModule,
+    ReactiveFormsModule,
 		HttpClientModule,
     NgbModule,
+    DemoMaterialModule,
 		RouterModule.forRoot(Approutes, { useHash: false })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
   ],
 	bootstrap: [AppComponent]
 })
