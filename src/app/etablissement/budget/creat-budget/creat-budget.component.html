@@ -1,0 +1,307 @@
+
+<!-- <div class="btn- group col-md-4" role=" group col-md-4" aria-label="Basic example">
+        <button type="button"  class="btn btn-danger">Annuler</button>
+</div> -->
+<!-- ============================================================== -->
+<!-- <form [formGroup]="budgetForm" (ngSubmit)="onSubmitForm()">
+	<div formArrayName="rows">
+		<table>
+			
+			<tbody>
+				<tr *ngFor="let row of budgetForm.controls.rows.controls; let i = index" [formGroupName]="i">
+					<td>
+						<div class="form-group row">
+							<div class="col-sm-12">
+								<textarea class="form-control" formControlName="description"></textarea>
+							</div>
+						</div>
+					</td>
+				
+						<button type="button" 
+              class="btn btn-square btn-danger btn-sm waves-effect waves-light" 
+              (click)="onDeleteRow(i)"><i class="icofont icofont-ui-delete"></i> Remove
+            </button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button type="button" (click)="initGroup()"> Add Row</button>
+    </div>
+    
+    <button 
+    class="btn btn-info btn-block my-4" 
+    type="submit">
+    Creer maintenant
+    </button>
+
+</form> -->
+<!--                 
+<div class="row justify-content-md-center" style="margin: 30px 0 -30px 0;">
+    <div class="col col-lg-6" >
+    Default form login
+          <form 
+          [formGroup]="budgetForm"
+          (ngSubmit)="onSubmitForm()"
+          class="text-center z-depth-1 p-5" 
+          style="background-color: rgb(255, 255, 255);">
+  
+              <p class="h4 mb-4">Création du budget previsionnel</p>
+              
+
+        <div formArrayName="rows">
+              <div class="example-container"
+               *ngFor="let row of budgetForm.controls.rows.controls; let i = index" [formGroupName]="i"
+              >
+  
+                  <mat-form-field class="example-full-width">
+                          <mat-select placeholder="Choisir la section"  #compte formControlName="compte">
+                              <mat-option value="" disabled>Choisir la section</mat-option>
+                              <mat-option value="fonctionnement">Fonctionnement</mat-option>
+                              <mat-option value="investissement">Investissememt</mat-option>
+                          </mat-select>
+                  </mat-form-field>
+
+  
+                  <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Montant" type="number" #montant formControlName="montant" name="montant" minlength="2" required>
+                          <mat-error [hidden]="montant.valid || montant.pristine">
+                          </mat-error>
+                  </mat-form-field>
+  
+                  <button type="button" 
+                    class="btn btn-square btn-danger btn-sm waves-effect waves-light" 
+                    (click)="onDeleteRow(i)"><i class="icofont icofont-ui-delete"></i> Remove
+                  </button>
+
+                  <button type="button" (click)="initGroup()"> Add Row</button>
+
+              </div>
+    </div>          
+              <div class="d-flex justify-content-around" style="margin-top: 20px;">
+                  <button 
+                      class="btn btn-info btn-block my-4" 
+                      [disabled]="budgetForm.invalid" 
+                      type="submit">
+                      Creer maintenant
+                  </button>
+            </div>
+                 
+          </form>
+  </div>
+  </div> -->
+<!-- ============================================================== -->
+
+
+<div class="row justify-content-md-center" style="margin-top: -30px;">
+        <div class="col col-lg-11" >
+
+                <div class="card-header text-white text-center border rounded bg-secondary">
+                       FONCTIONNEMENT - COMPTES DE CHARGES
+                </div>
+
+<form class="z-depth-1 p-5" 
+    [formGroup]="budgetForm"
+    (ngSubmit)="onSubmitForm()"
+    style="background-color: rgb(255, 255, 255);"
+    > 
+
+    <!-----------------charge de personnel---------------------->
+<!-- debut form static -->
+<div class="card border rounded">
+        <div class="card-header border-bottom">
+                Charges de personnel
+        </div>
+<!-- fin formilaire static         -->
+
+<!-- debut form dynamique -->
+<div formArrayName="rows" style="margin: 5px 5px 5px 10px;">
+        <div class=" form-row border-bottom" 
+        *ngFor="let row of budgetForm.controls.rows.controls; let i = index" [formGroupName]="i">
+        
+          <div class="form- group col-md-4">
+                <label for="inputState">Article</label>
+                <select class="form-control" formControlName="article">
+                    <option>article 1</option>
+                    <option>article 2</option>
+                </select>
+        </div>
+
+                <div class="form-group col-md-4">
+                    <label for="inputState">Compte</label>
+                    <select id="inputState" class="form-control" formControlName="compte">
+                        <option>compte 1</option>
+                        <option>compte 2</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputPassword4">Montant</label>
+                  <input 
+                  #montant formControlName="montant" name="montant" minlength="2" required
+                  type="number" class="form-control" id="inputPassword4">
+                </div>
+                <div class="col-md-1" style="margin-top: 30px;"> 
+                     <button class="btn btn-light mb-2 mx-sm" (click)="onDeleteRow(i, 'rows')">
+                            <i class="ti-trash"></i>
+                     </button>
+                </div>
+                
+        </div>
+</div>
+<!-- fin form static -->
+<button type="button" (click)="initGroup('rows')" class="btn btn-outline-secondary">Ajouter compte</button>
+</div>
+
+ <!-----------------Fin charge de personnel---------------------->
+
+
+
+     <!-----------------Achat et bien---------------------->
+<!-- debut form static -->
+<div class="card border rounded">
+        <div class="card-header border-bottom">
+                Achat de biens
+        </div>
+<!-- fin formilaire static         -->
+
+<!-- debut form dynamique -->
+<div formArrayName="achatDeBiens" style="margin: 5px 5px 5px 10px;">
+        <div class=" form-row border-bottom" 
+        *ngFor="let row of budgetForm.controls.achatDeBiens.controls; let i = index" [formGroupName]="i">
+        
+        <div class="form-group col-md-4">
+                <label for="inputState">Article</label>
+                <select class="form-control" formControlName="article">
+                    <option>article 1</option>
+                    <option>article 2</option>
+                </select>
+        </div>
+
+        
+                <div class="form-group col-md-4">
+                    <label for="inputState">Compte</label>
+                    <select id="inputState" class="form-control" formControlName="compte">
+                        <option>compte 1</option>
+                        <option>compte 2</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputPassword4">Montant</label>
+                  <input 
+                  #montant formControlName="montant" name="montant" minlength="2" required
+                  type="number" class="form-control" id="inputPassword4">
+                </div>
+                <div class="col-md-1" style="margin-top: 30px;"> 
+                        <button class="btn btn-light mb-2 mx-sm" (click)="onDeleteRow(i, 'achatDeBiens')"><i class="ti-trash"></i></button>
+                   </div>
+                
+        </div>
+</div>
+<!-- fin form static -->
+<button type="button" (click)="initGroup('achatDeBiens')" class="btn btn-outline-secondary">Ajouter compte</button>
+</div>
+
+ <!-----------------Fin Achat et bien---------------------->
+
+
+    <!-----------------Achat de services et charges permanents---------------------->
+<!-- debut form static -->
+<div class="card border rounded">
+        <div class="card-header border-bottom">
+                Achats de services et charges permanentes
+        </div>
+<!-- fin formilaire static         -->
+
+<!-- debut form dynamique -->
+<div formArrayName="achatServiceChargePerma" style="margin: 5px 5px 5px 10px;">
+        <div class=" form-row border-bottom" 
+        *ngFor="let row of budgetForm.controls.achatServiceChargePerma.controls; let i = index" [formGroupName]="i">
+               
+        <div class="form- group col-md-4">
+                <label for="inputState">Article</label>
+                <select class="form-control" formControlName="article">
+                    <option>article 1</option>
+                    <option>article 2</option>
+                </select>
+        </div>
+
+             <div class="form-group col-md-4">
+                    <label for="inputState">Compte</label>
+                    <select id="inputState" class="form-control" formControlName="compte">
+                        <option>compte 1</option>
+                        <option>compte 2</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputPassword4">Montant</label>
+                  <input 
+                  #montant formControlName="montant" name="montant" minlength="2" required
+                  type="number" class="form-control" id="inputPassword4">
+                </div>
+                <div class="col-md-1" style="margin-top: 30px;"> 
+                        <button class="btn btn-light mb-2 mx-sm" (click)="onDeleteRow(i, 'achatServiceChargePerma')"><i class="ti-trash"></i></button>
+                   </div>
+                
+        </div>
+</div>
+<!-- fin form static -->
+<button type="button" (click)="initGroup('achatServiceChargePerma')" class="btn btn-outline-secondary">Ajouter compte</button>
+</div>
+
+ <!-----------------Fin Achat de services et charges permanents---------------------->
+
+     <!-----------------Transfert et subvention---------------------->
+<!-- debut form static -->
+<div class="card border rounded">
+        <div class="card-header border-bottom">
+                Transferts et Subventions 
+        </div>
+<!-- fin formilaire static         -->
+
+<!-- debut form dynamique -->
+<div formArrayName="transSub" style="margin: 5px 5px 5px 10px;">
+        <div class=" form-row border-bottom" 
+        *ngFor="let row of budgetForm.controls.transSub.controls; let i = index" [formGroupName]="i">
+        <div class="form- group col-md-4">
+                <label for="inputState">Article</label>
+                <select class="form-control" formControlName="article">
+                    <option>article 1</option>
+                    <option>article 2</option>
+                </select>
+        </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Compte</label>
+                    <select id="inputState" class="form-control" formControlName="compte">
+                        <option>compte 1</option>
+                        <option>compte 2</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputPassword4">Montant</label>
+                  <input 
+                  #montant formControlName="montant" name="montant" minlength="2" required
+                  type="number" class="form-control" id="inputPassword4">
+                </div>
+                <div class="col-md-1" style="margin-top: 30px;"> 
+                        <button class="btn btn-light mb-2 mx-sm" (click)="onDeleteRow(i, 'transSub')"><i class="ti-trash"></i></button>
+                   </div>
+                
+        </div>
+</div>
+<!-- fin form static -->
+<button type="button" (click)="initGroup('transSub')" class="btn btn-outline-secondary">Ajouter compte</button>
+</div>
+
+ <!-----------------Transfert et subvention---------------------->
+
+
+
+<br />
+        <button 
+            type="submit" 
+            [disabled]="budgetForm.invalid" 
+            class="btn btn-primary">Valider
+        </button>
+      </form>
+
+      </div>
+      </div>

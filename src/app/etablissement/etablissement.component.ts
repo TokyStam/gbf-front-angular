@@ -9,10 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./etablissement.component.css']
 })
 export class EtablissementComponent implements OnInit {
-
+  etablissements = [
+    {"id": 1,"nom": "ENI", "type": "Etablissement", "date": "April 18, 2017"},
+    {"id": 2,"nom": "Office du BACC", "type": "Administration", "date": "April 18, 2017"},
+    {"id": 3,"nom": "EMIT", "type": "Etablissement", "date": "April 18, 2017"}
+  ]
   constructor() { }
 
   ngOnInit() {
   }
+
 
 }

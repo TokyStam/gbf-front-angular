@@ -10,10 +10,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoMaterialModule } from '../material-module';
-
+import { BudgetModule } from '../budget/budget.module';
+import { ListeBudgetComponent } from './liste-budget/liste-budget.component';
 
 @NgModule({
-  declarations: [EtablissementComponent, CreateComponent],
+  declarations: [
+    EtablissementComponent, 
+    CreateComponent, 
+    ListeBudgetComponent
+  ],
   imports: [
     ReactiveFormsModule,
     CommonModule,
@@ -21,7 +26,8 @@ import { DemoMaterialModule } from '../material-module';
 		HttpClientModule,
 		NgbModule,
     EtablissementRoutingModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    BudgetModule,
   ]
 })
 export class EtablissementModule { }

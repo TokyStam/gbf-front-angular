@@ -25,14 +25,31 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
-  // {
-  //   path: '/component/carousel',
-  //   title: 'Carousel',
-  //   icon: 'mdi mdi-view-carousel',
-  //   class: '',
-  //   extralink: false,
-  //   submenu: []
-  // },
+  {
+    path: '/programme310',
+    title: 'Programme 310',
+    icon: 'mdi mdi-view-carousel',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
+    path: '/programme028',
+    title: 'Programme 028',
+    icon: 'mdi mdi-view-carousel',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  
+  {
+    path: '/livre-compte/liste-livre-compte',
+    title: 'Livre ccomptable',
+    icon: 'mdi mdi-view-carousel',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
   // {
   //   path: '/component/dropdown',
   //   title: 'Dropdown',
