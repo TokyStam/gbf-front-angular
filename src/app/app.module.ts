@@ -28,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
 
 import { Programme310Module } from './programme310/programme310.module';
+import { BaseUrlInterceptorService } from './services/interceptors/base-url-interceptor.service';
 
 @NgModule({
 	declarations: [
@@ -51,7 +52,7 @@ import { Programme310Module } from './programme310/programme310.module';
 		RouterModule.forRoot(Approutes, { useHash: false })
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: BaseUrl, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
   ],
 	bootstrap: [AppComponent]
