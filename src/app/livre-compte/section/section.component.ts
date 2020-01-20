@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./section.component.css']
 })
 export class SectionComponent implements OnInit {
-
+  section = [
+    {"id": 60,"nom": "Charges de personnel"},
+    {"id": 61, "nom": "Achat de biens"},
+    {"id": 65,"nom": "Achats de services et charges permanentes"},
+    {"id": 66,"nom": "Transferts et Subventions"}
+  ]
   constructor() { }
 
   ngOnInit() {

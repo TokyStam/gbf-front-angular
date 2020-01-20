@@ -2,14 +2,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LivreCompteRoutingModule } from './livre-compte-routing.module';
-import { ListeLivreCompteComponent } from './liste-livre-compte/liste-livre-compte.component';
+import { LivreCompteComponent } from './livre-compte.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DemoMaterialModule } from '../material-module';
+import { CategorieModule } from './categorie/categorie.module';
 
 
 @NgModule({
-  declarations: [ListeLivreCompteComponent],
+  declarations: [LivreCompteComponent],
   imports: [
     CommonModule,
-    LivreCompteRoutingModule
+    ReactiveFormsModule,
+    CommonModule,
+		FormsModule,
+		HttpClientModule,
+    NgbModule,
+    DemoMaterialModule,
+    LivreCompteRoutingModule,
+    CategorieModule
   ]
 })
 export class LivreCompteModule { }

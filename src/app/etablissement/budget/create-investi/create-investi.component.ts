@@ -55,9 +55,7 @@ export class CreateInvestiComponent implements OnInit {
 				montant: [null, Validators.required],
 			}));
 			}
-		
-		
-		console.log(this.budgetForm.value);
+	
 	  }
 
 	  onDeleteRow(rowIndex, nomGroup) {
@@ -66,8 +64,9 @@ export class CreateInvestiComponent implements OnInit {
 	  }
   onSubmitForm() {
     // if (this.budgetForm.valid) {
-		console.log(this.budgetForm.value);
-    // }
+		// console.log(this.budgetForm.value);
+	// }
+	// for(le)
   }
 
 
