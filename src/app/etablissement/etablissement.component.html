@@ -14,7 +14,7 @@
                         <tr>
                             <th class="border-top-0">Nom</th>
                             <th class="border-top-0">Type du compte</th>
-                            <th class="border-top-0">DATE</th>
+                            <th class="border-top-0 text-center">ANNEE EN COURS</th>
                             <th class="border-top-0">ACTION</th>
                         </tr>
                     </thead>
@@ -23,7 +23,10 @@
                         <tr *ngFor="let e of etablissements">
                             <td class="txt-oflo">{{e.nom}}</td>
                             <td><span class="label label-success label-rounded" >{{e.type}}</span> </td>
-                            <td class="txt-oflo">{{e.date}}</td>
+                            <td class="txt-oflo text-center">
+                                    <button type="button" [routerLink]="['/etablissement/budget/budget-annuel']" class="btn btn-sm btn-outline-warning rounded">
+                                {{myDate | date:'yyyy'}}</button>
+                            </td>
                             <td><button type="button" [routerLink]="['/etablissement/budget/liste-budget']" class="btn btn-sm btn-outline-info">Consulter >></button></td>
                         </tr>
                        

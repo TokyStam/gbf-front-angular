@@ -14,6 +14,7 @@ export class EtablissementComponent implements OnInit {
     {"id": 2,"nom": "Office du BACC", "type": "Administration", "date": "April 18, 2017"},
     {"id": 3,"nom": "EMIT", "type": "Etablissement", "date": "April 18, 2017"}
   ]
+  myDate = new Date();
   constructor() { }
 
   ngOnInit() {

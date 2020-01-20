@@ -19,7 +19,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '/etablissement',
-    title: 'Etablissement',
+    title: 'Compte',
     icon: 'mdi mdi-message-bulleted',
     class: '',
     extralink: false,
