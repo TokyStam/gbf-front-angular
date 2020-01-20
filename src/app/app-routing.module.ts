@@ -25,14 +25,6 @@ export const Approutes: Routes = [
 				loadChildren: () => import('./etablissement/etablissement.module').then(m => m.EtablissementModule)
 			},
 			{
-				path: 'programme310',
-				loadChildren: () => import('./programme310/programme310.module').then(m => m.Programme310Module)
-			},
-			{
-				path: 'programme028',
-				loadChildren: () => import('./programme028/programme028.module').then(m => m.Programme028Module)
-			},
-			{
 				path: 'livre-compte',
 				loadChildren: () => import('./livre-compte/livre-compte.module').then(m => m.LivreCompteModule)
 			},

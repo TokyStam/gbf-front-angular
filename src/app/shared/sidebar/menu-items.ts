@@ -26,23 +26,6 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/programme310',
-    title: 'Programme 310',
-    icon: 'mdi mdi-view-carousel',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/programme028',
-    title: 'Programme 028',
-    icon: 'mdi mdi-view-carousel',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  
-  {
     path: '/livre-compte/categorie',
     title: 'Livre comptable',
     icon: 'mdi mdi-view-carousel',
