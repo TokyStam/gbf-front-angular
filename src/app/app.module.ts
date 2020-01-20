@@ -26,8 +26,6 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { DemoMaterialModule } from './material-module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
-
-import { Programme310Module } from './programme310/programme310.module';
 import { BaseUrlInterceptorService } from './services/interceptors/base-url-interceptor.service';
 
 @NgModule({
