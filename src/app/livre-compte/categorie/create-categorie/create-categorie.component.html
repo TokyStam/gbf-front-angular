@@ -4,31 +4,18 @@
     <div class="col col-lg-5" >
     <!-- Default form login -->
           <form 
-          [formGroup]="sectionForm"
+          [formGroup]="categorieForm"
           (ngSubmit)="onSubmitForm()"
           class="text-center z-depth-1 p-5 border" 
           style="background-color: rgb(250, 250, 250);">
   
-              <p class="h4 mb-4">Créer section</p>
+              <p class="h4 mb-4">Créer Catégorie</p>
               <!-- Email -->
               
               <div class="example-container">
-  
-                  <mat-form-field class="example-full-width">
-                          <mat-select placeholder="Chapitre"  #chapitre formControlName="chapitre">
-                              <mat-option *ngFor="let e of chapitreList" [value]="e.id">{{e.id}} - {{e.nom}}</mat-option>
-                          </mat-select>
-                  </mat-form-field>
 
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Numéro du compte" #numSec formControlName="numSec" name="numSec" maxlength="1" required>
-                    <mat-error [hidden]="numSec.valid || numSec.pristine">
-                        Un chifre au maximum
-                    </mat-error>
-                 </mat-form-field>
-  
-                  <mat-form-field class="example-full-width">
-                          <input matInput placeholder="Intitulé" #name formControlName="name" name="name" minlength="2" required>
+                          <input matInput placeholder="Intitué" #name formControlName="name" name="name" minlength="2" required>
                           <mat-error [hidden]="name.valid || name.pristine">
                               Nom obligatiore, au moins deux caracteres
                           </mat-error>
@@ -42,7 +29,7 @@
                   <!-- Sign in button -->
                   <button 
                       class="btn btn-info btn-block my-4" 
-                      [disabled]="sectionForm.invalid" 
+                      [disabled]="categorieForm.invalid" 
                       type="submit">
                       Creer maintenant
                   </button>

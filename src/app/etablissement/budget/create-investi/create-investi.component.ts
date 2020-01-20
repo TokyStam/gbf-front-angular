@@ -57,7 +57,7 @@ export class CreateInvestiComponent implements OnInit {
 			}
 		
 		
-		console.log(this.budgetForm.value);
+		console.log(this.budgetForm.get('rows').value);
 	  }
 
 	  onDeleteRow(rowIndex, nomGroup) {

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SectionRoutingModule } from './section-routing.module';
-import { SectionComponent } from './section.component';
-import { CreateSectionComponent } from './create-section/create-section.component';
+import { ArticleRoutingModule } from './article-routing.module';
+import { CreateArticleComponent } from './create-article/create-article.component';
+import { ArticleComponent } from './article.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -11,7 +11,7 @@ import { DemoMaterialModule } from 'src/app/material-module';
 
 
 @NgModule({
-  declarations: [SectionComponent, CreateSectionComponent],
+  declarations: [ArticleComponent, CreateArticleComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -19,7 +19,7 @@ import { DemoMaterialModule } from 'src/app/material-module';
 		HttpClientModule,
     NgbModule,
     DemoMaterialModule,
-    SectionRoutingModule
+    ArticleRoutingModule
   ]
 })
-export class SectionModule { }
+export class ArticleModule { }

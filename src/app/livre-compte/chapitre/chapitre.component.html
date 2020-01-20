@@ -1,1 +1,33 @@
-<p>chapitre works!</p>
+<button type="button" [routerLink]="['/livre-compte/chapitre/create-chapitre']"  class="btn btn-info">Créer chapitre</button>
+
+<!-- ============================================================== -->
+<div class="row">
+    <!-- column -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Liste chapitre du compte</h4>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="border-top-0">Classe</th>
+                            <th class="border-top-0">Intitulé</th>
+                            <th class="border-top-0">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let e of chapitre">
+                            <td class="txt-oflo">{{e.id}}</td>
+                            <td class="txt-oflo">{{e.nom}}</td>
+                            <td><button type="button" class="btn btn-sm btn-outline-info">Modifier >></button></td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->

@@ -4,7 +4,7 @@
     <div class="col col-lg-5" >
     <!-- Default form login -->
           <form 
-          [formGroup]="sectionForm"
+          [formGroup]="articleForm"
           (ngSubmit)="onSubmitForm()"
           class="text-center z-depth-1 p-5 border" 
           style="background-color: rgb(250, 250, 250);">
@@ -15,14 +15,14 @@
               <div class="example-container">
   
                   <mat-form-field class="example-full-width">
-                          <mat-select placeholder="Chapitre"  #chapitre formControlName="chapitre">
-                              <mat-option *ngFor="let e of chapitreList" [value]="e.id">{{e.id}} - {{e.nom}}</mat-option>
+                          <mat-select placeholder="Section"  #section formControlName="section">
+                              <mat-option *ngFor="let e of sectionList" [value]="e.id">{{e.id}} - {{e.nom}}</mat-option>
                           </mat-select>
                   </mat-form-field>
 
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Numéro du compte" #numSec formControlName="numSec" name="numSec" maxlength="1" required>
-                    <mat-error [hidden]="numSec.valid || numSec.pristine">
+                    <input matInput type="number" placeholder="Numéro du compte" #numArt formControlName="numArt" name="numArt" maxlength="1" required>
+                    <mat-error [hidden]="numArt.valid || numArt.pristine">
                         Un chifre au maximum
                     </mat-error>
                  </mat-form-field>
@@ -42,7 +42,7 @@
                   <!-- Sign in button -->
                   <button 
                       class="btn btn-info btn-block my-4" 
-                      [disabled]="sectionForm.invalid" 
+                      [disabled]="articleForm.invalid" 
                       type="submit">
                       Creer maintenant
                   </button>
