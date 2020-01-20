@@ -5,6 +5,8 @@ import {
   NgbPanelChangeEvent,
   NgbCarouselConfig
 } from '@ng-bootstrap/ng-bootstrap';
+import { AuthenticationService } from '../authentication';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -15,7 +17,13 @@ export class NavigationComponent implements AfterViewInit {
 
   public showSearch = false;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private authenticationService: AuthenticationService, private router: Router) {}
 
   ngAfterViewInit() {}
+
+  public logout() {
+    this.authenticationService.logout().subscribe((data) => {
+      this.router.navigate(['/login']);
+    });
+  }
 }

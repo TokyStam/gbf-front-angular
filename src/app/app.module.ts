@@ -22,7 +22,13 @@ import { Approutes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
 import { from } from 'rxjs';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { DemoMaterialModule } from './material-module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
+
 import { Programme310Module } from './programme310/programme310.module';
+import { BaseUrlInterceptorService } from './services/interceptors/base-url-interceptor.service';
 
 @NgModule({
 	declarations: [
@@ -31,18 +37,24 @@ import { Programme310Module } from './programme310/programme310.module';
 		FullComponent,
 		NavigationComponent,
 		BreadcrumbComponent,
-		SidebarComponent
+		SidebarComponent,
+		AuthLayoutComponent
 	],
 	imports: [
 		CommonModule,
 		BrowserModule,
 		BrowserAnimationsModule,
-		FormsModule,
+    FormsModule,
+    ReactiveFormsModule,
 		HttpClientModule,
-		NgbModule,
+    NgbModule,
+    DemoMaterialModule,
 		RouterModule.forRoot(Approutes, { useHash: false })
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
+  ],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
