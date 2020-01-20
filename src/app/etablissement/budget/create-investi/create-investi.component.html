@@ -119,16 +119,9 @@
 <div formArrayName="immobIncorpo" style="margin: 5px 5px 5px 10px;">
         <div class=" form-row border-bottom" 
         *ngFor="let row of budgetForm.controls.immobIncorpo.controls; let i = index" [formGroupName]="i">
-        
-        <div class="form-group col-md-4">
-                <label for="inputState">Article</label>
-                <select class="form-control" formControlName="article">
-                     <option *ngFor="let a of article20" [value]="a.id">{{a.numArt}} - {{a.intitule}}</option>
-                </select>
-        </div>
 
         
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-8">
                     <label for="inputState">Compte</label>
                     <select id="inputState" class="form-control" formControlName="compte">
                         <option *ngFor="let a of compte20" [value]="a.id">{{a.numCompte}} - {{a.intitule}}</option>
@@ -166,15 +159,9 @@
 <div formArrayName="immobCorpo" style="margin: 5px 5px 5px 10px;">
         <div class=" form-row border-bottom" 
         *ngFor="let row of budgetForm.controls.immobCorpo.controls; let i = index" [formGroupName]="i">
-        
-          <div class="form- group col-md-4">
-                <label for="inputState">Article</label>
-                <select class="form-control" formControlName="article">
-                        <option *ngFor="let a of article21" [value]="a.id">{{a.numArt}} - {{a.intitule}}</option>
-                </select>
-        </div>
 
-                <div class="form-group col-md-4">
+
+                <div class="form-group col-md-8">
                     <label for="inputState">Compte</label>
                     <select id="inputState" class="form-control" formControlName="compte">
                          <option *ngFor="let a of compte21" [value]="a.id">{{a.numCompte}} - {{a.intitule}}</option>

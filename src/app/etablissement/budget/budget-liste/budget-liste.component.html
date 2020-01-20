@@ -1,0 +1,32 @@
+<!-- ============================================================== -->
+<div class="row">
+        <!-- column -->
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Listes des budgets prévisionnels ENI</h4>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">index</th>
+                                <th class="border-top-0">Année</th>
+                                <th class="border-top-0">ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                            <tr *ngFor="let e of budgets">
+                                <td class="txt-oflo">{{e.id}}</td>
+                                <td>{{e.date}}</td>
+                                <td><button type="button" [routerLink]="['/etablissement/budget/budget-annuel']" class="btn btn-sm btn-outline-info">Consulter >></button></td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->

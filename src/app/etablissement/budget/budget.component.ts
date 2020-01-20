@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./budget.component.css']
 })
 export class BudgetComponent implements OnInit {
+;
 
   constructor() { }
 
