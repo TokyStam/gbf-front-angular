@@ -19,9 +19,13 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let e of article">
-                            <td class="txt-oflo">{{e.id}}</td>
-                            <td class="txt-oflo">{{e.nom}}</td>
-                            <td><button type="button" class="btn btn-sm btn-outline-info">Modifier >></button></td>
+                            <td class="txt-oflo">{{e.numArt}}</td>
+                            <td class="txt-oflo">{{e.intitule}}</td>
+                            <td>
+                                    <button class="btn btn-sm btn-outline-danger" (click)="onDelete(e.id)">
+                                            <i class="ti-trash"></i>
+                                     </button> &nbsp;
+                                     <button type="button" class="btn btn-sm btn-outline-info">Modifier >></button></td>
                         </tr>
                        
                     </tbody>

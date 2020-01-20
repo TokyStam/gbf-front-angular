@@ -13,6 +13,51 @@ export class CreatBudgetComponent implements OnInit {
   
   budgetForm: FormGroup;
   fieldSelectionForm: FormGroup;
+////////////////////////////////60///////////////////////////////////
+  article60 = [
+	  {"numArt": 603, "intitule": "Achat de biens de fonctionnement général"},
+	  {"numArt": 602, "intitule": "Achat de biens de fonctionnement général"},
+	  {"numArt": 604, "intitule": "Achat de biens de fonctionnement général"},
+  ];
+  compte60 = [
+	{"numCompte": 6031, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+	{"numCompte": 6022, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+	{"numCompte": 6043, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+	{"numCompte": 6054, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
+];
+/////////////////////////////////61/////////////////////////////////
+article61 = [
+	{"numArt": 613, "intitule": "Achat de biens de fonctionnement général"},
+	{"numArt": 612, "intitule": "Achat de biens de fonctionnement général"},
+];
+compte61 = [
+  {"numCompte": 6131, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 6122, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 6143, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 6154, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
+];
+///////////////////////////////////62//////////////////////////
+article62 = [
+	{"numArt": 623, "intitule": "Achat de biens de fonctionnement général"},
+	{"numArt": 622, "intitule": "Achat de biens de fonctionnement général"},
+];
+compte62 = [
+  {"numCompte": 6231, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 6222, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 6243, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 6254, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
+];
+///////////////////////////////////65//////////////////////////
+article65 = [
+	{"numArt": 653, "intitule": "Achat de biens de fonctionnement général"},
+	{"numArt": 652, "intitule": "Achat de biens de fonctionnement général"},
+];
+compte65 = [
+  {"numCompte": 6531, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 6522, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 6543, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 6554, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
+];
 
   formControlsVisibilityConfig;
 

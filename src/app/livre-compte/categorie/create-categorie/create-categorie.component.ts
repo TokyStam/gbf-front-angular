@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CategoryService } from 'src/app/services/category.service';
+import { CategoryModel } from 'src/app/models/category-model';
 
 @Component({
   selector: 'app-create-categorie',
@@ -12,7 +14,8 @@ export class CreateCategorieComponent implements OnInit {
 
   constructor(
     private formBulder: FormBuilder,
-    private router: Router) { }
+    private router: Router,
+    private categorieService: CategoryService) { }
 
   ngOnInit() {
     this.initForm();
@@ -26,8 +29,23 @@ export class CreateCategorieComponent implements OnInit {
 
   onSubmitForm() {
     if (this.categorieForm.valid) {
-        console.log(this.categorieForm);
+        const newCategory: CategoryModel = {
+          nom: this.categorieForm.get('name').value
+        };
+        this.newCategory(newCategory);
+        this.router.navigate(['/livre-compte/categorie']);
     }
   }
+
+  
+// create a new category
+private newCategory(category: CategoryModel) {
+  this.categorieService.create(category).subscribe((data) => {
+    // this.fetchStaffList();
+    console.log(data);
+  }, (error) => {
+    console.log(error);
+  });
+}
 
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SectionModel } from '../models/section-model';
+import { ArticleModel } from '../models/article-model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,10 @@ export class SectionService {
 
   constructor(private http: HttpClient) { }
 
+     //create
+ public createArticle(id, data: ArticleModel) {
+  return this.http.post('/sections/'+ id + '/articles', data);
+}
   public create(data: SectionModel) {
     return this.http.post('/sections', data);
   }

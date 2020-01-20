@@ -12,6 +12,30 @@ export class CreateInvestiComponent implements OnInit {
   budgetForm: FormGroup;
   fieldSelectionForm: FormGroup;
 
+  ///////////////////////////////////20//////////////////////////
+article20 = [
+	{"numArt": 203, "intitule": "Achat de biens de fonctionnement général"},
+	{"numArt": 202, "intitule": "Achat de biens de fonctionnement général"},
+];
+compte20 = [
+  {"numCompte": 2031, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 2022, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 2043, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 2054, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
+];
+///////////////////////////////////21//////////////////////////
+article21 = [
+	{"numArt": 213, "intitule": "Achat de biens de fonctionnement général"},
+	{"numArt": 212, "intitule": "Achat de biens de fonctionnement général"},
+];
+compte21 = [
+  {"numCompte": 2131, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 2122, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 2143, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
+  {"numCompte": 2154, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
+];
+
+
   formControlsVisibilityConfig;
 
   constructor(
@@ -62,12 +86,17 @@ export class CreateInvestiComponent implements OnInit {
 		let rows = this.budgetForm.get(nomGroup) as FormArray;
 		rows.removeAt(rowIndex)
 	  }
-  onSubmitForm() {
-    // if (this.budgetForm.valid) {
-		// console.log(this.budgetForm.value);
-	// }
-	// for(le)
-  }
+ 	 onSubmitForm() {
+		if(this.budgetForm.valid){
+			this.budgetForm.value.immobIncorpo.map(v=>{
+				console.log(v);
+			});
+		    
+			this.budgetForm.value.immobCorpo.map(v=>{
+				console.log(v);
+			});
+	  }
+	}
 
 
 }

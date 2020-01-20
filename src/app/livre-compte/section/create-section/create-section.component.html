@@ -16,7 +16,7 @@
   
                   <mat-form-field class="example-full-width">
                           <mat-select placeholder="Chapitre"  #chapitre formControlName="chapitre">
-                              <mat-option *ngFor="let e of chapitreList" [value]="e.id">{{e.id}} - {{e.nom}}</mat-option>
+                              <mat-option *ngFor="let e of chapitreList" [value]="e.id">{{e.numChap}} - {{e.intitule}}</mat-option>
                           </mat-select>
                   </mat-form-field>
 

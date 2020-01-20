@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ChapitreModel } from '../models/chapitre-model';
-
+import { SectionModel } from '../models/section-model';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +9,10 @@ export class ChapitreService {
 
   constructor(private http: HttpClient) { }
 
+   //create
+ public createSection(id, data: SectionModel) {
+  return this.http.post('/chapitres/'+ id + '/sections', data);
+}
   public create(data: ChapitreModel) {
     return this.http.post('/chapitres', data);
   }

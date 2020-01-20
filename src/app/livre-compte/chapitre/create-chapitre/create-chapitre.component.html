@@ -16,12 +16,12 @@
   
                   <mat-form-field class="example-full-width">
                           <mat-select placeholder="Type compte"  #categorie formControlName="categorie">
-                              <mat-option *ngFor="let e of categorieList" [value]="e.id">{{e.nom}}</mat-option>
+                              <mat-option *ngFor="let e of categorieList, let i=index" [value]="e.id"> {{e.nom}}</mat-option>
                           </mat-select>
                   </mat-form-field>
 
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Classe (Numéro du compte)" #numChap formControlName="numChap" name="numChap"  maxlength="1" required>
+                    <input matInput type="number" placeholder="Classe (Numéro du compte)" #numChap formControlName="numChap" name="numChap" maxlength="1" required>
                     <mat-error [hidden]="numChap.valid || numChap.pristine">
                         Un chifre au maximum
                     </mat-error>

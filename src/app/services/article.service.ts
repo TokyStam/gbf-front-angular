@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ArticleModel } from '../models/article-model';
+import { CompteModel } from '../models/compte-model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,10 @@ export class ArticleService {
 
   constructor(private http: HttpClient) { }
 
+    //create
+ public createCompte(id, data: CompteModel) {
+  return this.http.post('/articles/'+ id + '/comptes', data);
+}
   public create(data: ArticleModel) {
     return this.http.post('/articles', data);
   }

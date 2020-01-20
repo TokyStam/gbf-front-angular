@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SectionService } from 'src/app/services/section.service';
 
 @Component({
   selector: 'app-section',
@@ -6,15 +7,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./section.component.css']
 })
 export class SectionComponent implements OnInit {
-  section = [
-    {"id": 60,"nom": "Charges de personnel"},
-    {"id": 61, "nom": "Achat de biens"},
-    {"id": 65,"nom": "Achats de services et charges permanentes"},
-    {"id": 66,"nom": "Transferts et Subventions"}
-  ]
-  constructor() { }
+  section = []
+  constructor(private sectionService: SectionService) { }
 
   ngOnInit() {
+    this.fetchAllSection();
   }
 
+  private fetchAllSection() {
+  
+    this.sectionService.fetchAll().subscribe((data: any) => {
+      this.section = [...data];
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  onDelete(id){
+    if(confirm("Voulez-vous vraimenet suprimer l'élélement?")){
+        this.deleteAction(id);
+    }
+  }
+  private deleteAction(id){
+   this.sectionService.delete(id).subscribe((data) => {
+     console.log('reussit');
+     this.fetchAllSection();
+   }, (error) => {
+     console.log(error);
+   });
+  }
+  
 }

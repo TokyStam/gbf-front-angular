@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CategoryModel } from '../models/category-model';
+import { ChapitreModel } from '../models/chapitre-model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,11 @@ import { CategoryModel } from '../models/category-model';
 export class CategoryService {
 
   constructor(private http: HttpClient) { }
+
+ //create
+ public createChapitre(id, data: ChapitreModel) {
+  return this.http.post('/categories/'+ id + '/chapitres', data);
+}
 
   public create(data: CategoryModel) {
     return this.http.post('/categories', data);

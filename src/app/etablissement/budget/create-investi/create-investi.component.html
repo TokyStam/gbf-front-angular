@@ -111,7 +111,7 @@
 <!-- debut form static -->
 <div class="card border rounded">
         <div class="card-header border-bottom">
-                Immobilisations incorporelles
+                20 - Immobilisations incorporelles
         </div>
 <!-- fin formilaire static         -->
 
@@ -123,8 +123,7 @@
         <div class="form-group col-md-4">
                 <label for="inputState">Article</label>
                 <select class="form-control" formControlName="article">
-                    <option>article 1</option>
-                    <option>article 2</option>
+                     <option *ngFor="let a of article20" [value]="a.id">{{a.numArt}} - {{a.intitule}}</option>
                 </select>
         </div>
 
@@ -132,8 +131,7 @@
                 <div class="form-group col-md-4">
                     <label for="inputState">Compte</label>
                     <select id="inputState" class="form-control" formControlName="compte">
-                        <option>compte 1</option>
-                        <option>compte 2</option>
+                        <option *ngFor="let a of compte20" [value]="a.id">{{a.numCompte}} - {{a.intitule}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-3">
@@ -160,7 +158,7 @@
 <!-- debut form static -->
 <div class="card border rounded">
         <div class="card-header border-bottom">
-                Immobilisations corporelles
+               21 -  Immobilisations corporelles
         </div>
 <!-- fin formilaire static         -->
 
@@ -172,16 +170,14 @@
           <div class="form- group col-md-4">
                 <label for="inputState">Article</label>
                 <select class="form-control" formControlName="article">
-                    <option>article 1</option>
-                    <option>article 2</option>
+                        <option *ngFor="let a of article21" [value]="a.id">{{a.numArt}} - {{a.intitule}}</option>
                 </select>
         </div>
 
                 <div class="form-group col-md-4">
                     <label for="inputState">Compte</label>
                     <select id="inputState" class="form-control" formControlName="compte">
-                        <option>compte 1</option>
-                        <option>compte 2</option>
+                         <option *ngFor="let a of compte21" [value]="a.id">{{a.numCompte}} - {{a.intitule}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-3">

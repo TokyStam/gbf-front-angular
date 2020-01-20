@@ -18,10 +18,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let e of categorie">
-                            <td class="txt-oflo">{{e.id}}</td>
+                        <tr *ngFor="let e of categorie, let i=index">
+                            <td class="txt-oflo">{{i+1}}</td>
                             <td class="txt-oflo">{{e.nom}}</td>
-                            <td><button type="button" class="btn btn-sm btn-outline-info">Modifier >></button></td>
+                            <td>
+                                    <button class="btn btn-sm btn-outline-danger" (click)="onDelete(e.id)">
+                                            <i class="ti-trash"></i>
+                                     </button> &nbsp;
+                                <button type="button" class="btn btn-sm btn-outline-info">Modifier >>
+
+                                </button></td>
                         </tr>
                        
                     </tbody>
