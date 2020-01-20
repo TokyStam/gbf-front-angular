@@ -21,6 +21,9 @@ export class ArticleService {
   public get(id: any, filter = {}) {
     return this.http.get('/articles/' + id + '?filter=' + JSON.stringify(filter));
   }
+  public getComptes(id: any) {
+    return this.http.get('/articles/' + id + '/comptes');
+  }
 
   public update(id: any, data: any) {
     return this.http.patch('/articles/' + id, data);

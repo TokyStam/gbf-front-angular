@@ -1,6 +1,6 @@
 
 
-<div class="row justify-content-md-center" style="margin: 50px 0 -50px 0;">
+<div class="row justify-content-md-center">
   <div class="col col-lg-5" >
   <!-- Default form login -->
         <form 
@@ -28,6 +28,20 @@
                             Nom obligatiore, au moins deux caracteres
                         </mat-error>
                 </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Email" #email formControlName="email" name="email" minlength="2" required>
+                      <mat-error [hidden]="email.valid || email.pristine">
+                          Adresse email invalide
+                      </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Mot de passe" type="password" #password formControlName="password" name="password" minlength="3" required>
+                  <mat-error [hidden]="password.valid || password.pristine">
+                      Au mois six 3 caracteres
+                  </mat-error>
+          </mat-form-field>
 
                
             </div>

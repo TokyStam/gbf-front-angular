@@ -22,6 +22,8 @@ export class CreateComponent implements OnInit {
     this.etablissementForm = this.formBulder.group({
       typeCompte: ['', Validators.required],
       name: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required],
     });
   }
 

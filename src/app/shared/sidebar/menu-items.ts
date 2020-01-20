@@ -33,6 +33,14 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
+  {
+    path: '/etablissement/create',
+    title: 'Créer un compte',
+    icon: 'mdi mdi-view-carousel',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
   // {
   //   path: '/component/dropdown',
   //   title: 'Dropdown',

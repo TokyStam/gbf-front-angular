@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { ArticleService } from 'src/app/services/article.service';
 
 
 
@@ -15,12 +16,7 @@ export class CreatBudgetComponent implements OnInit {
   fieldSelectionForm: FormGroup;
 ////////////////////////////////60///////////////////////////////////
 
-  compte60 = [
-	{"numCompte": 6031, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-	{"numCompte": 6022, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-	{"numCompte": 6043, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-	{"numCompte": 6054, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
-];
+  compte60 = [];
 /////////////////////////////////61/////////////////////////////////
 
 compte61 = [
@@ -48,10 +44,12 @@ compte65 = [
   formControlsVisibilityConfig;
 
   constructor(
-    private formBuilder: FormBuilder,
+	private formBuilder: FormBuilder,
+	private artcileService: ArticleService,
     private router: Router) { }
 
 	ngOnInit() {
+
 		this.budgetForm = this.formBuilder.group({
 		  rows: this.formBuilder.array([]),
 		  achatDeBiens: this.formBuilder.array([]),
@@ -60,16 +58,8 @@ compte65 = [
 		});
 
 		this.initGroup();
-	
-		// this.fieldSelectionForm = this.formBuilder.group({
-		//   driver: [false],
-		//   contact_number: [false],
-		//   transportation_unit: [false],
-		//   special_instructions: [false]
-		// });
-	
-		// this.formControlsVisibilityConfig = this.fieldSelectionForm.value;
-	
+
+		// recupere compte
 	
 	  }
 	  initGroup(nomGroup = 'all') {
@@ -81,26 +71,26 @@ compte65 = [
 
 			// Charge de personnel
 		rows.push(this.formBuilder.group({
-			article: [null, Validators.required],
+		
 			compte: [null, Validators.required],
 			montant: [null, Validators.required],
 		  }));
   
 		  // Achat de biens
 		   achatDeBiens.push(this.formBuilder.group({
-			article: [null, Validators.required],
+		
 			  compte: [null, Validators.required],
 			  montant: [null, Validators.required],
 			}));
 			// Achat de services st charges permanentes
 			achatServiceChargePerma.push(this.formBuilder.group({
-			article: [null, Validators.required],
+		
 			compte: [null, Validators.required],
 			montant: [null, Validators.required],
 			}));
 			// Achat de biens
 			transSub.push(this.formBuilder.group({
-			article: [null, Validators.required],
+		
 			compte: [null, Validators.required],
 			montant: [null, Validators.required],
 			}));
@@ -109,7 +99,7 @@ compte65 = [
 			let group = this.budgetForm.get(nomGroup) as FormArray;
 				// Champs dynamique
 			group.push(this.formBuilder.group({
-				article: [null, Validators.required],
+			
 				compte: [null, Validators.required],
 				montant: [null, Validators.required],
 			}));
@@ -123,11 +113,23 @@ compte65 = [
 		let rows = this.budgetForm.get(nomGroup) as FormArray;
 		rows.removeAt(rowIndex)
 	  }
-  onSubmitForm() {
-    // if (this.budgetForm.valid) {
-		console.log(this.budgetForm.value);
-    // }
-  }
+	onSubmitForm() {
+		// if (this.budgetForm.valid) {
+			console.log(this.budgetForm.value);
+		// }
+	}
+
+	// recuperer compte
+	
+	private getComptes(id) {
+  
+		this.artcileService.getComptes(id).subscribe((data: any) => {
+		  this.compte60 = [...data];
+		}, (error) => {
+		  console.log(error);
+		});
+	  }
+
 
 }
 

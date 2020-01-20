@@ -50,14 +50,14 @@ compte21 = [
 
 			// Charge de personnel
       immobCorpo.push(this.formBuilder.group({
-			article: [null, Validators.required],
+		
 			compte: [null, Validators.required],
 			montant: [null, Validators.required],
 		  }));
   
 		  // Achat de biens
       immobIncorpo.push(this.formBuilder.group({
-			article: [null, Validators.required],
+		
 			  compte: [null, Validators.required],
 			  montant: [null, Validators.required],
 			}));
@@ -66,7 +66,7 @@ compte21 = [
 			let group = this.budgetForm.get(nomGroup) as FormArray;
 				// Champs dynamique
 			group.push(this.formBuilder.group({
-				article: [null, Validators.required],
+			
 				compte: [null, Validators.required],
 				montant: [null, Validators.required],
 			}));
