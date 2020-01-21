@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChapitreService } from 'src/app/services/chapitre.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chapitre',
@@ -8,7 +9,8 @@ import { ChapitreService } from 'src/app/services/chapitre.service';
 })
 export class ChapitreComponent implements OnInit {
   chapitre = []
-  constructor(private chapiteService: ChapitreService) { }
+  constructor(private chapiteService: ChapitreService,
+    public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.fetchAllChapitre();

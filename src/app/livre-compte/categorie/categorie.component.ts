@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-categorie',
@@ -8,7 +9,8 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategorieComponent implements OnInit {
   categorie = [];
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService,
+             public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.fetchAllCategory();

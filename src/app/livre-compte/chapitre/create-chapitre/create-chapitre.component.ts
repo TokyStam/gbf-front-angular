@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { ChapitreService } from 'src/app/services/chapitre.service';
 import { ChapitreModel } from 'src/app/models/chapitre-model';
@@ -13,16 +13,34 @@ import { ChapitreModel } from 'src/app/models/chapitre-model';
 export class CreateChapitreComponent implements OnInit {
   chapitreForm: FormGroup;
   categorieList = [];
+  id = "";
+  element: any;
 
   constructor(
     private formBulder: FormBuilder,
     private categoryService: CategoryService,
     private chapitreService: ChapitreService,
-    private router: Router) { }
+    private router: Router,
+    public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.initForm();
     this.fetchAllCategory();
+
+    if(this.route.snapshot.paramMap.get('id') !== ""){
+      this.id = this.route.snapshot.paramMap.get('id');
+      this.chapitreService.get(this.id).subscribe((data) => {
+
+        this.element = data;
+        this.chapitreForm.controls.name.setValue(this.element.intitule);
+        this.chapitreForm.controls.categorie.setValue(this.element.categoryId);
+        this.chapitreForm.controls.numChap.setValue(this.element.numChap);
+
+        }, (error) => {
+          console.log(error);
+        });
+    }
+
   }
 
   initForm() {
@@ -40,7 +58,13 @@ export class CreateChapitreComponent implements OnInit {
           "intitule": this.chapitreForm.get('name').value,
           "categoryId": this.chapitreForm.get('categorie').value
         }
-        this.newChapitre(this.chapitreForm.get('categorie').value, newChapitre);
+        if(this.id != null){
+          this.updateChapitre(this.id, this.newChapitre);
+        }
+        else if(this.id === null){
+          this.newChapitre(this.chapitreForm.get('categorie').value, newChapitre);
+        }
+       
         this.router.navigate(['/livre-compte/chapitre']);
     }
   }
@@ -63,5 +87,14 @@ export class CreateChapitreComponent implements OnInit {
       console.log(error);
     });
   }
-
+  
+  // create a new category
+private updateChapitre(id, chapitre) {
+  this.chapitreService.update(id, chapitre).subscribe((data) => {
+    // this.fetchStaffList();
+    console.log("modifier");
+  }, (error) => {
+    console.log(error);
+  });
+}
 }

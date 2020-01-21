@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: "create-chapitre",
     component: CreateChapitreComponent
+  },
+  {
+    path: ":id/edit",
+    component: CreateChapitreComponent
   }
 ];
 

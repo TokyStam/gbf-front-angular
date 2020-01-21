@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: "create-categorie",
     component: CreateCategorieComponent
+  },
+  {
+    path: ":id/edit",
+    component: CreateCategorieComponent
   }
 ];
 
