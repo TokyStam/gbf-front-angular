@@ -20,15 +20,15 @@ const routes: Routes = [
         path: 'budget-annuel',
         component: BudgetAnnuelComponent
       },
+      {
+        path: 'create-budget',
+        component: CreatBudgetComponent
+      },
+      {
+        path: 'create-budget-investissement',
+        component: CreateInvestiComponent
+      }
     ]
-  },
-  {
-    path: 'create-budget',
-    component: CreatBudgetComponent
-  },
-  {
-    path: 'create-budget-investissement',
-    component: CreateInvestiComponent
   }
 ];
 

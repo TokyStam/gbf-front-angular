@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoMaterialModule } from '../material-module';
 import { BudgetModule } from '../budget/budget.module';
+import { RecetteModule } from '../recette/recette.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BudgetModule } from '../budget/budget.module';
     EtablissementRoutingModule,
     DemoMaterialModule,
     BudgetModule,
+    RecetteModule
   ]
 })
 export class EtablissementModule { }

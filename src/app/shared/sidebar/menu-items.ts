@@ -18,9 +18,25 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
+    path: '/etablissement/budget/liste-budget',
+    title: 'Budget prévisionnel',
+    icon: 'mdi mdi-currency-eur',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
+    path: '/etablissement/recette/liste-recette',
+    title: 'Recette',
+    icon: 'mdi mdi-download',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
     path: '/etablissement',
-    title: 'Compte',
-    icon: 'mdi mdi-message-bulleted',
+    title: 'Budget prévisionnel (admin)',
+    icon: 'mdi mdi-currency-eur',
     class: '',
     extralink: false,
     submenu: []
@@ -28,7 +44,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/livre-compte/categorie',
     title: 'Livre comptable',
-    icon: 'mdi mdi-view-carousel',
+    icon: 'mdi mdi-book-open-page-variant',
     class: '',
     extralink: false,
     submenu: []
@@ -36,19 +52,11 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/etablissement/create',
     title: 'Créer un compte',
-    icon: 'mdi mdi-view-carousel',
+    icon: 'mdi mdi-account-plus',
     class: '',
     extralink: false,
     submenu: []
-  },
-  // {
-  //   path: '/component/dropdown',
-  //   title: 'Dropdown',
-  //   icon: 'mdi mdi-calendar-clock',
-  //   class: '',
-  //   extralink: false,
-  //   submenu: []
-  // },
+  }
   // {
   //   path: '/component/modal',
   //   title: 'Modal',

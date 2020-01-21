@@ -1,0 +1,65 @@
+
+<!-- <div class="row justify-content-md-center" style="margin-top: -30px;">
+        <div class="col col-lg-11" > -->
+
+            <div class="card-header text-white text-center border rounded bg-secondary">
+                Investissement - COMPTES DES FONDS
+         </div>
+
+<form class="z-depth-1 p-5" 
+[formGroup]="budgetForm"
+(ngSubmit)="onSubmitForm()"
+style="background-color: rgb(255, 255, 255);"
+> 
+
+
+
+<!-----------------Achat et bien---------------------->
+<!-- debut form static -->
+<div class="card border rounded">
+ <div class="card-header border-bottom">
+         10 - Fonds et dotations
+ </div>
+<!-- fin formilaire static         -->
+
+<!-- debut form dynamique -->
+<div formArrayName="fondsDotation" style="margin: 5px 5px 5px 10px;">
+ <div class=" form-row border-bottom" 
+ *ngFor="let row of budgetForm.controls.fondsDotation.controls; let i = index" [formGroupName]="i">
+
+ 
+         <div class="form-group col-md-8">
+             <label for="inputState">Compte</label>
+             <select id="inputState" class="form-control" formControlName="compte">
+                 <option *ngFor="let a of compte10"[value]="a.numCompte">{{a.numCompte}} - {{a.intitule}}</option>
+             </select>
+         </div>
+         <div class="form-group col-md-3">
+           <label for="inputPassword4">Montant</label>
+           <input 
+           #montant formControlName="montant" name="montant" minlength="2" required
+           type="number" class="form-control" id="inputPassword4">
+         </div>
+         <div class="col-md-1" style="margin-top: 30px;"> 
+                 <button class="btn btn-light mb-2 mx-sm" (click)="onDeleteRow(i, 'fondsDotation')"><i class="ti-trash"></i></button>
+            </div>
+         
+ </div>
+</div>
+<!-- fin form static -->
+<button type="button" (click)="initGroup('fondsDotation')" class="btn btn-outline-secondary">Ajouter compte</button>
+</div>
+
+<!-----------------Fin Achat et bien---------------------->
+
+
+<br />
+ <button 
+     type="submit" 
+     [disabled]="budgetForm.invalid" 
+     class="btn btn-primary">Valider
+ </button>
+</form>
+<!-- 
+</div>
+</div> -->
