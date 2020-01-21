@@ -25,6 +25,11 @@ export class ArticleService {
     return this.http.get('/articles/' + id + '/comptes');
   }
 
+  //get by numArt
+  public getComptesbyNumArt(id:any,filter={}){
+    return this.http.get(`/comptes/${id}/?filter=${JSON.stringify(filter)}`);
+  }
+
   public update(id: any, data: any) {
     return this.http.patch('/articles/' + id, data);
   }
