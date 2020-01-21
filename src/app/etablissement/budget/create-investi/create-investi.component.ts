@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-create-investi',
@@ -31,7 +32,8 @@ compte21 = [
   formControlsVisibilityConfig;
 
   constructor(
-    private formBuilder: FormBuilder,
+	private formBuilder: FormBuilder,
+	private articleService: ArticleService,
     private router: Router) { }
 
 	ngOnInit() {
@@ -40,7 +42,14 @@ compte21 = [
 		  immobIncorpo: this.formBuilder.array([])
 		});
 
-		this.initGroup();
+		// this.initGroup();
+		// const filter = {
+		// 	any: {
+		// 		numArt: 601
+		// 	}
+		//   };
+		// this.fetchComtpe(filter);
+
 	
 	  }
 	  initGroup(nomGroup = 'all') {
@@ -90,5 +99,12 @@ compte21 = [
 	  }
 	}
 
-
+// liste rdv a venir
+  private fetchComtpe(filter = {}) {
+    this.articleService.getComptesbyNumArt(filter).subscribe((data: any) => {
+      console.log(data);
+    }, (error) => {
+      console.log(error);
+    });
+  }
 }

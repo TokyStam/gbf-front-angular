@@ -26,8 +26,8 @@ export class ArticleService {
   }
 
   //get by numArt
-  public getComptesbyNumArt(id:any,filter={}){
-    return this.http.get(`/comptes/${id}/?filter=${JSON.stringify(filter)}`);
+  public getComptesbyNumArt(filter={}){
+    return this.http.get(`/comptes?filter=${JSON.stringify(filter)}`);
   }
 
   public update(id: any, data: any) {
