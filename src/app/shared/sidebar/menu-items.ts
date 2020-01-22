@@ -50,21 +50,30 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
+    path: '/recap-depense/liste-depense',
+    title: 'Récapitulation dépense',
+    icon: 'mdi mdi-tablet',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
+    path: '/tableau-equilibre/fonctionnement/liste-fct',
+    title: 'Tableau d\'équilibre',
+    icon: 'mdi mdi-image-filter-vintage',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
     path: '/etablissement/create',
     title: 'Créer un compte',
     icon: 'mdi mdi-account-plus',
     class: '',
     extralink: false,
     submenu: []
-  }
-  // {
-  //   path: '/component/modal',
-  //   title: 'Modal',
-  //   icon: 'mdi mdi-tablet',
-  //   class: '',
-  //   extralink: false,
-  //   submenu: []
-  // },
+  },
+  
   // {
   //   path: '/component/pagination',
   //   title: 'Pagination',
@@ -73,14 +82,7 @@ export const ROUTES: RouteInfo[] = [
   //   extralink: false,
   //   submenu: []
   // },
-  // {
-  //   path: '/component/poptool',
-  //   title: 'Popover & Tooltip',
-  //   icon: 'mdi mdi-image-filter-vintage',
-  //   class: '',
-  //   extralink: false,
-  //   submenu: []
-  // },
+
   // {
   //   path: '/component/progressbar',
   //   title: 'Progressbar',
