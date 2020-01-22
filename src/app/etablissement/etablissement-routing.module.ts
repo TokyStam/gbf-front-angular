@@ -14,7 +14,7 @@ const routes: Routes = [
     component: CreateComponent
   },
   {
-    path: 'budget',
+    path: ':etablissement_id/budget',
     loadChildren: () => import('./budget/budget.module').then(m => m.BudgetModule)
   },
   {

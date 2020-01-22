@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EtablissementModel } from '../models/etablissement-model';
+import { UtilisateurModel } from '../models/utilisateur-model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,28 @@ export class EtablissementService {
 
   public exist(id) {
     this.http.get<any>('/etablissements/' + id + '/exists');
+  }
+
+  /**
+   * createUtilisateur
+   * create an utilisateur for this etablissement
+   * @param etablissementId string
+   * @param utilisateur string
+   * @return Observable
+   */
+  public createUtilisateur(etablissementId, utilisateur: UtilisateurModel) {
+    return this.http.post('/etablissements/' + etablissementId + '/utilisateurs/', utilisateur);
+  }
+
+  /**
+   * addUtilisateur
+   * add an utiliasteurt to this etablissement
+   * @param etablissementId string
+   * @param utilisateurId string
+   * @param utlisateur UtilisateurModel
+   * @return Observable
+   */
+  public addUtilisateur(etablissementId, utilisateurId, data: object = {}) {
+    return this.http.put('/etablissements/' + etablissementId + '/utilisateurs/rel/' + utilisateurId, data);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from '../shared/authentication';
 import { Router } from '@angular/router';
+import { EtablissementService } from '../services/etablissement.service';
 
 @Component({
   selector: 'app-etablissement',
@@ -9,15 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./etablissement.component.css']
 })
 export class EtablissementComponent implements OnInit {
-  etablissements = [
-    {"id": 1,"nom": "ENI", "type": "Etablissement", "date": "April 18, 2017"},
-    {"id": 2,"nom": "Office du BACC", "type": "Administration", "date": "April 18, 2017"},
-    {"id": 3,"nom": "EMIT", "type": "Etablissement", "date": "April 18, 2017"}
-  ]
+  etablissements = [];
   myDate = new Date();
-  constructor() { }
+  constructor(private etablissementService: EtablissementService) { }
 
   ngOnInit() {
+    this.getEtablissements();
+  }
+
+  public getEtablissements() {
+    this.etablissementService.fetchAll({include: ['programme']}).subscribe((data) => {
+      this.etablissements = data;
+    });
   }
 
 

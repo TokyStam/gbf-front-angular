@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProgrammeModel } from '../models/programme-model';
+import { EtablissementModel } from '../models/etablissement-model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,16 @@ export class ProgrammeService {
 
   public exist(id) {
     this.http.get<any>('/programmes/' + id + '/exists');
+  }
+
+  /**
+   * newEtablissement
+   * create an etablissement for this programme
+   * @param id string
+   * @param etablissement Etablissement
+   * @return Observable
+   */
+  public newEtablissement(id, etablissement: EtablissementModel) {
+    return this.http.post('/programmes/' + id + '/etablissements', etablissement);
   }
 }
