@@ -44,6 +44,7 @@ compte10 = [
 
 	ngOnInit() {
 		this.budgetForm = this.formBuilder.group({
+      annee: ['', Validators.required],
 		  constributionTiere: this.formBuilder.array([]),
       recetteFiscal: this.formBuilder.array([])
 		});
@@ -52,6 +53,7 @@ compte10 = [
 	
 	  }
 	  initGroup(nomGroup = 'all') {
+      this.budgetForm.controls.annee.setValue(new Date());
 		if(nomGroup === 'all'){
 			let constributionTiere = this.budgetForm.get('constributionTiere') as FormArray;
       let recetteFiscal = this.budgetForm.get('recetteFiscal') as FormArray;

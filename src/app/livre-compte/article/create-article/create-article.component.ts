@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SectionService } from 'src/app/services/section.service';
 import { ArticleModel } from 'src/app/models/article-model';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-create-article',
@@ -11,14 +12,34 @@ import { ArticleModel } from 'src/app/models/article-model';
 })
 export class CreateArticleComponent implements OnInit {
   articleForm: FormGroup;
-  sectionList = []
+  sectionList = [];
+  id = "";
+  element: any;
+
   constructor(
     private formBulder: FormBuilder,
+    private articleService: ArticleService,
     private sectionService: SectionService,
+    private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
     this.initForm();
+
+    if(this.route.snapshot.paramMap.get('id') !== ""){
+      this.id = this.route.snapshot.paramMap.get('id');
+      this.articleService.get(this.id).subscribe((data) => {
+
+        this.element = data;
+        this.articleForm.controls.name.setValue(this.element.intitule);
+        this.articleForm.controls.section.setValue(this.element.sectionId);
+        this.articleForm.controls.numArt.setValue(this.element.numArt);
+
+        }, (error) => {
+          console.log(error);
+        });
+    }
+
   }
 
   initForm() {
@@ -61,5 +82,15 @@ export class CreateArticleComponent implements OnInit {
       console.log(error);
     });
   }
+
+    // create a new category
+private updateArticle(id, article) {
+  this.articleService.update(id, article).subscribe((data) => {
+    // this.fetchStaffList();
+    console.log("modifier");
+  }, (error) => {
+    console.log(error);
+  });
+}
 
 }

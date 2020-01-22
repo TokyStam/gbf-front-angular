@@ -51,6 +51,7 @@ compte65 = [
 	ngOnInit() {
 
 		this.budgetForm = this.formBuilder.group({
+		  annee: ['', Validators.required],
 		  rows: this.formBuilder.array([]),
 		  achatDeBiens: this.formBuilder.array([]),
 		  achatServiceChargePerma: this.formBuilder.array([]),
@@ -63,6 +64,7 @@ compte65 = [
 	
 	  }
 	  initGroup(nomGroup = 'all') {
+		this.budgetForm.controls.annee.setValue(new Date());
 		if(nomGroup === 'all'){
 			let rows = this.budgetForm.get('rows') as FormArray;
 			let achatDeBiens = this.budgetForm.get('achatDeBiens') as FormArray;
@@ -104,9 +106,6 @@ compte65 = [
 				montant: [null, Validators.required],
 			}));
 			}
-		
-		
-		console.log(this.budgetForm.value);
 	  }
 
 	  onDeleteRow(rowIndex, nomGroup) {
@@ -116,20 +115,19 @@ compte65 = [
 	onSubmitForm() {
 		// if (this.budgetForm.valid) {
 			console.log(this.budgetForm.value);
+			console.log(this.budgetForm.get('annee').value);
 		// }
 	}
 
 	// recuperer compte
 	
 	private getComptes(id) {
-  
 		this.artcileService.getComptes(id).subscribe((data: any) => {
 		  this.compte60 = [...data];
 		}, (error) => {
 		  console.log(error);
 		});
 	  }
-
 
 }
 

@@ -12,7 +12,6 @@ import { CreateInvestiComponent } from './create-investi/create-investi.componen
 import { BudgetListeComponent } from './budget-liste/budget-liste.component';
 import { BudgetAnnuelComponent } from './budget-annuel/budget-annuel.component';
 
-
 @NgModule({
   declarations: [
     CreatBudgetComponent,
@@ -29,7 +28,7 @@ import { BudgetAnnuelComponent } from './budget-annuel/budget-annuel.component';
 		HttpClientModule,
 		NgbModule,
     BudgetRoutingModule,
-    DemoMaterialModule,
+    DemoMaterialModule
   ]
 })
 export class BudgetModule { }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ChapitreService } from 'src/app/services/chapitre.service';
 import { SectionModel } from 'src/app/models/section-model';
+import { SectionService } from 'src/app/services/section.service';
 
 @Component({
   selector: 'app-create-section',
@@ -12,14 +13,35 @@ import { SectionModel } from 'src/app/models/section-model';
 export class CreateSectionComponent implements OnInit {
   sectionForm: FormGroup;
   chapitreList = [];
+  id = "";
+  element: any;
+
   constructor(
     private formBulder: FormBuilder,
+    private sectionService: SectionService,
     private chapiteService: ChapitreService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.initForm();
     this.fetchAllChapitre();
+
+    if(this.route.snapshot.paramMap.get('id') !== ""){
+      this.id = this.route.snapshot.paramMap.get('id');
+      this.sectionService.get(this.id).subscribe((data) => {
+
+        this.element = data;
+        this.sectionForm.controls.name.setValue(this.element.intitule);
+        this.sectionForm.controls.chapitre.setValue(this.element.chapitreId);
+        this.sectionForm.controls.numSec.setValue(this.element.numSec);
+
+        }, (error) => {
+          console.log(error);
+        });
+    }
+
+
   }
 
   initForm() {
@@ -39,7 +61,12 @@ export class CreateSectionComponent implements OnInit {
       "intitule": this.sectionForm.get('name').value,
       "chapitreId": this.sectionForm.get('chapitre').value
     }
-    this.newSection(this.sectionForm.get('chapitre').value, newSection);
+    if(this.id !== null){
+      this.updateSection(this.id, newSection);
+    }else if(this.id === null){
+      this.newSection(this.sectionForm.get('chapitre').value, newSection);
+    }
+
     this.router.navigate(['/livre-compte/section']);
   }
 
@@ -62,5 +89,15 @@ export class CreateSectionComponent implements OnInit {
         console.log(error);
       });
   }
+    // create a new category
+private updateSection(id, section) {
+  this.sectionService.update(id, section).subscribe((data) => {
+    // this.fetchStaffList();
+    console.log("modifier");
+  }, (error) => {
+    console.log(error);
+  });
+}
+
 
 }

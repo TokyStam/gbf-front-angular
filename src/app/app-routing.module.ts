@@ -28,6 +28,7 @@ export const Approutes: Routes = [
 				path: 'livre-compte',
 				loadChildren: () => import('./livre-compte/livre-compte.module').then(m => m.LivreCompteModule)
 			},
+			
 		]
   },
 

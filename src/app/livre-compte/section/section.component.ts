@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SectionService } from 'src/app/services/section.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-section',
@@ -8,7 +9,8 @@ import { SectionService } from 'src/app/services/section.service';
 })
 export class SectionComponent implements OnInit {
   section = []
-  constructor(private sectionService: SectionService) { }
+  constructor(private sectionService: SectionService,
+              public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.fetchAllSection();

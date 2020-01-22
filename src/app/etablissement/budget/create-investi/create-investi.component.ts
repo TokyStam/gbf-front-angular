@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ArticleService } from 'src/app/services/article.service';
+import { CompteService } from 'src/app/services/compte.service';
 
 @Component({
   selector: 'app-create-investi',
@@ -34,10 +35,12 @@ compte21 = [
   constructor(
 	private formBuilder: FormBuilder,
 	private articleService: ArticleService,
+	private compteService: CompteService,
     private router: Router) { }
 
 	ngOnInit() {
 		this.budgetForm = this.formBuilder.group({
+		  annee: ['', Validators.required],
 		  immobCorpo: this.formBuilder.array([]),
 		  immobIncorpo: this.formBuilder.array([])
 		});
@@ -50,9 +53,19 @@ compte21 = [
 		//   };
 		// this.fetchComtpe(filter);
 
+		const filter = {
+			fields: {
+			  id: true,
+			  compte: true
+			},
+			include: ['compte']
+		  };
+		  this.fetchComtpe(filter);
+
 	
 	  }
 	  initGroup(nomGroup = 'all') {
+		this.budgetForm.controls.annee.setValue(new Date());
 		if(nomGroup === 'all'){
 			let immobCorpo = this.budgetForm.get('immobCorpo') as FormArray;
 			let immobIncorpo = this.budgetForm.get('immobIncorpo') as FormArray;
@@ -101,7 +114,7 @@ compte21 = [
 
 // liste rdv a venir
   private fetchComtpe(filter = {}) {
-    this.articleService.getComptesbyNumArt(filter).subscribe((data: any) => {
+    this.compteService.get(filter).subscribe((data: any) => {
       console.log(data);
     }, (error) => {
       console.log(error);

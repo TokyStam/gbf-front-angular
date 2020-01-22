@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompteService } from 'src/app/services/compte.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-compte',
@@ -8,7 +9,8 @@ import { CompteService } from 'src/app/services/compte.service';
 })
 export class CompteComponent implements OnInit {
   compte = [];
-  constructor(private compteService: CompteService) { }
+  constructor(private compteService: CompteService,
+    public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.fetchAllCompte();

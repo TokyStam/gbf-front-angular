@@ -13,6 +13,16 @@
     > 
 
 
+    <mat-form-field class="example-full-width">
+        <input matInput formControlName="annee" [matDatepicker]="picker" placeholder="Année">
+        <mat-datepicker 
+         #picker 
+        startView="multi-year"
+        ></mat-datepicker 
+        >
+      </mat-form-field>
+      <button mat-raised-button (click)="picker.open()">Ouvrir</button>
+      
     
      <!-----------------Achat et bien---------------------->
 <!-- debut form static -->
@@ -31,7 +41,7 @@
                 <div class="form-group col-md-8">
                     <label for="inputState">Compte</label>
                     <select id="inputState" class="form-control" formControlName="compte">
-                        <option *ngFor="let a of compte20" [value]="a.id">{{a.numCompte}} - {{a.intitule}}</option>
+                        <option *ngFor="let a of compte20" [value]="a.numCompt">{{a.numCompte}} - {{a.intitule}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-3">
@@ -70,7 +80,7 @@
                 <div class="form-group col-md-8">
                     <label for="inputState">Compte</label>
                     <select id="inputState" class="form-control" formControlName="compte">
-                         <option *ngFor="let a of compte21" [value]="a.id">{{a.numCompte}} - {{a.intitule}}</option>
+                         <option *ngFor="let a of compte21" [value]="a.numCompt">{{a.numCompte}} - {{a.intitule}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-3">

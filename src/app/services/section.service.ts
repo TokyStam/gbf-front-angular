@@ -11,9 +11,9 @@ export class SectionService {
   constructor(private http: HttpClient) { }
 
      //create
- public createArticle(id, data: ArticleModel) {
-  return this.http.post('/sections/'+ id + '/articles', data);
-}
+  public createArticle(id, data: ArticleModel) {
+    return this.http.post('/sections/'+ id + '/articles', data);
+  }
   public create(data: SectionModel) {
     return this.http.post('/sections', data);
   }

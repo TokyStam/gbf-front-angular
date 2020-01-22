@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ArticleService } from 'src/app/services/article.service';
+import { CompteService } from 'src/app/services/compte.service';
 
 @Component({
   selector: 'app-create-compte',
@@ -11,14 +12,36 @@ import { ArticleService } from 'src/app/services/article.service';
 export class CreateCompteComponent implements OnInit {
   compteForm: FormGroup;
   articleList = [];
+  id = "";
+  element: any;
+
+
   constructor(
     private formBulder: FormBuilder,
     private articleService: ArticleService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute,
+    private compteService: CompteService) { }
 
   ngOnInit() {
     this.initForm();
     this.fetchAllArticle();
+
+    
+    if(this.route.snapshot.paramMap.get('id') !== ""){
+      this.id = this.route.snapshot.paramMap.get('id');
+      this.compteService.get(this.id).subscribe((data) => {
+
+        this.element = data;
+        this.compteForm.controls.name.setValue(this.element.intitule);
+        this.compteForm.controls.article.setValue(this.element.articleId);
+        this.compteForm.controls.numCompte.setValue(this.element.numCompte);
+
+        }, (error) => {
+          console.log(error);
+        });
+    }
+
   }
 
   initForm() {
@@ -36,8 +59,12 @@ export class CreateCompteComponent implements OnInit {
         "intitule": this.compteForm.get('name').value,
         "articleId": this.compteForm.get('article').value
       }
-
-      this.newCompte(this.compteForm.get('article').value, compte);
+      if(this.id !== null){
+        this.updateCompte(this.id, compte);
+      }else if(this.id === null){
+        this.newCompte(this.compteForm.get('article').value, compte);
+      }
+     
       this.router.navigate(['/livre-compte/compte']);
     }
   }
@@ -59,5 +86,15 @@ export class CreateCompteComponent implements OnInit {
       console.log(error);
     });
   }
+
+    // create a new category
+private updateCompte(id, compte) {
+  this.compteService.update(id, compte).subscribe((data) => {
+    // this.fetchStaffList();
+    console.log("modifier");
+  }, (error) => {
+    console.log(error);
+  });
+}
 
 }

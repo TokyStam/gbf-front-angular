@@ -12,7 +12,15 @@
 style="background-color: rgb(255, 255, 255);"
 > 
 
-
+<mat-form-field class="example-full-width">
+    <input matInput formControlName="annee" [matDatepicker]="picker" placeholder="Année">
+    <mat-datepicker 
+     #picker 
+    startView="multi-year"
+    ></mat-datepicker 
+    >
+  </mat-form-field>
+  <button mat-raised-button (click)="picker.open()">Ouvrir</button>
 
 <!-----------------Achat et bien---------------------->
 <!-- debut form static -->
