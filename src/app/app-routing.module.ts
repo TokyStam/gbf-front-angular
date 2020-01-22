@@ -28,6 +28,14 @@ export const Approutes: Routes = [
 				path: 'livre-compte',
 				loadChildren: () => import('./livre-compte/livre-compte.module').then(m => m.LivreCompteModule)
 			},
+			{
+				path: 'recap-depense',
+				loadChildren: () => import('./recap-depense/recap-depense.module').then(m => m.RecapDepenseModule)
+			},
+			{
+				path: 'tableau-equilibre',
+				loadChildren: () => import('./tableau-equilibre/tableau-equilibre.module').then(m => m.TableauEquilibreModule)
+			},
 			
 		]
   },
