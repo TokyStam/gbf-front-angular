@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { formatNumber } from '@angular/common';
+import { SectionService } from 'src/app/services/section.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-create-fonct',
@@ -14,32 +16,19 @@ export class CreateFonctComponent implements OnInit {
   fieldSelectionForm: FormGroup;
 
   ///////////////////////////////////75//////////////////////////
-compte75 = [
-  {"numCompte": 2031, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2022, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2043, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2054, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
-];
+compte75 = [];
 ///////////////////////////////////77//////////////////////////
-compte77 = [
-  {"numCompte": 2131, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2122, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2143, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2154, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
-];
-///////////////////////////////////10//////////////////////////
-compte10 = [
-  {"numCompte": 2131, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2122, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2143, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2154, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
-];
+compte77 = [];
+delete77 = [];
+
+
 
 
   formControlsVisibilityConfig;
 
   constructor(
-    private formBuilder: FormBuilder,
+	private formBuilder: FormBuilder,
+	private sectionService: SectionService,
     private router: Router) { }
 
 	ngOnInit() {
@@ -50,7 +39,11 @@ compte10 = [
 		});
 
 		this.initGroup();
-	
+
+		// filtrer compte
+	    this.sectionService.fetchComtpeBySection(this.sectionService.filterCompte(75), this.compte75);
+		this.sectionService.fetchComtpeBySection(this.sectionService.filterCompte(77), this.compte77);
+		
 	  }
 	  initGroup(nomGroup = 'all') {
       this.budgetForm.controls.annee.setValue(new Date());
@@ -58,13 +51,13 @@ compte10 = [
 			let constributionTiere = this.budgetForm.get('constributionTiere') as FormArray;
       let recetteFiscal = this.budgetForm.get('recetteFiscal') as FormArray;
 
-			// Charge de personnel
+			// Constribution tiere
       constributionTiere.push(this.formBuilder.group({
 			compte: [null, Validators.required],
 			montant: [null, Validators.required],
 		  }));
   
-		  // Achat de biens
+		  // recette fiscal
       recetteFiscal.push(this.formBuilder.group({
 			  compte: [null, Validators.required],
 			  montant: [null, Validators.required],
@@ -85,19 +78,31 @@ compte10 = [
 		let rows = this.budgetForm.get(nomGroup) as FormArray;
 		rows.removeAt(rowIndex)
 	  }
- 	 onSubmitForm() {
+	onSubmitForm() {
 		if(this.budgetForm.valid){
 			this.budgetForm.value.recetteFiscal.map(v=>{
 				console.log(v);
 			});
-		    
+			
 			this.budgetForm.value.constributionTiere.map(v=>{
 				console.log(v);
 			});
-    }
-    
-  
+		}
 	}
 
 
+	onChange(e){
+
+		// this.sectionService.fetchComtpeBySection(this.sectionService.filterCompte(75), this.compte77);
+		// const comptes = this.compte77.slice();
+		// this.budgetForm.value.recetteFiscal.map(v=>{
+		// 	if(v == this.compte77.numCompte){
+		// 		const index = comptes.findIndex(function(elem){
+		// 				return elem.numCompte == v;
+		// 		});
+		// 		comptes.splice(index, 1);
+		// 		this.compte77 = comptes;s
+		// 	}
+		// });
+	}
 }

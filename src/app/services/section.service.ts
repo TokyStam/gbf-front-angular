@@ -10,6 +10,38 @@ export class SectionService {
 
   constructor(private http: HttpClient) { }
 
+    // liste rdv a venir
+    public fetchComtpeBySection(filter = {}, compte) {
+      this.fetchAll(filter).subscribe((data: any) => {
+        for (let a of data){
+          for (let c  of a.articles){
+            for(let k of c.comptes){
+              compte.push(k);
+            }
+          }
+        }
+      }, (error) => {
+      console.log(error);
+      });
+    }
+
+  public filterCompte(numSection){
+      const filter = {
+          include:{
+          relation:"articles",
+            scope:{
+              include:{
+                relation:"comptes"
+              }
+            }
+          },
+          where:{
+            numSec: numSection
+          }
+        }
+        return filter;
+    }
+
      //create
   public createArticle(id, data: ArticleModel) {
     return this.http.post('/sections/'+ id + '/articles', data);

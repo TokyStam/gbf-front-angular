@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ArticleService } from 'src/app/services/article.service';
+import { SectionService } from 'src/app/services/section.service';
+import { BudgetService } from 'src/app/services/budget.service';
+import { BudgetComponent } from '../budget.component';
 
 
 
@@ -14,41 +17,26 @@ export class CreatBudgetComponent implements OnInit {
   
   budgetForm: FormGroup;
   fieldSelectionForm: FormGroup;
-////////////////////////////////60///////////////////////////////////
-
-  compte60 = [];
-/////////////////////////////////61/////////////////////////////////
-
-compte61 = [
-  {"numCompte": 6131, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 6122, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 6143, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 6154, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
-];
-///////////////////////////////////62//////////////////////////
-compte62 = [
-  {"numCompte": 6231, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 6222, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 6243, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 6254, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
-];
-///////////////////////////////////65//////////////////////////
-
-compte65 = [
-  {"numCompte": 6531, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 6522, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 6543, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 6554, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
-];
+  etablissementId;
+  
+compte60 = [];
+compte61 = [];
+compte62 = [];
+compte65 = [];
 
   formControlsVisibilityConfig;
 
   constructor(
 	private formBuilder: FormBuilder,
+	private budgetComponent: BudgetComponent,
 	private artcileService: ArticleService,
+	public route: ActivatedRoute,
+	private sectionService:SectionService,
+	private budgetService: BudgetService,
     private router: Router) { }
 
 	ngOnInit() {
+		this.etablissementId = this.budgetComponent.etablissement_id;
 
 		this.budgetForm = this.formBuilder.group({
 		  annee: ['', Validators.required],
@@ -59,9 +47,12 @@ compte65 = [
 		});
 
 		this.initGroup();
-
-		// recupere compte
-	
+		
+		// utitlisation du filtre
+		this.sectionService.fetchComtpeBySection(this.sectionService.filterCompte(60), this.compte60);
+		this.sectionService.fetchComtpeBySection(this.sectionService.filterCompte(61), this.compte61);
+		this.sectionService.fetchComtpeBySection(this.sectionService.filterCompte(62), this.compte62);
+		this.sectionService.fetchComtpeBySection(this.sectionService.filterCompte(65), this.compte65);
 	  }
 	  initGroup(nomGroup = 'all') {
 		this.budgetForm.controls.annee.setValue(new Date());
@@ -113,10 +104,16 @@ compte65 = [
 		rows.removeAt(rowIndex)
 	  }
 	onSubmitForm() {
-		// if (this.budgetForm.valid) {
-			console.log(this.budgetForm.value);
-			console.log(this.budgetForm.get('annee').value);
-		// }
+	  const year: Date = this.budgetForm.get('annee').value;
+	  this.budgetForm.value.rows.map(elem => {
+		  const budget = {
+			 montant: elem.montant,
+			 annee: year,
+			 compteId: elem.compte,
+			 etablissementId: this.etablissementId
+		  }
+		  this.createNewBudget(budget);
+	  });
 	}
 
 	// recuperer compte
@@ -127,8 +124,15 @@ compte65 = [
 		}, (error) => {
 		  console.log(error);
 		});
-	  }
+	}
 
+	private createNewBudget(budget) {
+		this.budgetService.create(budget).subscribe((data: any) => {
+		console.log("Ajout reussi");
+		}, (error) => {
+		  console.log(error);
+		});
+	}
 }
 
 

@@ -12,6 +12,7 @@ import { EtablissementService } from '../services/etablissement.service';
 export class EtablissementComponent implements OnInit {
   etablissements = [];
   myDate = new Date();
+  
   constructor(private etablissementService: EtablissementService) { }
 
   ngOnInit() {

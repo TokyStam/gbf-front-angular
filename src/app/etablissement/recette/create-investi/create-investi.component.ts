@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ArticleService } from 'src/app/services/article.service';
+import { SectionService } from 'src/app/services/section.service';
 
 @Component({
   selector: 'app-create-investi',
@@ -13,12 +15,7 @@ export class CreateInvestiComponent implements OnInit {
   fieldSelectionForm: FormGroup;
 
   ///////////////////////////////////20//////////////////////////
-compte10 = [
-  {"numCompte": 101, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 102, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 103, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 104, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
-];
+compte10 = [];
 ///////////////////////////////////21//////////////////////////
 
 
@@ -26,7 +23,8 @@ compte10 = [
   formControlsVisibilityConfig;
 
   constructor(
-    private formBuilder: FormBuilder,
+	private formBuilder: FormBuilder,
+	private sectionService: SectionService,
     private router: Router) { }
 
 	ngOnInit() {
@@ -34,8 +32,11 @@ compte10 = [
       annee: ['', Validators.required],
 		  fondsDotation: this.formBuilder.array([]),
 		});
-
+		// initialisation du form
 		this.initGroup();
+
+		// utitlisation du filtre
+		this.sectionService.fetchComtpeBySection(this.sectionService.filterCompte(10), this.compte10);
 	
 	  }
 	  initGroup(nomGroup = 'all') {
@@ -82,4 +83,5 @@ compte10 = [
     // console.log(compte);
     // this.compte10 = compte;
   }
+
 }

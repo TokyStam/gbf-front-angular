@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ArticleService } from 'src/app/services/article.service';
 import { CompteService } from 'src/app/services/compte.service';
+import { SectionService } from 'src/app/services/section.service';
+import { BudgetComponent } from '../budget.component';
+import { BudgetService } from 'src/app/services/budget.service';
 
 @Component({
   selector: 'app-create-investi',
@@ -13,21 +16,10 @@ export class CreateInvestiComponent implements OnInit {
 
   budgetForm: FormGroup;
   fieldSelectionForm: FormGroup;
+  etablissementId;
 
-  ///////////////////////////////////20//////////////////////////
-compte20 = [
-  {"numCompte": 2031, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2022, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2043, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2054, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
-];
-///////////////////////////////////21//////////////////////////
-compte21 = [
-  {"numCompte": 2131, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2122, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2143, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"},
-  {"numCompte": 2154, "intitule": "Indemnités et avantages liés à la fonction Personnel Permanent (PAT)"}
-];
+	compte20 = [];
+	compte21 = [];
 
 
   formControlsVisibilityConfig;
@@ -35,33 +27,25 @@ compte21 = [
   constructor(
 	private formBuilder: FormBuilder,
 	private articleService: ArticleService,
+	private budgetComponent: BudgetComponent,
 	private compteService: CompteService,
+	private sectionService: SectionService,
+	private budgetService: BudgetService,
     private router: Router) { }
 
 	ngOnInit() {
+		this.etablissementId = this.budgetComponent.etablissement_id;
+		console.log(this.etablissementId);
+
 		this.budgetForm = this.formBuilder.group({
 		  annee: ['', Validators.required],
 		  immobCorpo: this.formBuilder.array([]),
 		  immobIncorpo: this.formBuilder.array([])
 		});
 
-		// this.initGroup();
-		// const filter = {
-		// 	any: {
-		// 		numArt: 601
-		// 	}
-		//   };
-		// this.fetchComtpe(filter);
-
-		const filter = {
-			fields: {
-			  id: true,
-			  compte: true
-			},
-			include: ['compte']
-		  };
-		  this.fetchComtpe(filter);
-
+	// utitlisation du filtre
+	this.sectionService.fetchComtpeBySection(this.sectionService.filterCompte(20), this.compte20);
+	this.sectionService.fetchComtpeBySection(this.sectionService.filterCompte(21), this.compte21);
 	
 	  }
 	  initGroup(nomGroup = 'all') {
@@ -100,16 +84,19 @@ compte21 = [
 		let rows = this.budgetForm.get(nomGroup) as FormArray;
 		rows.removeAt(rowIndex)
 	  }
+
  	 onSubmitForm() {
-		if(this.budgetForm.valid){
-			this.budgetForm.value.immobIncorpo.map(v=>{
-				console.log(v);
-			});
-		    
-			this.budgetForm.value.immobCorpo.map(v=>{
-				console.log(v);
-			});
-	  }
+		const year: Date = this.budgetForm.get('annee').value;
+		this.budgetForm.value.immobCorpo.map(elem => {
+			const budget = {
+			   montant: elem.montant,
+			   annee: year,
+			   compteId: elem.compte,
+			   etablissementId: this.etablissementId
+			};
+			this.createNewBudget(budget);
+		});
+		
 	}
 
 // liste rdv a venir
@@ -120,4 +107,15 @@ compte21 = [
       console.log(error);
     });
   }
+
+  private createNewBudget(budget) {
+	this.budgetService.create(budget).subscribe((data: any) => {
+	console.log("Ajout reussi");
+	}, (error) => {
+	  console.log(error);
+	});
 }
+}
+
+
+

@@ -9,6 +9,28 @@ export class ChapitreService {
 
   constructor(private http: HttpClient) { }
 
+  // filtre personnaliser 
+  public filterCompte(num){
+    const filter = {
+            include: {
+              relation: "sections",
+              scope: {
+              include:{
+              relation:"articles",
+                scope:{
+                  include:{
+                    relation:"comptes"
+                  }
+                }
+              }
+            }
+          },
+        where:{
+          numChap: num
+        }
+      }
+      return filter;
+  }
    //create
  public createSection(id, data: SectionModel) {
   return this.http.post('/chapitres/'+ id + '/sections', data);
