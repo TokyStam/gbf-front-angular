@@ -24,11 +24,12 @@ export class ChapitreService {
                       include: {
                         relation: "budgets",
                         scope:{
-                          where: {and: [
-                            // {etablissementId: numEtablissemetn}, 
-                            {date: {gt: new Date('2020-01-01T00:00:00.000Z')}},
-                            {date: {lt: new Date('2020-12-31T00:00:00.000Z')}}
-                          ]
+                          where: {
+                            // and: [
+                             etablissementId: numEtablissemetn 
+                            // {date: {gt: new Date('2020-01-01T00:00:00.000Z')}},
+                            // {date: {lt: new Date('2020-12-31T00:00:00.000Z')}}
+                          // ]
                         }
                       }
                     }
