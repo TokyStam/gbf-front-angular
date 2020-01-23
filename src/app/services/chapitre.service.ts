@@ -10,7 +10,7 @@ export class ChapitreService {
   constructor(private http: HttpClient) { }
 
   // filtre personnaliser 
-  public filterCompte(num){
+  public filterCompte(num, numEtablissemetn){
     const filter = {
             include: {
               relation: "sections",
@@ -19,12 +19,25 @@ export class ChapitreService {
               relation:"articles",
                 scope:{
                   include:{
-                    relation:"comptes"
+                    relation:"comptes",
+                    scope:{
+                      include: {
+                        relation: "budgets",
+                        scope:{
+                          where: {and: [
+                            // {etablissementId: numEtablissemetn}, 
+                            {date: {gt: new Date('2020-01-01T00:00:00.000Z')}},
+                            {date: {lt: new Date('2020-12-31T00:00:00.000Z')}}
+                          ]
+                        }
+                      }
+                    }
                   }
                 }
               }
             }
-          },
+          }
+        },
         where:{
           numChap: num
         }

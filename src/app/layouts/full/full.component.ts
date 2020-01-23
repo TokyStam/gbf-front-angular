@@ -9,7 +9,7 @@ declare var $: any;
   styleUrls: ['./full.component.scss']
 })
 export class FullComponent implements OnInit {
-
+  myDate = new Date();
   constructor(public router: Router) {}
 
   public isCollapsed = false;
@@ -18,7 +18,7 @@ export class FullComponent implements OnInit {
   public defaultSidebar: any;
   public showMobileMenu = false;
   public expandLogo = false;
-
+  // {'include':{'"relation"':"sections","scope":{"include":{"relation":"articles","scope":{"include":{"relation":"comptes"}}}}},"where":{"numChap":"6"}}
   options = {
     sidebartype: 'full',
   };

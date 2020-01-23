@@ -30,7 +30,7 @@
                             <tr *ngFor="let e of budgets">
                                 <td class="txt-oflo">{{e.id}}</td>
                                 <td>{{e.date}}</td>
-                                <td><button type="button" [routerLink]="['/etablissement/budget/budget-annuel']" class="btn btn-sm btn-outline-info">Consulter >></button></td>
+                                <td><button type="button" [routerLink]="['/etablissement/' + etablissement_id + '/budget/budget-annuel']" class="btn btn-sm btn-outline-info">Consulter >></button></td>
                             </tr>
                            
                         </tbody>
