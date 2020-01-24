@@ -23,7 +23,7 @@ export class NavigationComponent implements AfterViewInit {
 
   public logout() {
     this.authenticationService.logout().subscribe((data) => {
-      window.location = '/';
+      this.router.navigate(['/login']);
     });
   }
 }
