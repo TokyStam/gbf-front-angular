@@ -45,6 +45,35 @@ export class ChapitreService {
       }
       return filter;
   }
+
+  // filtre personnaliser 
+  public filterComplet(num){
+    const filter = {
+            include: {
+              relation: "sections",
+              scope: {
+              include:{
+              relation:"articles",
+                scope:{
+                  include:{
+                    relation:"comptes",
+                    scope:{
+                      include: {
+                        relation: "budgets"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        where:{
+          numChap: num
+        }
+      }
+      return filter;
+  }
+
    //create
  public createSection(id, data: SectionModel) {
   return this.http.post('/chapitres/'+ id + '/sections', data);

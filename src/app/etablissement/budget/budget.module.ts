@@ -9,7 +9,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { BudgetComponent } from './budget.component';
 import { CreateInvestiComponent } from './create-investi/create-investi.component';
-import { BudgetListeComponent } from './budget-liste/budget-liste.component';
 import { BudgetAnnuelComponent } from './budget-annuel/budget-annuel.component';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { BudgetAnnuelComponent } from './budget-annuel/budget-annuel.component';
     CreatBudgetComponent,
     BudgetComponent,
     CreateInvestiComponent,
-    BudgetListeComponent,
     BudgetAnnuelComponent
 
   ],

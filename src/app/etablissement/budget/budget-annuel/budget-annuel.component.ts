@@ -1,15 +1,17 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { BudgetComponent } from "../budget.component";
 import { ChapitreService } from "src/app/services/chapitre.service";
 import { ArticleService } from "src/app/services/article.service";
 import { UtilisateurService } from "src/app/services/utilisateur.service";
-import { error } from "protractor";
+import { DatePipe } from "@angular/common";
+import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
 
 @Component({
   selector: "app-budget-annuel",
   templateUrl: "./budget-annuel.component.html",
-  styleUrls: ["./budget-annuel.component.css"]
+  styleUrls: ["./budget-annuel.component.css"],
+  providers: [DatePipe]
 })
 export class BudgetAnnuelComponent implements OnInit {
   public etablissement_id;
@@ -23,28 +25,32 @@ export class BudgetAnnuelComponent implements OnInit {
     private chapitreService: ChapitreService,
     private budgetComponent: BudgetComponent,
     private userService: UtilisateurService,
+    private datepipe: DatePipe,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit() {
     // get one user
-    this.getOnUser(this.etablissement_id);
+    // this.getOnUser(this.etablissement_id);
     
     this.etablissement_id = this.budgetComponent.etablissement_id;
     console.log(this.etablissement_id);
 
     this.fetchAllChapitre(
       this.chapitreService.filterCompte(6, this.etablissement_id),
-      this.tableFonctionnement, 'fct'
+      this.tableFonctionnement, 'fct',
+      this.datepipe.transform(Date.now(), 'yyyy')
     );
 
     this.fetchAllChapitre(
       this.chapitreService.filterCompte(2, this.etablissement_id),
-      this.tableInvestissement, 'investi'
+      this.tableInvestissement, 'investi',
+      this.datepipe.transform(Date.now(), 'yyyy')
     );
   }
 
   // private fetch chapitre
-  private fetchAllChapitre(filter, table, category) {
+  private fetchAllChapitre(filter, table, category, yearsearch) {
     this.chapitreService.fetchAll(filter).subscribe(
       (data: any) => {
         const temp = data;
@@ -57,7 +63,10 @@ export class BudgetAnnuelComponent implements OnInit {
             for (let articles of sections.articles) {
               for (let comptes of articles.comptes) {
                 for (let budgets of comptes.budgets) {
-                      valeur1 += budgets.montant;
+                  const date1 = new Date(budgets.annee);
+                  this.datepipe.transform(date1, 'yyyy')  === yearsearch ?
+                  valeur1 += budgets.montant: '';
+                     
                 };
               };
             };
@@ -79,7 +88,9 @@ export class BudgetAnnuelComponent implements OnInit {
               for (let articles of sections.articles) {
                 for (let comptes of articles.comptes) {
                   for (let budgets of comptes.budgets) {
-                        valeur2 += budgets.montant;
+                    const date1 = new Date(budgets.annee);
+                    this.datepipe.transform(date1, 'yyyy')  === yearsearch ?
+                    valeur2 += budgets.montant: '';
                   };
                 };
               };
@@ -98,7 +109,9 @@ export class BudgetAnnuelComponent implements OnInit {
               ////////////debut calcule hapitre//////////////
                   for (let comptes of articles.comptes) {
                     for (let budgets of comptes.budgets) {
-                          valeur3 += budgets.montant;
+                      const date1 = new Date(budgets.annee);
+                      this.datepipe.transform(date1, 'yyyy')  === yearsearch ?
+                      valeur3 += budgets.montant: '';
                     };
                   };
                 ////////////fin calcule chapitre///////////
@@ -115,7 +128,10 @@ export class BudgetAnnuelComponent implements OnInit {
                 var valeur4 = 0;
                 ////////////debut calcule hapitre//////////////
                       for (let budgets of comptes.budgets) {
-                            valeur4 += budgets.montant;
+                            const date1 = new Date(budgets.annee);
+                            this.datepipe.transform(date1, 'yyyy')  === yearsearch ?
+                            valeur4 += budgets.montant: '';
+                           
                       };
                   ////////////fin calcule chapitre///////////
                 let compte = {
@@ -145,5 +161,21 @@ export class BudgetAnnuelComponent implements OnInit {
          console.log(error);
        } 
      );
+  }
+
+  onChangeYear(e){
+    console.log(e.target.value);
+    this.tableFonctionnement = [{}];
+    this.fetchAllChapitre(
+      this.chapitreService.filterCompte(6, this.etablissement_id),
+      this.tableFonctionnement, 'fct',
+      this.datepipe.transform('2018', 'yyyy')
+    );
+
+    this.fetchAllChapitre(
+      this.chapitreService.filterCompte(2, this.etablissement_id),
+      this.tableInvestissement, 'investi',
+      this.datepipe.transform('2018', 'yyyy')
+    );
   }
 }

@@ -3,15 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { RecapDepenseRoutingModule } from './recap-depense-routing.module';
 import { RecapDepenseComponent } from './recap-depense.component';
-import { ListeDepenseComponent } from './liste-depense/liste-depense.component';
 import { DetailDepenseComponent } from './detail-depense/detail-depense.component';
+import { DemoMaterialModule } from '../material-module';
 
 
 @NgModule({
-  declarations: [RecapDepenseComponent, ListeDepenseComponent, DetailDepenseComponent],
+  declarations: [RecapDepenseComponent, DetailDepenseComponent],
   imports: [
     CommonModule,
-    RecapDepenseRoutingModule
+    RecapDepenseRoutingModule,
+    DemoMaterialModule
   ]
 })
 export class RecapDepenseModule { }

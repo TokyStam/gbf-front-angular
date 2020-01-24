@@ -50,7 +50,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/recap-depense/liste-depense',
+    path: '/recap-depense/detail-depense',
     title: 'Récapitulation dépense',
     icon: 'mdi mdi-tablet',
     class: '',
