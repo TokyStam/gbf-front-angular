@@ -30,6 +30,10 @@ export class UtilisateurService {
   }
 
   public exist(id) {
-    this.http.get<any>('/utilisateurs/' + id + '/exists');
+    return this.http.get<any>('/utilisateurs/' + id + '/exists');
+  }
+
+  public etablissement(id, filter = {}) {
+    return this.http.get('/utilisateurs/' + id + '/etablissements?filter=' + encodeURI(JSON.stringify(filter)));
   }
 }

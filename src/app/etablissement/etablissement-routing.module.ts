@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EtablissementComponent } from './etablissement.component';
 import { CreateComponent } from './create/create.component';
+import { AdminGuard } from '../shared/authentication/admin.guard';
 
 
 const routes: Routes = [
@@ -10,7 +11,8 @@ const routes: Routes = [
     component: EtablissementComponent
   },
   {
-    path: "create",
+    canActivate: [AdminGuard],
+    path: 'create',
     component: CreateComponent
   },
   {

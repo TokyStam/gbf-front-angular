@@ -1,4 +1,4 @@
-<button type="button" [routerLink]="['./create']" class="btn btn-info">Creer un compte</button>
+<button *ngIf="authenticationService.IsAdmin() | async" type="button" [routerLink]="['./create']" class="btn btn-info">Creer un compte</button>
 
 <!-- ============================================================== -->
 <div class="row">
