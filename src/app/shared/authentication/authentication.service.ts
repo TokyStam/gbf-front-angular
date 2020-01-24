@@ -20,6 +20,7 @@ export class AuthenticationService {
       this.tokenStorageService.initializeCredentials(data);
       this.getUser(data.userId).subscribe((user: any) => {
         this.tokenStorageService.initializeRoles(user.roles);
+        location.reload();
       });
     }));
   }
