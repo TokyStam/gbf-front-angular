@@ -16,10 +16,20 @@ export class TokenStorageService {
   }
 
   /**
+   * initializeRoles()
+   * initialize the user role
+   * @param roles array
+   */
+  public initializeRoles(roles) {
+    localStorage.setItem('roles', JSON.stringify(roles));
+  }
+
+  /**
    * clear all credentials
    */
   public clear() {
     localStorage.removeItem('credentials');
+    localStorage.removeItem('roles');
   }
 
   /**
@@ -38,6 +48,14 @@ export class TokenStorageService {
       } catch (error) {
         observer.next(null);
       }
+      observer.complete();
+    });
+  }
+
+  public getRoles(): Observable<string> {
+    return new Observable((observer) => {
+      const roles = JSON.parse(localStorage.getItem('roles'));
+      observer.next(roles);
       observer.complete();
     });
   }

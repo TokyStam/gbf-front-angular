@@ -16,8 +16,12 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) { }
   public login(credentials: userData) {
-    return this.http.post('/utilisateurs/login', credentials).pipe(tap(data => {
+    return this.http.post('/utilisateurs/login', credentials).pipe(tap((data: any) => {
       this.tokenStorageService.initializeCredentials(data);
+      this.getUser(data.userId).subscribe((user: any) => {
+        this.tokenStorageService.initializeRoles(user.roles);
+        location.reload();
+      });
     }));
   }
 
@@ -46,6 +50,20 @@ export class AuthenticationService {
     );
   }
 
+  public IsAdmin(): Observable<boolean> {
+    return this.tokenStorageService.getRoles().pipe(
+      map((roles: any) => {
+        let returnValue = false;
+        roles.forEach(element => {
+          if (element.name === 'admin') {
+            returnValue = true;
+          }
+        });
+        return returnValue;
+      })
+    );
+  }
+
   /**
    * getAccessToken
    * ge the user acces token
@@ -62,5 +80,15 @@ export class AuthenticationService {
      */
     public getUserId(): Observable<string> {
       return this.tokenStorageService.getUserId();
+    }
+
+    /**
+     * getUser()
+     * get user detail
+     * @param userId string
+     * @return Observable <any>
+     */
+    public getUser(userId) {
+      return this.http.get('/utilisateurs/' + userId);
     }
 }

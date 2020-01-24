@@ -71,9 +71,10 @@ export const ROUTES: RouteInfo[] = [
     icon: 'mdi mdi-account-plus',
     class: '',
     extralink: false,
-    submenu: []
+    submenu: [],
+    admin: true
   },
-  
+
   // {
   //   path: '/component/pagination',
   //   title: 'Pagination',
