@@ -6,6 +6,7 @@ import { ArticleService } from "src/app/services/article.service";
 import { UtilisateurService } from "src/app/services/utilisateur.service";
 import { DatePipe } from "@angular/common";
 import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
+import { ProgrammeService } from "src/app/services/programme.service";
 
 @Component({
   selector: "app-budget-annuel",
@@ -15,6 +16,7 @@ import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
 })
 export class BudgetAnnuelComponent implements OnInit {
   public etablissement_id;
+  etablissementInfo;
   tableFonctionnement = [];
   tableInvestissement = [];
   totalFct = 0;
@@ -23,6 +25,7 @@ export class BudgetAnnuelComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     private chapitreService: ChapitreService,
+    private programmeService: ProgrammeService,
     private budgetComponent: BudgetComponent,
     private userService: UtilisateurService,
     private datepipe: DatePipe,
@@ -34,7 +37,6 @@ export class BudgetAnnuelComponent implements OnInit {
     // this.getOnUser(this.etablissement_id);
     
     this.etablissement_id = this.budgetComponent.etablissement_id;
-    console.log(this.etablissement_id);
 
     this.fetchAllChapitre(
       this.chapitreService.filterCompte(6, this.etablissement_id),
@@ -47,8 +49,31 @@ export class BudgetAnnuelComponent implements OnInit {
       this.tableInvestissement, 'investi',
       this.datepipe.transform(Date.now(), 'yyyy')
     );
+    this.fetchEtablissementPgrogramme(this.programmeService.filterPorgamme(this.etablissement_id));
+    console.log(this.etablissementInfo);
   }
 
+
+  private fetchEtablissementPgrogramme(filter){
+      this.programmeService.fetchAll(filter).subscribe(
+        (data) => {
+          const temp: any = data;
+          for(let etablissement of temp){  
+              for(let e of etablissement.etablissements){
+                  this.etablissementInfo = {
+                    programme: etablissement.intitule,
+                    designation: etablissement.nom,
+                    nom: e.nom
+                  }
+              }
+          }
+          console.log("etablissementInfo = ", this.etablissementInfo);
+        }, 
+        error => {
+          console.log(error);
+        }
+      );
+  }
   // private fetch chapitre
   private fetchAllChapitre(filter, table, category, yearsearch) {
     this.chapitreService.fetchAll(filter).subscribe(
@@ -155,7 +180,12 @@ export class BudgetAnnuelComponent implements OnInit {
   private getOnUser(id){
      this.userService.get(id).subscribe(
        (data) => {
-          console.log(data);
+          const temp: any = data;
+          for(let etablissement of temp){  
+            for(let e of etablissement){
+               console.log(e);
+            }
+          }
        },
        error => {
          console.log(error);
@@ -164,17 +194,17 @@ export class BudgetAnnuelComponent implements OnInit {
   }
 
   onChangeYear(e){
-    console.log(e.target.value);
-    this.fetchAllChapitre(
-      this.chapitreService.filterCompte(6, this.etablissement_id),
-      this.tableFonctionnement, 'fct',
-      this.datepipe.transform('2018', 'yyyy')
-    );
+    // console.log(e.target.value);
+    // this.fetchAllChapitre(
+    //   this.chapitreService.filterCompte(6, this.etablissement_id),
+    //   this.tableFonctionnement, 'fct',
+    //   this.datepipe.transform('2018', 'yyyy')
+    // );
 
-    this.fetchAllChapitre(
-      this.chapitreService.filterCompte(2, this.etablissement_id),
-      this.tableInvestissement, 'investi',
-      this.datepipe.transform('2018', 'yyyy')
-    );
+    // this.fetchAllChapitre(
+    //   this.chapitreService.filterCompte(2, this.etablissement_id),
+    //   this.tableInvestissement, 'investi',
+    //   this.datepipe.transform('2018', 'yyyy')
+    // );
   }
 }

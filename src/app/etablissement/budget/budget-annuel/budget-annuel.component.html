@@ -14,7 +14,7 @@
         <div class="card-body">
             <h5 class="m-b-0">Documenet de dépenses</h5>
             <p class="card-text">Dépense par programme</p>
-            <p class="card-text font-weight-bold">Ecole National d'Informatique</p>
+            <p class="card-text font-weight-bold">{{ etablissementInfo.nom }}</p>
         </div>
       </div>
     </div>
@@ -38,8 +38,8 @@
     <div class="col-sm-4">
       <div class="card border rounded">
         <div class="card-body">
-            <h4><code>Porgramme:</code> 310 </h4>
-            <h4><code>Intitulé:</code> Enseigment supérieur </h4>
+            <h4><code>Porgramme:</code> {{ etablissementInfo.programme}} </h4>
+            <code>Intitulé:</code>{{etablissementInfo.designation}}
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@
   </div>
 
                     <div class="tg-wrap">
-                    <table class="tg table table-bordered">
+                    <table class="table table-borderless table-sm ">
                     <thead>
                         <tr>
                             <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="5">FONTIONNEMENT</th>
@@ -55,18 +55,18 @@
                         </tr>
                         <tr>
                             <th class="tg-0pky"  colspan="5">SECTIONS</th>
-                            <th class="tg-0pky">AUTORISATION D'ENGAGEMENT</th>
+                            <th class="tg-0pky"></th>
                         </tr>
                         <tr>
                             <th class="tg-0pky" scope="col" colspan="4">N° Comptes  </th>
                             <th class="tg-0pky" scope="col">Intitulés</th>
-                            <th class="tg-0pky" scope="col">PREVISION 2019</th>
+                            <th class="tg-0pky text-right" scope="col">PREVISION 2019</th>
                         </tr>
                     </thead>  
 
                     <tr *ngFor="let compte of tableFonctionnement" 
-                        [ngClass]="(compte.type == 'chapitre')? 'font-weight-bold alert alert-primary':'' ||
-                                   (compte.type == 'section')? 'font-weight-bold alert alert-success':'' || 
+                        [ngClass]="(compte.type == 'chapitre')? ' alert alert-primary':'' ||
+                                   (compte.type == 'section')? ' alert alert-success':'' || 
                                    (compte.type == 'article')? 'alert alert-warning':'' || 
                                    (compte.type == 'compte')? 'alert alert-secondary':''"
                         >
@@ -100,12 +100,12 @@
                     </tr>
 
 
-                    <tr>
-                        <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="6">Investissement</td>
+                    <tr *ngIf="totalInvesti > 0">
+                        <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="6">INVESTISSEMENT</td>
                     </tr>
                     <tr *ngFor="let compte of tableInvestissement" 
-                    [ngClass]="(compte.type == 'chapitre')? 'font-weight-bold alert alert-primary':'' ||
-                               (compte.type == 'section')? 'font-weight-bold alert alert-success':'' || 
+                    [ngClass]="(compte.type == 'chapitre')? 'alert alert-primary':'' ||
+                               (compte.type == 'section')? 'alert alert-success':'' || 
                                (compte.type == 'article')? 'alert alert-warning':'' || 
                                (compte.type == 'compte')? 'alert alert-secondary':''"
                     >
@@ -132,14 +132,14 @@
                     <td class="tg-0pky">{{ compte.intitule }}</td>
                     <td class="tg-0pky text-right">{{ compte.montant }}</td>
                 </tr>
-                <tr class="font-weight-bold">
+                <tr class="font-weight-bold" *ngIf="totalInvesti > 0">
                     <td class="tg-0pky" colspan="4"></td>
                     <td class="tg-0pky">TOTAL INVESTISSEMENT</td>
                     <td class="tg-0pky text-right">{{ totalInvesti }}</td>
                 </tr>
 
                 <tr  class="font-weight-bold text-danger">
-                    <td class="tg-0pky" colspan="5">TOTAL DES DEPENSES DU PROGRAMME 310(ENI)</td>
+                    <td class="tg-0pky" colspan="5">TOTAL DES DEPENSES DU PROGRAMME {{ etablissementInfo.programme}} ({{ etablissementInfo.nom }})</td>
                     <td class="tg-0pky text-right">{{ totalFct + totalInvesti }}</td>
                 </tr>
 

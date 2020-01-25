@@ -25,6 +25,21 @@ export class ProgrammeService {
       return filter;
   }
 
+     // filtre personnaliser 
+     public filterPorgamme(etablissemenentId){
+      const filter = {
+              include: {
+                relation: "etablissements",
+                scope: {
+                  where:{
+                    id: etablissemenentId
+                  }
+            }
+          }
+        }
+        return filter;
+    }
+
   public create(data: ProgrammeModel) {
     return this.http.post('/programmes', data);
   }

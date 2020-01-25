@@ -3,39 +3,32 @@ import { RouteInfo } from './sidebar.metadata';
 export const ROUTES: RouteInfo[] = [
   {
     path: '',
-    title: 'Personal',
+    title: '/etablissement',
     icon: 'mdi mdi-dots-horizontal',
     class: 'nav-small-cap',
     extralink: true,
     submenu: []
   },
+  // {
+  //   path: '/dashboard',
+  //   title: 'Dashboard',
+  //   icon: 'mdi mdi-gauge',
+  //   class: '',
+  //   extralink: false,
+  //   submenu: []
+  // },
   {
-    path: '/dashboard',
-    title: 'Dashboard',
-    icon: 'mdi mdi-gauge',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/etablissement/budget/liste-budget',
-    title: 'Budget prévisionnel',
-    icon: 'mdi mdi-currency-eur',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-  {
-    path: '/etablissement/recette/liste-recette',
+    path: '/etablissement/recette/recette-annuel',
     title: 'Recette',
     icon: 'mdi mdi-download',
     class: '',
     extralink: false,
-    submenu: []
+    submenu: [],
+    admin: true
   },
   {
     path: '/etablissement',
-    title: 'Budget prévisionnel (admin)',
+    title: 'Budget prévisionnel',
     icon: 'mdi mdi-currency-eur',
     class: '',
     extralink: false,
@@ -47,7 +40,8 @@ export const ROUTES: RouteInfo[] = [
     icon: 'mdi mdi-book-open-page-variant',
     class: '',
     extralink: false,
-    submenu: []
+    submenu: [],
+    admin: true
   },
   {
     path: '/recap-depense/detail-depense',
@@ -55,15 +49,17 @@ export const ROUTES: RouteInfo[] = [
     icon: 'mdi mdi-tablet',
     class: '',
     extralink: false,
-    submenu: []
+    submenu: [],
+    admin: true
   },
   {
-    path: '/tableau-equilibre/fonctionnement/liste-fct',
+    path: '/tableau-equilibre/fonctionnement/detail-fct',
     title: 'Tableau d\'équilibre',
     icon: 'mdi mdi-image-filter-vintage',
     class: '',
     extralink: false,
-    submenu: []
+    submenu: [],
+    admin: true
   },
   {
     path: '/etablissement/create',

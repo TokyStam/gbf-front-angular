@@ -12,6 +12,9 @@ export class CompteService {
   public create(data: CompteModel) {
     return this.http.post('/comptes', data);
   }
+  public createRecette(id: any, data: CompteModel) {
+    return this.http.post('/comptes/' + id + '/recettes', data);
+  }
 
   public get(id: any, filter = {}) {
     return this.http.get('/comptes/' + id + '?filter=' + JSON.stringify(filter));

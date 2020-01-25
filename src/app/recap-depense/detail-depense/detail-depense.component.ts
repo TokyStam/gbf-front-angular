@@ -41,7 +41,7 @@ export class DetailDepenseComponent implements OnInit {
     );
   }
   // private fetch chapitre
-  private fetchAllChapitre(filter, table, category, yearsearch) {
+  public fetchAllChapitre(filter, table, category, yearsearch) {
     this.chapitreService.fetchAll(filter).subscribe(
       (data: any) => {
         const temp = data;

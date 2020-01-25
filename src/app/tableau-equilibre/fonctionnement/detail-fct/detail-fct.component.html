@@ -1,67 +1,196 @@
 
+<div class="row">
+
+    <div class="col-sm-12">
+      <div class="card border rounde">
+        <div class="card-body">
+            <h6 class="card-text text-center font-weight-bold">TABLEAU D'EQUILIBRE FINANCIER</h6>
+
+        </div>
+      </div>
+    </div>   
+
+</div>
+<div class="row">
+
+    <div class="col-sm-6 m-b-0">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="m-b-0">Section 1: <span class="font-weight-bold">Fonctionnement</span></h5>
+                <p class="m-b-0 "><span class="text-danger">Dépenses: </span> {{ totalFctDepense }}</p>
+                <p><span class="text-success">Recette: </span> {{ totalFctRecette }}</p>
+                
+            </div>
+          </div>
+    </div>   
+
+    <div class="col-sm-6">
+        <div class="card ">
+          <div class="card-body">
+              <h6 class="card-text font-weight-bold">TABLEAU D'EQUILIBRE FINANCIER</h6>
+  
+              
+          </div>
+        </div>
+      </div>  
+
+</div>
+
 
 
 <div class="row">
-    <!-- column -->
-    <div class="col-12">
+    <!-- column 1-->
+    <div class="col-6">
         <div class="card">
             <div class="card-body">
 
-                <table class="tg table">
-                    <tr>
-                    <th class="tg-dceu" colspan="5">Depense</th>
-                    <th class="tg-edsz" colspan="5">Recette</th>
-                    </tr>
-                    <tr>
-                    <td class="tg-kxqw">chap</td>
-                    <td class="tg-kxqw">Article</td>
-                    <td class="tg-kxqw">Compte</td>
-                    <td class="tg-kxqw">INTITULE</td>
-                    <td class="tg-kxqw">TOTAL</td>
-                    <td class="tg-3jfj">Chap</td>
-                    <td class="tg-3jfj">Article</td>
-                    <td class="tg-3jfj">Compte</td>
-                    <td class="tg-3jfj">INTITULE</td>
-                    <td class="tg-3jfj">TOTAL</td>
-                    </tr>
-                    <tr>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-ogs0"></td>
-                    <td class="tg-ogs0"></td>
-                    <td class="tg-ogs0"></td>
-                    <td class="tg-ogs0"></td>
-                    <td class="tg-ogs0"></td>
-                    </tr>
-                    <tr>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-ogs0"></td>
-                    <td class="tg-ogs0"></td>
-                    <td class="tg-ogs0"></td>
-                    <td class="tg-ogs0"></td>
-                    <td class="tg-ogs0"></td>
-                    </tr>
-                    <tr>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-72gn">SOUS TOTAL DEPENSES</td>
-                    <td class="tg-72gn"></td>
-                    <td class="tg-ogs0"></td>
-                    <td class="tg-ogs0"></td>
-                    <td class="tg-ogs0"></td>
-                    <td class="tg-ogs0">SOUS TOTAL DEPENSES</td>
-                    <td class="tg-ogs0"></td>
-                    </tr>
-                </table>
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                
+                                <div class="tg-wrap">
+                                <table class="table-sm">
+                                <thead>
+                                    <tr>
+                                        <th class="tg-0pky card-header p-1 mb-1 bg-danger text-white"  colspan="5">DEPENSE</th>
+                                        <th class="tg-0pky card-header text-right alert p-1 mb-1 bg-danger text-white">Ar</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="tg-0pky"  colspan="6">FONCTIONNEMENT</th>
+                                    </tr>
+                                    <tr class="font-weight-bold">
+                                        <th class="tg-0pky font-weight-bold" scope="col" colspan="4">N° Comptes  </th>
+                                        <th class="tg-0pky font-weight-bold" scope="col">Intitulés</th>
+                                        <th class="tg-0pky font-weight-bold text-danger" scope="col">TOTAL</th>
+                                    </tr>
+                                </thead>  
+                
+                                <tr *ngFor="let compte of tableFonctionnementDepense" 
+                                    [ngClass]="(compte.type == 'chapitre')? 'table table-bordered alert alert-primary':'' ||
+                                               (compte.type == 'section')? 'table table-bordered alert alert-success':'' || 
+                                               (compte.type == 'article')? 'table table-bordered alert alert-warning':'' || 
+                                               (compte.type == 'compte')? 'table table-bordered alert alert-secondary':''"
+                                    >
+                                    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'">{{ compte.numCompte }}</td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td> 
+                                    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
+                
+                                    <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'section'">{{ compte.numCompte }}</td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+                
+                                    <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'article'">{{ compte.numCompte }}</td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+                
+                                    <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'compte'">{{ compte.numCompte }}</td>
+                
+                                    <td class="tg-0pky">{{ compte.intitule }}</td>
+                                    <td class="tg-0pky text-right">{{ compte.prevision }}</td>
+                
+                                </tr>
+
+                
+                            <tr  class="font-weight-bold text-danger">
+                                <td class="tg-0pky" colspan="5">TOTAL DEPENSE</td>
+                                <td class="tg-0pky text-right">{{ totalFctDepense}}</td>
+                            </tr>
+                
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>        
+
             </div>
         </div>
     </div>
+
+    <!-- column 2 -->
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                
+                                <div class="tg-wrap">
+                                    <table class="table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="tg-0pky card-header p-1 mb-1 bg-success text-white"  colspan="5">RECETTE</th>
+                                                <th class="tg-0pky card-header text-right alert p-1 mb-1 bg-success text-white">Ar</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="tg-0pky"  colspan="6">FONCTIONNEMENT</th>
+                                            </tr>
+                                            <tr class="font-weight-bold">
+                                                <th class="tg-0pky font-weight-bold" scope="col" colspan="4">N° Comptes  </th>
+                                                <th class="tg-0pky font-weight-bold" scope="col">Intitulés</th>
+                                                <th class="tg-0pky font-weight-bold text-danger" scope="col">TOTAL</th>
+                                            </tr>
+                                        </thead>  
+                
+   
+                                <tr *ngFor="let compte of tableFonctionnementRecette" 
+                                [ngClass]="(compte.type == 'chapitre')? 'table table-bordered alert alert-primary':'' ||
+                                            (compte.type == 'section')? 'table table-bordered alert alert-success':'' || 
+                                            (compte.type == 'article')? 'table table-bordered alert alert-warning':'' || 
+                                            (compte.type == 'compte')? 'table table-bordered alert alert-secondary':''"
+                                >
+                                    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'">{{ compte.numCompte }}</td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td> 
+                                    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
+                
+                                    <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'section'">{{ compte.numCompte }}</td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+                
+                                    <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'article'">{{ compte.numCompte }}</td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+                
+                                    <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                                    <td class="tg-0pky" *ngIf="compte.type == 'compte'">{{ compte.numCompte }}</td>
+                
+                                    <td class="tg-0pky">{{ compte.intitule }}</td>
+                                    <td class="tg-0pky text-right">{{ compte.montant }}</td>
+                
+                                </tr>
+
+                
+                            <tr  class="font-weight-bold text-success">
+                                <td class="tg-0pky" colspan="5">TOTAL RECETTE </td>
+                                <td class="tg-0pky text-right">{{ totalFctRecette }}</td>
+                            </tr>
+                
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div> 
+
+            </div>
+        </div>
+    </div>
+
+
 </div>                
