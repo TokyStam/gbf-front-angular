@@ -165,7 +165,6 @@ export class BudgetAnnuelComponent implements OnInit {
 
   onChangeYear(e){
     console.log(e.target.value);
-    this.tableFonctionnement = [{}];
     this.fetchAllChapitre(
       this.chapitreService.filterCompte(6, this.etablissement_id),
       this.tableFonctionnement, 'fct',

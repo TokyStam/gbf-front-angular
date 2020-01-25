@@ -10,6 +10,21 @@ export class ProgrammeService {
 
   constructor(private http: HttpClient) { }
 
+   // filtre personnaliser 
+   public getBudgetByProg(){
+    const filter = {
+            include: {
+              relation: "etablissements",
+              scope: {
+                include:{
+                  relation: "budgets"
+                }
+          }
+        }
+      }
+      return filter;
+  }
+
   public create(data: ProgrammeModel) {
     return this.http.post('/programmes', data);
   }

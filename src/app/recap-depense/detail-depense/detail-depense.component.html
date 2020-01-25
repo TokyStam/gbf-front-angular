@@ -93,17 +93,17 @@
                     <td class="tg-0pky" *ngIf="compte.type == 'compte'">{{ compte.numCompte }}</td>
 
                     <td class="tg-0pky">{{ compte.intitule }}</td>
-                    <td class="tg-0pky text-right">{{ compte.montant }}</td>
+                    <td class="tg-0pky text-right">{{ compte.prog028 }}</td>
 
-                    <td class="tg-0pky text-right">{{ compte.montant }}</td>
-                    <td class="tg-0pky text-right">{{ compte.montant }}</td>
+                    <td class="tg-0pky text-right">{{ compte.prog310 }}</td>
+                    <td class="tg-0pky text-right">{{ compte.prevision }}</td>
                 </tr>
                 <tr class="font-weight-bold">
                     <td class="tg-0pky" colspan="4"></td>
                     <td class="tg-0pky">TOTAL FONCTIONNEMENT</td>
-                    <td class="tg-0pky text-right">{{ totalFct }}</td>
+                    <td class="tg-0pky text-right">{{ totalF028 }}</td>
 
-                    <td class="tg-0pky text-right">{{ totalFct }}</td>
+                    <td class="tg-0pky text-right">{{ totalF310 }}</td>
                     <td class="tg-0pky text-right">{{ totalFct }}</td>
                     
                 </tr>
@@ -113,11 +113,53 @@
                     <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="8">Investissement</td>
                 </tr>
 
-            <tr  class="font-weight-bold">
+                <tr *ngFor="let compte of tableInvestissement" 
+                [ngClass]="(compte.type == 'chapitre')? 'font-weight-bold alert alert-primary':'' ||
+                           (compte.type == 'section')? 'font-weight-bold alert alert-success':'' || 
+                           (compte.type == 'article')? 'alert alert-warning':'' || 
+                           (compte.type == 'compte')? 'alert alert-secondary':''"
+                >
+                <td class="tg-0pky" *ngIf="compte.type == 'chapitre'">{{ compte.numCompte }}</td>
+                <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
+                <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td> 
+                <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
+
+                <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+                <td class="tg-0pky" *ngIf="compte.type == 'section'">{{ compte.numCompte }}</td>
+                <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+                <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+
+                <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+                <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+                <td class="tg-0pky" *ngIf="compte.type == 'article'">{{ compte.numCompte }}</td>
+                <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+
+                <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                <td class="tg-0pky" *ngIf="compte.type == 'compte'">{{ compte.numCompte }}</td>
+
+                <td class="tg-0pky">{{ compte.intitule }}</td>
+                <td class="tg-0pky text-right">{{ compte.prog028 }}</td>
+
+                <td class="tg-0pky text-right">{{ compte.prog310 }}</td>
+                <td class="tg-0pky text-right">{{ compte.prevision }}</td>
+            </tr>
+            <tr class="font-weight-bold">
+                <td class="tg-0pky" colspan="4"></td>
+                <td class="tg-0pky">TOTAL INVESTISSEMENT</td>
+                <td class="tg-0pky text-right">{{ totalI028 }}</td>
+
+                <td class="tg-0pky text-right">{{ totalI310 }}</td>
+                <td class="tg-0pky text-right">{{ totalInvesti }}</td>
+                
+            </tr>
+
+            <tr  class="font-weight-bold text-danger">
                 <td class="tg-0pky" colspan="5">TOTAL DES DEPENSES DU PROGRAMME 310(ENI)</td>
-                <td class="tg-0pky text-right">0</td>
-                <td class="tg-0pky text-right">0</td>
-                <td class="tg-0pky text-right">0</td>
+                <td class="tg-0pky text-right">{{totalF028 + totalI028}}</td>
+                <td class="tg-0pky text-right">{{ totalF310 + totalI310 }}</td>
+                <td class="tg-0pky text-right">{{ totalFct + totalInvesti }}</td>
             </tr>
 
                 </table>

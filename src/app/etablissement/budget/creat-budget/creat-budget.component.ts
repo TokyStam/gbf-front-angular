@@ -119,7 +119,7 @@ export class CreatBudgetComponent implements OnInit {
     let rows = this.budgetForm.get(nomGroup) as FormArray;
     rows.removeAt(rowIndex);
   }
-	  
+
   onSubmitForm() {
     const year: Date = this.budgetForm.get("annee").value;
     this.budgetForm.value.rows.map(elem => {
@@ -140,29 +140,29 @@ export class CreatBudgetComponent implements OnInit {
         etablissementId: this.etablissementId
       };
       this.createNewBudget(budget);
-	});
+    });
 
-	  this.budgetForm.value.achatServiceChargePerma.map(elem => {
-		const budget = {
-		  montant: elem.montant,
-		  annee: year,
-		  compteId: elem.compte,
-		  etablissementId: this.etablissementId
-		};
-		this.createNewBudget(budget);
-	  });
+    this.budgetForm.value.achatServiceChargePerma.map(elem => {
+      const budget = {
+        montant: elem.montant,
+        annee: year,
+        compteId: elem.compte,
+        etablissementId: this.etablissementId
+      };
+      this.createNewBudget(budget);
+    });
 
-	  this.budgetForm.value.transSub.map(elem => {
-		const budget = {
-		  montant: elem.montant,
-		  annee: year,
-		  compteId: elem.compte,
-		  etablissementId: this.etablissementId
-		};
-		this.createNewBudget(budget);
-	  });
-	  
-	
+    this.budgetForm.value.transSub.map(elem => {
+      const budget = {
+        montant: elem.montant,
+        annee: year,
+        compteId: elem.compte,
+        etablissementId: this.etablissementId
+      };
+      this.createNewBudget(budget);
+    });
+
+    // this.router.navigate(['/etablissement/'+ this.etablissementId + '/budget-annuel']);
   }
 
   // recuperer compte

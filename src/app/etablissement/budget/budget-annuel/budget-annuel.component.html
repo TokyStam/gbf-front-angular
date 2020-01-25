@@ -24,7 +24,7 @@
           <div class="card-body">
              <p> <button type="button" class="btn btn-outline-success">Année en cours</button></p>
              <div>
-                <mat-form-field>
+                  <mat-form-field>
                     <input matInput [matDatepicker]="picker" (change)="onChangeYear($event)" placeholder="Choisir année">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
@@ -138,7 +138,7 @@
                     <td class="tg-0pky text-right">{{ totalInvesti }}</td>
                 </tr>
 
-                <tr  class="font-weight-bold">
+                <tr  class="font-weight-bold text-danger">
                     <td class="tg-0pky" colspan="5">TOTAL DES DEPENSES DU PROGRAMME 310(ENI)</td>
                     <td class="tg-0pky text-right">{{ totalFct + totalInvesti }}</td>
                 </tr>
