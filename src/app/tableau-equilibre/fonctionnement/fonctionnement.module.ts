@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FonctionnementRoutingModule } from './fonctionnement-routing.module';
 import { DetailFctComponent } from './detail-fct/detail-fct.component';
 import { DemoMaterialModule } from 'src/app/material-module';
+import { MultiDatepickerModule } from 'src/app/multidatepicker/multidatepicker.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { DemoMaterialModule } from 'src/app/material-module';
   imports: [
     CommonModule,
     FonctionnementRoutingModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    MultiDatepickerModule
   ]
 })
 export class FonctionnementModule { }

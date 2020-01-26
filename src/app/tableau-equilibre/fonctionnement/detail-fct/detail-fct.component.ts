@@ -16,11 +16,16 @@ export class DetailFctComponent implements OnInit {
   totalFctDepense = 0;
   totalFctRecette = 0;
   table1 = [];
+  dateMax;
   constructor(private programmeService: ProgrammeService,
               private chapitreService: ChapitreService,
               private datepipe: DatePipe) { }
 
   ngOnInit() {
+
+    //get max date
+    this.dateMax = this.datepipe.transform(Date.now(), 'yyyy');
+
       // get couple budgetId and PorgrammeType
       this.getEtablissementType(this.programmeService.getBudgetByProg());
 
@@ -314,6 +319,25 @@ export class DetailFctComponent implements OnInit {
       error => {
         console.log(error);
       }
+    );
+  }
+
+  // recherhe par date
+  onYearChose(e){
+    this.tableFonctionnementDepense = [];
+    this.tableFonctionnementRecette = [];
+ 
+    this.fetchAllChapitreDepense(
+      this.chapitreService.filterComplet(6),
+      this.tableFonctionnementDepense,
+      "fct",
+      this.datepipe.transform(e, "yyyy")
+    );
+
+    this.fetchAllChapitreRecette(
+      this.chapitreService.filterRecette(7),
+      this.tableFonctionnementRecette, 'fct',
+      this.datepipe.transform(e, 'yyyy')
     );
   }
 

@@ -87,7 +87,7 @@ export class CreateFonctComponent implements OnInit {
     rows.removeAt(rowIndex);
   }
   onSubmitForm() {
-    const year: Date = this.budgetForm.get("annee").value;
+	const year: Date = new Date(this.budgetForm.get('annee').value);
     this.budgetForm.value.constributionTiere.map(elem => {
       const recette = {
         montant: elem.montant,
@@ -117,17 +117,4 @@ export class CreateFonctComponent implements OnInit {
     );
   }
 
-  onChange(e) {
-    // this.sectionService.fetchComtpeBySection(this.sectionService.filterCompte(75), this.compte77);
-    // const comptes = this.compte77.slice();
-    // this.budgetForm.value.recetteFiscal.map(v=>{
-    // 	if(v == this.compte77.numCompte){
-    // 		const index = comptes.findIndex(function(elem){
-    // 				return elem.numCompte == v;
-    // 		});
-    // 		comptes.splice(index, 1);
-    // 		this.compte77 = comptes;s
-    // 	}
-    // });
-  }
 }

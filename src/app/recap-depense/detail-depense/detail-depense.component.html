@@ -19,16 +19,28 @@
 
 </div>
 
+<div class="basic-container text-right mt-n">
+    <div>
+        <jp-multi-datepicker tabindex="-1" 
+                    (change)="onYearChose($event)" 
+                    (dateChange)="onYearChose($event)"  
+                    mode="YEAR" label="Choisir année" 
+                    class="text-right"
+                    [max]="dateMax"></jp-multi-datepicker><br>
+          </div>
+</div>
+
                 <div class="tg-wrap">
                 <table class="table table-borderless table-sm ">
                 <thead>
-                    <tr>
-                        <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="7">FONTIONNEMENT</th>
-                        <th class="tg-0pky card-header text-right alert alert-danger">En Ariary</th>
-                    </tr>
+                   
                     <tr>
                         <th class="tg-0pky"  colspan="7">SECTIONS</th>
                         <th class="tg-0pky"></th>
+                    </tr>
+                    <tr>
+                        <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="7">FONTIONNEMENT</th>
+                        <th class="tg-0pky card-header text-right alert alert-danger">En Ariary</th>
                     </tr>
                     <tr class="font-weight-bold">
                         <th class="tg-0pky font-weight-bold text-c" scope="col" colspan="4">N° Comptes  </th>

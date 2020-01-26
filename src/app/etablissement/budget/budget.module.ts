@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BudgetComponent } from './budget.component';
 import { CreateInvestiComponent } from './create-investi/create-investi.component';
 import { BudgetAnnuelComponent } from './budget-annuel/budget-annuel.component';
+import { MultiDatepickerModule } from 'src/app/multidatepicker/multidatepicker.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BudgetAnnuelComponent } from './budget-annuel/budget-annuel.component';
 		HttpClientModule,
 		NgbModule,
     BudgetRoutingModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    MultiDatepickerModule
   ]
 })
 export class BudgetModule { }

@@ -5,6 +5,7 @@ import { RecapDepenseRoutingModule } from './recap-depense-routing.module';
 import { RecapDepenseComponent } from './recap-depense.component';
 import { DetailDepenseComponent } from './detail-depense/detail-depense.component';
 import { DemoMaterialModule } from '../material-module';
+import { MultiDatepickerModule } from '../multidatepicker/multidatepicker.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { DemoMaterialModule } from '../material-module';
   imports: [
     CommonModule,
     RecapDepenseRoutingModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    MultiDatepickerModule
   ]
 })
 export class RecapDepenseModule { }

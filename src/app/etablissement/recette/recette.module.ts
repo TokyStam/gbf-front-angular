@@ -9,14 +9,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoMaterialModule } from 'src/app/material-module';
 import { CreateFonctComponent } from './create-fonct/create-fonct.component';
 import { CreateInvestiComponent } from './create-investi/create-investi.component';
-import { RecetteAnnuelComponent } from './recette-annuel/recette-annuel.component';
+import { RecetteAnnuelComponent, DialogRecetteComponent } from './recette-annuel/recette-annuel.component';
+import { MultiDatepickerModule } from 'src/app/multidatepicker/multidatepicker.module';
 
 
 @NgModule({
   declarations: [
-    RecetteComponent, 
-    CreateFonctComponent, 
-    CreateInvestiComponent, RecetteAnnuelComponent
+    RecetteComponent,
+    CreateFonctComponent,
+    CreateInvestiComponent,
+    RecetteAnnuelComponent,
+    DialogRecetteComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +28,8 @@ import { RecetteAnnuelComponent } from './recette-annuel/recette-annuel.componen
 		HttpClientModule,
     NgbModule,
     DemoMaterialModule,
-    RecetteRoutingModule
+    RecetteRoutingModule,
+    MultiDatepickerModule
   ]
 })
 export class RecetteModule { }

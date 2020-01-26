@@ -19,6 +19,7 @@ export class DetailDepenseComponent implements OnInit {
   totalI028 = 0;
   totalI310 = 0;
   table1 = [];
+  dateMax;
   constructor(
     private chapitreService: ChapitreService,
     private programmeService: ProgrammeService,
@@ -26,6 +27,9 @@ export class DetailDepenseComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    //get max date
+    this.dateMax = this.datepipe.transform(Date.now(), 'yyyy');
+
     this.getEtablissementType(this.programmeService.getBudgetByProg());
     this.fetchAllChapitre(
       this.chapitreService.filterComplet(6),
@@ -230,4 +234,24 @@ export class DetailDepenseComponent implements OnInit {
       }
     );
   }
+
+  // recherhe par date
+  onYearChose(e){
+    this.tableFonctionnement = [];
+    this.tableInvestissement = [];
+    
+    this.fetchAllChapitre(
+      this.chapitreService.filterComplet(6),
+      this.tableFonctionnement,
+      "fct",
+      this.datepipe.transform(e, "yyyy")
+    );
+    this.fetchAllChapitre(
+      this.chapitreService.filterComplet(2),
+      this.tableInvestissement,
+      "investi",
+      this.datepipe.transform(e, "yyyy")
+    );
+  }
+
 }

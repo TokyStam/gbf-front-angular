@@ -7,7 +7,7 @@
 
   
 
-<div class="row">
+<div class="row mt-n">
 
     <div class="col-sm-4">
       <div class="card border rounde">
@@ -22,13 +22,17 @@
     <div class="col-sm-4">
         <div class="card text-center">
           <div class="card-body">
-             <p> <button type="button" class="btn btn-outline-success">Année en cours</button></p>
+             <p> <button type="button" (click)="onYearChose(dateNow)" class="btn btn-outline-success">Année en cours</button></p>
              <div>
-                  <mat-form-field>
-                    <input matInput [matDatepicker]="picker" (change)="onChangeYear($event)" placeholder="Choisir année">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
+                <div class="basic-container">
+                    <div>
+                        <jp-multi-datepicker tabindex="-1" 
+                                    (change)="onYearChose($event)" 
+                                    (dateChange)="onYearChose($event)"  
+                                    mode="YEAR" label="Choisir année" 
+                                    [max]="dateMax"></jp-multi-datepicker><br>
+                          </div>
+                </div>
                   
             </div>
           </div>

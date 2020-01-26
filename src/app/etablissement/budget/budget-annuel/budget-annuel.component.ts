@@ -21,6 +21,8 @@ export class BudgetAnnuelComponent implements OnInit {
   tableInvestissement = [];
   totalFct = 0;
   totalInvesti = 0;
+  dateMax;
+  dateNow;
 
   constructor(
     public route: ActivatedRoute,
@@ -33,9 +35,10 @@ export class BudgetAnnuelComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // get one user
-    // this.getOnUser(this.etablissement_id);
-    
+    // get max annee
+    this.dateMax = this.datepipe.transform(Date.now(), 'yyyy');
+    this.dateNow = Date.now();
+
     this.etablissement_id = this.budgetComponent.etablissement_id;
 
     this.fetchAllChapitre(
@@ -193,18 +196,21 @@ export class BudgetAnnuelComponent implements OnInit {
      );
   }
 
-  onChangeYear(e){
-    // console.log(e.target.value);
-    // this.fetchAllChapitre(
-    //   this.chapitreService.filterCompte(6, this.etablissement_id),
-    //   this.tableFonctionnement, 'fct',
-    //   this.datepipe.transform('2018', 'yyyy')
-    // );
+  onYearChose(e){
+    this.tableFonctionnement = [];
+    this.tableInvestissement = [];console.log(e);
 
-    // this.fetchAllChapitre(
-    //   this.chapitreService.filterCompte(2, this.etablissement_id),
-    //   this.tableInvestissement, 'investi',
-    //   this.datepipe.transform('2018', 'yyyy')
-    // );
+    this.fetchAllChapitre(
+      this.chapitreService.filterCompte(6, this.etablissement_id),
+      this.tableFonctionnement, 'fct',
+      this.datepipe.transform(e, 'yyyy')
+    );
+
+    this.fetchAllChapitre(
+      this.chapitreService.filterCompte(2, this.etablissement_id),
+      this.tableInvestissement, 'investi',
+      this.datepipe.transform(e, 'yyyy')
+    );
   }
+
 }

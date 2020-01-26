@@ -91,7 +91,7 @@ export class CreateInvestiComponent implements OnInit {
   }
 
   onSubmitForm() {
-    const year: Date = this.budgetForm.get("annee").value;
+    const year: Date = new Date(this.budgetForm.get('annee').value);
     this.budgetForm.value.immobCorpo.map(elem => {
       const budget = {
         montant: elem.montant,

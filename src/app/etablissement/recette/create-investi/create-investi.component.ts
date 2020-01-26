@@ -4,21 +4,24 @@ import { Router } from "@angular/router";
 import { ArticleService } from "src/app/services/article.service";
 import { SectionService } from "src/app/services/section.service";
 import { CompteService } from "src/app/services/compte.service";
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: "app-create-investi",
   templateUrl: "./create-investi.component.html",
-  styleUrls: ["./create-investi.component.css"]
+  styleUrls: ["./create-investi.component.css"],
+  providers: [DatePipe]
 })
 export class CreateInvestiComponent implements OnInit {
   budgetForm: FormGroup;
   fieldSelectionForm: FormGroup;
-
+  chosenYearDate: Date;
   compte10 = [];
 
   formControlsVisibilityConfig;
 
   constructor(
+	private datePipe: DatePipe,
     private formBuilder: FormBuilder,
 	private sectionService: SectionService,
 	private compteService: CompteService,
@@ -68,7 +71,7 @@ export class CreateInvestiComponent implements OnInit {
     rows.removeAt(rowIndex);
   }
   onSubmitForm() {
-	const year: Date = this.budgetForm.get("annee").value;
+	const year: Date = new Date(this.budgetForm.get('annee').value);
     this.budgetForm.value.fondsDotation.map(elem => {
       const recette = {
         montant: elem.montant,
@@ -89,7 +92,8 @@ export class CreateInvestiComponent implements OnInit {
     );
   }
 
-  onListeChange(e) {
+  onYearChose(e) {
+	  console.log(e);
     // const compte = this.compte10.slice();
     // const index = compte.findIndex(function(client){
     //     return compte.numCompte === e.target.value;

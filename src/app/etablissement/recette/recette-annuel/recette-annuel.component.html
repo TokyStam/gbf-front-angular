@@ -7,14 +7,13 @@
 
 
 
-<div class="row">
+<div class="row mt-n">
 
 <div class="col-sm-4">
   <div class="card border rounde">
     <div class="card-body">
-        <h5 class="m-b-0">Documenet de dépenses</h5>
-        <p class="card-text">Dépense par programme</p>
-        <p class="card-text font-weight-bold">Ecole National d'Informatique</p>
+        <h5 class="m-b-0">Documenet de recette</h5>
+        <p class="card-text font-weight-bold">Mision: 840</p>
     </div>
   </div>
 </div>
@@ -22,13 +21,17 @@
 <div class="col-sm-4">
     <div class="card text-center">
       <div class="card-body">
-         <p> <button type="button" class="btn btn-outline-success">Année en cours</button></p>
+         <p> <button type="button"  (click)="onYearChose(dateNow)" class="btn btn-outline-success">Année en cours</button></p>
          <div>
-              <mat-form-field>
-                <input matInput [matDatepicker]="picker" (change)="onChangeYear($event)" placeholder="Choisir année">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
+            <div class="basic-container">
+                <div>
+                    <jp-multi-datepicker tabindex="-1" 
+                    (change)="onYearChose($event)" 
+                    (dateChange)="onYearChose($event)"  
+                    mode="YEAR" label="Choisir année" 
+                    [max]="dateMax"></jp-multi-datepicker><br>
+                </div>
+            </div>
               
         </div>
       </div>
@@ -51,16 +54,17 @@
                 <thead>
                     <tr>
                         <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="5">FONTIONNEMENT</th>
-                        <th class="tg-0pky card-header text-right alert alert-danger"  colspan="5">En Ariary</th>
+                        <th class="tg-0pky card-header text-right alert alert-danger"  colspan="1">En Ariary</th>
+                        <th class="tg-0pky card-header text-right mt-modif alert alert-danger">Modifier</th>
                     </tr>
                     <tr>
-                        <th class="tg-0pky"  colspan="5">SECTIONS</th>
-                        <th class="tg-0pky">AUTORISATION D'ENGAGEMENT</th>
+                        <th class="tg-0pky"  colspan="6">SECTIONS</th>
                     </tr>
                     <tr>
                         <th class="tg-0pky" scope="col" colspan="4">N° Comptes  </th>
                         <th class="tg-0pky" scope="col">Intitulés</th>
-                        <th class="tg-0pky" scope="col">PREVISION 2019</th>
+                        <th class="tg-0pky text-right" scope="col">PREVISION 2019</th>
+                        <th></th>
                     </tr>
                 </thead>  
 
@@ -92,10 +96,20 @@
 
                     <td class="tg-0pky">{{ compte.intitule }}</td>
                     <td class="tg-0pky text-right">{{ compte.montant }}</td>
+
+                    <td class="tg-0pky text-right mt-modif"  *ngIf="compte.type == 'compte'">
+                        <button type="button" class="btn btn-outline-danger btn-sm rounded m-r-5">
+                            <i class="mdi mdi-delete-empty"></i>
+                        </button>
+                        <button type="button" (click)="openDialog()" class="btn btn-outline-secondary btn-sm rounded">
+                            <i class="mdi mdi-table-edit"></i>
+                        </button>
+                    </td>
+                  
                 </tr>
-                <tr class="font-weight-bold">
+                <tr>
                     <td class="tg-0pky" colspan="4"></td>
-                    <td class="tg-0pky">TOTAL FONCTIONNEMENT</td>
+                    <td class="tg-0pky font-weight-bold">TOTAL FONCTIONNEMENT</td>
                     <td class="tg-0pky text-right">{{ totalFct }}</td>
                 </tr>
 
@@ -130,16 +144,27 @@
                 <td class="tg-0pky" *ngIf="compte.type == 'compte'">{{ compte.numCompte }}</td>
 
                 <td class="tg-0pky">{{ compte.intitule }}</td>
-                <td class="tg-0pky text-right">{{ compte.montant }}</td>
+                <td class="tg-0pky text-right mt-modif">{{ compte.montant }}</td>
+
+
+                <td class="tg-0pky text-right"  *ngIf="compte.type == 'compte'">
+                    <button type="button" (click)="openDialog()" class="btn btn-outline-danger btn-sm rounded m-r-5">
+                        <i class="mdi mdi-delete-empty"></i>
+                    </button>
+                    <button type="button" (click)="openDialog()" class="btn btn-outline-secondary btn-sm rounded">
+                        <i class="mdi mdi-table-edit"></i>
+                    </button>
+                </td>
+
             </tr>
-            <tr class="font-weight-bold">
+            <tr>
                 <td class="tg-0pky" colspan="4"></td>
-                <td class="tg-0pky">TOTAL INVESTISSEMENT</td>
+                <td class="tg-0pky font-weight-bold">TOTAL INVESTISSEMENT</td>
                 <td class="tg-0pky text-right">{{ totalInvesti }}</td>
             </tr>
 
-            <tr  class="font-weight-bold text-danger">
-                <td class="tg-0pky" colspan="5">TOTAL DES DEPENSES DU PROGRAMME 310(ENI)</td>
+            <tr  class=" text-danger">
+                <td class="tg-0pky font-weight-bold" colspan="5">TOTAL DES DEPENSES DU PROGRAMME 310(ENI)</td>
                 <td class="tg-0pky text-right">{{ totalFct + totalInvesti }}</td>
             </tr>
 
