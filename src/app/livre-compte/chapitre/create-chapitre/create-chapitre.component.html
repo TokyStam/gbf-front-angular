@@ -15,8 +15,8 @@
               <div class="example-container">
   
                   <mat-form-field class="example-full-width">
-                          <mat-select placeholder="Type compte"  #categorie formControlName="categorie">
-                              <mat-option *ngFor="let e of categorieList, let i=index" [value]="e.id"> {{e.nom}}</mat-option>
+                          <mat-select placeholder="Type compte"  #categorie formControlName="categorie" [disabled]="edit">
+                              <mat-option  *ngFor="let e of categorieList, let i=index" [value]="e.id"> {{e.nom}}</mat-option>
                           </mat-select>
                   </mat-form-field>
 
