@@ -8,6 +8,7 @@ import { YearPickerComponent } from './year-picker-component/year-picker.compone
 import { MonthPickerComponent } from './month-picker-component/month-picker.component';
 import { RegularDatepickerComponent } from './regular-datepicker-component/regular-datepicker.component';
 import { InfoDialogComponent } from './month-picker-component/dialog/info-dialog/info-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { InfoDialogComponent } from './month-picker-component/dialog/info-dialog
     MatFormFieldModule,
     MatInputModule,
     MatMomentDateModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     InfoDialogComponent,
