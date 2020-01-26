@@ -97,9 +97,9 @@
                         <td class="tg-0pky">{{ compte.intitule }}</td>
                         <td class="tg-0pky text-right">{{ compte.montant }}</td>
                     </tr>
-                    <tr class="font-weight-bold">
+                    <tr>
                         <td class="tg-0pky" colspan="4"></td>
-                        <td class="tg-0pky">TOTAL FONCTIONNEMENT</td>
+                        <td class="tg-0pky font-weight-bold">TOTAL FONCTIONNEMENT</td>
                         <td class="tg-0pky text-right">{{ totalFct }}</td>
                     </tr>
 
@@ -136,15 +136,15 @@
                     <td class="tg-0pky">{{ compte.intitule }}</td>
                     <td class="tg-0pky text-right">{{ compte.montant }}</td>
                 </tr>
-                <tr class="font-weight-bold" *ngIf="totalInvesti > 0">
+                <tr *ngIf="totalInvesti > 0">
                     <td class="tg-0pky" colspan="4"></td>
-                    <td class="tg-0pky">TOTAL INVESTISSEMENT</td>
+                    <td class="tg-0pky font-weight-bold">TOTAL INVESTISSEMENT</td>
                     <td class="tg-0pky text-right">{{ totalInvesti }}</td>
                 </tr>
 
-                <tr  class="font-weight-bold text-danger">
-                    <td class="tg-0pky" colspan="5">TOTAL DES DEPENSES DU PROGRAMME {{ etablissementInfo.programme}} ({{ etablissementInfo.nom }})</td>
-                    <td class="tg-0pky text-right">{{ totalFct + totalInvesti }}</td>
+                <tr  class="text-danger">
+                    <td class="tg-0pky font-weight-bold" colspan="5">TOTAL DES DEPENSES DU PROGRAMME {{ etablissementInfo.programme}} ({{ etablissementInfo.nom }})</td>
+                    <td class="tg-0pky text-right ">{{ totalFct + totalInvesti }}</td>
                 </tr>
 
                     </table>

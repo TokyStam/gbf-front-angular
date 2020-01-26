@@ -83,9 +83,9 @@
                     <td class="tg-0pky text-right">{{ compte.prog310 }}</td>
                     <td class="tg-0pky text-right">{{ compte.prevision }}</td>
                 </tr>
-                <tr class="font-weight-bold">
+                <tr>
                     <td class="tg-0pky" colspan="4"></td>
-                    <td class="tg-0pky">TOTAL FONCTIONNEMENT</td>
+                    <td class="tg-0pky font-weight-bold">TOTAL FONCTIONNEMENT</td>
                     <td class="tg-0pky text-right">{{ totalF028 }}</td>
 
                     <td class="tg-0pky text-right">{{ totalF310 }}</td>
@@ -130,9 +130,9 @@
                 <td class="tg-0pky text-right">{{ compte.prog310 }}</td>
                 <td class="tg-0pky text-right">{{ compte.prevision }}</td>
             </tr>
-            <tr class="font-weight-bold">
+            <tr>
                 <td class="tg-0pky" colspan="4"></td>
-                <td class="tg-0pky">TOTAL INVESTISSEMENT</td>
+                <td class="tg-0pky font-weight-bold">TOTAL INVESTISSEMENT</td>
                 <td class="tg-0pky text-right">{{ totalI028 }}</td>
 
                 <td class="tg-0pky text-right">{{ totalI310 }}</td>
@@ -140,8 +140,8 @@
                 
             </tr>
 
-            <tr  class="font-weight-bold text-danger">
-                <td class="tg-0pky" colspan="5">TOTAL DES DEPENSES DU PROGRAMME 310(ENI)</td>
+            <tr  class="text-danger">
+                <td class="tg-0pky font-weight-bold" colspan="5">TOTAL DES DEPENSES DU PROGRAMME 310(ENI)</td>
                 <td class="tg-0pky text-right">{{totalF028 + totalI028}}</td>
                 <td class="tg-0pky text-right">{{ totalF310 + totalI310 }}</td>
                 <td class="tg-0pky text-right">{{ totalFct + totalInvesti }}</td>

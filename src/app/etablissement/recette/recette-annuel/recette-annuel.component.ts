@@ -174,7 +174,6 @@ export class RecetteAnnuelComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogRecetteComponent, {
       width: '100%',
-      height: '20px',
       data: {name: this.name, animal: this.animal}
     });
 
@@ -190,6 +189,8 @@ export class RecetteAnnuelComponent implements OnInit {
 @Component({
   selector: 'app-dialog-recette',
   templateUrl: './dialog-recette.component.html',
+  styleUrls: ['./recette-annuel.component.css'],
+  providers: [DatePipe]
 })
 export class DialogRecetteComponent {
 
