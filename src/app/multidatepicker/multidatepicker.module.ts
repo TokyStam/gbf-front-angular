@@ -22,8 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMomentDateModule,
-    BrowserAnimationsModule
+    MatMomentDateModule
   ],
   declarations: [
     InfoDialogComponent,

@@ -5,6 +5,7 @@
     "downlevelIteration": true,
     "module": "esnext",
     "outDir": "./dist/out-tsc",
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",

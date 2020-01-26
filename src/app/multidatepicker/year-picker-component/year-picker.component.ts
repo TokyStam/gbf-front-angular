@@ -97,7 +97,7 @@ export class YearPickerComponent
 
   @Input() touchUi = false;
 
-  @ViewChild(MatDatepicker) _picker: MatDatepicker<Moment>;
+  // @ViewChild(MatDatepicker) _picker: MatDatepicker<Moment>;
 
   _inputCtrl: FormControl = new FormControl();
 
@@ -133,13 +133,13 @@ export class YearPickerComponent
   }
 
   // Allows Angular to disable the input.
-  setDisabledState(isDisabled: boolean): void {
-    isDisabled
-      ? (this._picker.disabled = true)
-      : (this._picker.disabled = false);
+  // setDisabledState(isDisabled: boolean): void {
+  //   isDisabled
+  //     ? (this._picker.disabled = true)
+  //     : (this._picker.disabled = false);
 
-    isDisabled ? this._inputCtrl.disable() : this._inputCtrl.enable();
-  }
+  //   isDisabled ? this._inputCtrl.disable() : this._inputCtrl.enable();
+  // }
 
   _yearSelectedHandler(chosenDate: Moment, datepicker: MatDatepicker<Moment>) {
     datepicker.close();
