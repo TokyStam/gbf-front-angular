@@ -15,13 +15,19 @@ export class CreateArticleComponent implements OnInit {
   sectionList = [];
   id = "";
   element: any;
+  edit: boolean;
 
   constructor(
     private formBulder: FormBuilder,
     private articleService: ArticleService,
     private sectionService: SectionService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router) {
+      let id = this.route.snapshot.paramMap.get('id')
+      if(id) {
+        this.edit = true
+      }
+     }
 
   ngOnInit() {
     this.initForm();

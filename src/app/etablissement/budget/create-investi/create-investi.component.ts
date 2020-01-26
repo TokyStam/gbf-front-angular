@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, FormArray, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Router, ActivatedRouteSnapshot, ActivatedRoute, Params } from "@angular/router";
 import { ArticleService } from "src/app/services/article.service";
 import { CompteService } from "src/app/services/compte.service";
 import { SectionService } from "src/app/services/section.service";
@@ -21,6 +21,7 @@ export class CreateInvestiComponent implements OnInit {
   compte21 = [];
 
   formControlsVisibilityConfig;
+  myParam: String
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,12 +30,16 @@ export class CreateInvestiComponent implements OnInit {
     private compteService: CompteService,
     private sectionService: SectionService,
     private budgetService: BudgetService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    var snapshot = route.snapshot
+    this.route.params.subscribe((params: Params) => this.myParam = params['etablissementId']);
+  }
 
   ngOnInit() {
     this.etablissementId = this.budgetComponent.etablissement_id;
-    console.log(this.etablissementId);
+    console.log('etab id', this.etablissementId);
 
     this.budgetForm = this.formBuilder.group({
       annee: ["", Validators.required],
@@ -111,8 +116,7 @@ export class CreateInvestiComponent implements OnInit {
       };
       this.createNewBudget(budget);
     });
-
-    // this.router.navigate(['/etablissement/'+ this.etablissementId + '/budget-annuel']);
+    this.router.navigateByUrl(`/etablissement/${this.etablissementId}/budget/budget-annuel`)
   }
 
   // liste rdv a venir

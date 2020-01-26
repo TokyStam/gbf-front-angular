@@ -162,7 +162,7 @@ export class CreatBudgetComponent implements OnInit {
       this.createNewBudget(budget);
     });
 
-    // this.router.navigate(['/etablissement/'+ this.etablissementId + '/budget-annuel']);
+    this.router.navigateByUrl(`/etablissement/${this.etablissementId}/budget/budget-annuel`)
   }
 
   // recuperer compte

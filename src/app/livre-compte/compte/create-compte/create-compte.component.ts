@@ -14,14 +14,19 @@ export class CreateCompteComponent implements OnInit {
   articleList = [];
   id = "";
   element: any;
-
+  edit: boolean;
 
   constructor(
     private formBulder: FormBuilder,
     private articleService: ArticleService,
     private router: Router,
     private route: ActivatedRoute,
-    private compteService: CompteService) { }
+    private compteService: CompteService) {
+      let id = this.route.snapshot.paramMap.get('id')
+      if(id) {
+        this.edit = true
+      }
+     }
 
   ngOnInit() {
     this.initForm();

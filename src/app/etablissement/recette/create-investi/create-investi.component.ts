@@ -79,6 +79,7 @@ export class CreateInvestiComponent implements OnInit {
         compteId: elem.compte      };
       this.createNewRecette(elem.compte, recette);
     });
+    this.router.navigateByUrl(`etablissement/recette/recette-annuel`)
   }
 
   private createNewRecette(id, recette) {

@@ -15,13 +15,19 @@ export class CreateChapitreComponent implements OnInit {
   categorieList = [];
   id = "";
   element: any;
+  edit: boolean;
 
   constructor(
     private formBulder: FormBuilder,
     private categoryService: CategoryService,
     private chapitreService: ChapitreService,
     private router: Router,
-    public route: ActivatedRoute) { }
+    public route: ActivatedRoute) { 
+      let id = this.route.snapshot.paramMap.get('id')
+      if(id) {
+        this.edit = true
+      }
+    }
 
   ngOnInit() {
     this.initForm();
