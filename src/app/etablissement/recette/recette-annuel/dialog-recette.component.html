@@ -3,11 +3,11 @@
   <p>{{data.numCompte}} - {{ data.intitule }}</p>
  
   <mat-form-field>
-    <input matInput [(ngModel)]="data.montant" type="number">
+    <input matInput [(ngModel)]="data.montant" class="example-container" type="number">
   </mat-form-field>
 
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onNoClick()">Annuler</button>
   <button mat-button [mat-dialog-close]="data.montant" cdkFocusInitial>Ok</button>
 </div>

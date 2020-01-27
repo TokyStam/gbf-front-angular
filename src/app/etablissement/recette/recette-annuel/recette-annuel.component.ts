@@ -188,26 +188,28 @@ export class RecetteAnnuelComponent implements OnInit {
       }
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //     const recette = {
-    //       montant: result
-    //     }
-    //   this.modifierRecette(compte.id, recette);
+    dialogRef.afterClosed().subscribe(result => {
+        const recette = {
+          montant: result
+        }
+      this.modifierRecette(compte.id, recette);
 
-      
-    // this.fetchAllChapitre(
-    //   this.chapitreService.filterRecette(7),
-    //   this.tableFonctionnement, 'fct',
-    //   this.datepipe.transform(Date.now(), 'yyyy')
-    // );
+      this.tableFonctionnement = [];
+      this.tableInvestissement = [];
 
-    // this.fetchAllChapitre(
-    //   this.chapitreService.filterRecette(1),
-    //   this.tableInvestissement, 'investi',
-    //   this.datepipe.transform(Date.now(), 'yyyy')
-    // );
+    this.fetchAllChapitre(
+      this.chapitreService.filterRecette(7),
+      this.tableFonctionnement, 'fct',
+      this.datepipe.transform(Date.now(), 'yyyy')
+    );
+
+    this.fetchAllChapitre(
+      this.chapitreService.filterRecette(1),
+      this.tableInvestissement, 'investi',
+      this.datepipe.transform(Date.now(), 'yyyy')
+    );
     
-    // });
+    });
   }
 
   private modifierRecette(id, recette){
