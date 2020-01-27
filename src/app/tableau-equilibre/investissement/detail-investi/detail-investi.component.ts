@@ -23,7 +23,7 @@ export class DetailInvestiComponent implements OnInit {
               private datepipe: DatePipe) { }
 
   ngOnInit() {
-
+    this.yearSearch = this.datepipe.transform(Date.now(), 'yyyy');
     //get max date
     this.dateMax = this.datepipe.transform(Date.now(), 'yyyy');
 

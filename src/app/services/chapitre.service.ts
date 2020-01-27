@@ -109,6 +109,30 @@ export class ChapitreService {
       return filter;
   }
 
+  // filtre personnaliser 
+  public filterLivreComptable(num){
+    const filter = {
+            include: {
+              relation: "sections",
+              scope: {
+              include:{
+              relation:"articles",
+                scope:{
+                  include:{
+                    relation:"comptes"
+                }
+              }
+            }
+          }
+        },
+        where:{
+          numChap: num
+        }
+      }
+      return filter;
+  }
+
+
    //create
  public createSection(id, data: SectionModel) {
   return this.http.post('/chapitres/'+ id + '/sections', data);
@@ -120,8 +144,12 @@ export class ChapitreService {
   public get(id: any, filter = {}) {
     return this.http.get('/chapitres/' + id + '?filter=' + JSON.stringify(filter));
   }
+  // recette actions
   public updateRecette(id: any, data: any) {
     return this.http.patch('/recettes/' + id, data);
+  }
+  public deleteRecette(id: any) {
+    return this.http.delete('/recettes/' + id);
   }
 
   public update(id: any, data: any) {

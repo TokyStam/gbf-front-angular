@@ -28,6 +28,7 @@ export class DetailDepenseComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.yearSearch = this.datepipe.transform(Date.now(), 'yyyy');
     //get max date
     this.dateMax = this.datepipe.transform(Date.now(), 'yyyy');
 

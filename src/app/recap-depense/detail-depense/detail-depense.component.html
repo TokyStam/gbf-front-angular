@@ -12,7 +12,7 @@
 <div class="col-sm-12">
   <div class="card border rounde">
     <div class="card-body text-center">
-        <h6 class="card-text font-weight-bold">RECAPITULATION DES DEPENSES</h6>
+        <h6 class="card-text font-weight-bold">RECAPITULATION DES DEPENSES - {{ yearSearch }} </h6>
     </div>
   </div>
 </div>
@@ -26,7 +26,7 @@
                     (dateChange)="onYearChose($event)"  
                     mode="YEAR" label="Choisir année" 
                     class="text-right"
-                    [max]="dateMax"></jp-multi-datepicker><br>
+                     ></jp-multi-datepicker><br>
           </div>
 </div>
 
@@ -49,7 +49,8 @@
                         <th class="tg-0pky font-weight-bold text-c" scope="col">Intitulés</th>
                         <th class="tg-0pky font-weight-bold text-c text-right" scope="col">PROG 028</th>
                         <th class="tg-0pky font-weight-bold text-c text-right" scope="col">PROG 310</th>
-                        <th class="tg-0pky font-weight-bold text-c text-right text-danger" scope="col">PREVISION 2019</th>
+                        <th class="tg-0pky font-weight-bold text-c text-right text-danger" scope="col">
+                            PREVISION {{ yearSearch }}</th>
                     </tr>
                 </thead>  
 

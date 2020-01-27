@@ -1,0 +1,132 @@
+
+
+
+<div class="row">
+
+    <div class="col-sm-12">
+      <div class="card border rounde">
+        <div class="card-body text-center">
+            <h6 class="card-text font-weight-bold"> Compte - {{ titreLivre }} </h6>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+
+    
+<button type="button" routerLinkActive="active"  class="btn btn-outline-danger mr-2" (click)="refreshTable(6,2, 'Dépenses')">Dépenses</button>
+<button type="button" routerLinkActive="active" class="btn btn-outline-success mr-2" (click)="refreshTable(7,1, 'Recettes')">Recettes</button>
+
+
+<div class="row">
+    <!-- column -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+
+                <div class="tg-wrap">
+                    <table class="table table-borderless table-sm ">
+                    <thead>
+                       
+                        <tr>
+                            <th class="tg-0pky" scope="col" colspan="4">N° Comptes </th>
+                            <th class="tg-0pky" scope="col">Intitulés</th>
+                            <th class="tg-0pky" scope="col">Type</th>
+                        </tr>
+
+                        <tr>
+                            <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="6">
+                                FONCTIONNEMENT
+                            </th>
+                        </tr>
+
+                    </thead>  
+    
+                    <tr *ngFor="let compte of tableFct" 
+                        [ngClass]="(compte.type == 'chapitre')? ' alert alert-primary':'' ||
+                                   (compte.type == 'section')? ' alert alert-success':'' || 
+                                   (compte.type == 'article')? 'alert alert-warning':'' || 
+                                   (compte.type == 'compte')? 'alert alert-secondary':''"
+                        >
+                        <td class="tg-0pky" *ngIf="compte.type == 'chapitre'">{{ compte.numCompte }}</td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td> 
+                        <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
+    
+                        <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'section'">{{ compte.numCompte }}</td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+    
+                        <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'article'">{{ compte.numCompte }}</td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+    
+                        <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'compte'">{{ compte.numCompte }}</td>
+    
+                        <td class="tg-0pky">{{ compte.intitule }}</td>
+                        <td class="tg-0pky">{{ compte.type }}</td>
+                      
+                    </tr>
+    
+                    <tr>
+                        <th class="tg-0pky" scope="col" colspan="6"></th>
+                    </tr>
+                    <tr>
+                        <th class="tg-0pky" scope="col" colspan="6"></th>
+                    </tr>
+                    <tr>
+                        <th class="tg-0pky" scope="col" colspan="6"></th>
+                    </tr>
+
+
+                    <tr>
+                        <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="6">
+                              Investissement
+                        </td>
+                    </tr>
+                   <tr *ngFor="let compte of tableInvesti" 
+                        [ngClass]="(compte.type == 'chapitre')? ' alert alert-primary':'' ||
+                                   (compte.type == 'section')? ' alert alert-success':'' || 
+                                   (compte.type == 'article')? 'alert alert-warning':'' || 
+                                   (compte.type == 'compte')? 'alert alert-secondary':''"
+                        >
+                        <td class="tg-0pky" *ngIf="compte.type == 'chapitre'">{{ compte.numCompte }}</td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td> 
+                        <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
+    
+                        <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'section'">{{ compte.numCompte }}</td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+    
+                        <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'article'">{{ compte.numCompte }}</td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+    
+                        <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+                        <td class="tg-0pky" *ngIf="compte.type == 'compte'">{{ compte.numCompte }}</td>
+    
+                        <td class="tg-0pky">{{ compte.intitule }}</td>
+                        <td class="tg-0pky">{{ compte.type }}</td>
+                      
+                    </tr>
+    
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

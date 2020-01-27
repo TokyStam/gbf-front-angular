@@ -8,11 +8,15 @@ import { DatePipe } from "@angular/common";
 import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
 import { ProgrammeService } from "src/app/services/programme.service";
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+import { BudgetService } from "src/app/services/budget.service";
 
 export interface DialogData {
-  animal: string;
-  name: string;
+  numCompte: string;
+  intitule: string;
+  montant: number;
+  idBudget: string;
 }
+
 
 export interface EtablissementInfo {
   nom: string;
@@ -39,6 +43,7 @@ export class BudgetAnnuelComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public route: ActivatedRoute,
+    private budgetService: BudgetService,
     private chapitreService: ChapitreService,
     private programmeService: ProgrammeService,
     private budgetComponent: BudgetComponent,
@@ -47,30 +52,16 @@ export class BudgetAnnuelComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  ngOnInit() {
+  ngOnInit(){
+    this.yearSearch = this.datepipe.transform(Date.now(), 'yyyy');
     // get max annee
     this.dateMax = this.datepipe.transform(Date.now(), "yyyy");
     this.dateNow = Date.now();
 
+    this.refrechTable();
+    
     this.etablissement_id = this.budgetComponent.etablissement_id;
 
-    this.fetchAllChapitre(
-      this.chapitreService.filterCompte(6, this.etablissement_id),
-      this.tableFonctionnement,
-      "fct",
-      this.datepipe.transform(Date.now(), "yyyy")
-    );
-
-    this.fetchAllChapitre(
-      this.chapitreService.filterCompte(2, this.etablissement_id),
-      this.tableInvestissement,
-      "investi",
-      this.datepipe.transform(Date.now(), "yyyy")
-    );
-    this.fetchEtablissementPgrogramme(
-      this.programmeService.filterPorgamme(this.etablissement_id)
-    );
-    console.log(this.etablissementInfo);
   }
 
   private fetchEtablissementPgrogramme(filter) {
@@ -174,18 +165,25 @@ export class BudgetAnnuelComponent implements OnInit {
               // Compte
               for (let comptes of articles.comptes) {
                 var valeur4 = 0;
+                var budgetId;
+                var annee;
                 ////////////debut calcule hapitre//////////////
                 for (let budgets of comptes.budgets) {
                   const date1 = new Date(budgets.annee);
-                  this.datepipe.transform(date1, "yyyy") === yearsearch
-                    ? (valeur4 += budgets.montant)
-                    : "";
+                  
+                    if(this.datepipe.transform(date1, "yyyy") === yearsearch){
+                      valeur4 = budgets.montant;
+                      budgetId = budgets.id;
+                      annee = budgets.annee;
+                    }
                 }
                 ////////////fin calcule chapitre///////////
                 let compte = {
                   numCompte: comptes.numCompte,
                   intitule: comptes.intitule,
                   montant: valeur4,
+                  id: budgetId,
+                  annee: annee,
                   type: "compte"
                 };
                 compte.montant > 0 ? table.push(compte) : "";
@@ -238,17 +236,83 @@ export class BudgetAnnuelComponent implements OnInit {
   }
 
   
-  openDialog(): void {
+    // suprimer une recette
+    onDelete(id){
+      if(confirm("Voulez-vous vraiment suprimer cette budget?")){
+        this.deleteBudget(id);
+        this.tableFonctionnement = [];
+        this.tableInvestissement = [];
+        this.refrechTable();
+      }
+    }
+
+  // ourvir dialog modification
+  openDialog(compte): void {
+    const compteId = compte.id;
+
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {name: "name", animal: "animal"}
+      width: '340px',
+      data: {
+        numCompte: compte.numCompte, 
+        intitule: compte.intitule,
+        montant: compte.montant,
+        idBudget: compte.id
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+        const recette = {
+          montant: result
+        }
+      this.modifierBudget(compte.id, recette);
+
+      this.tableFonctionnement = [];
+      this.tableInvestissement = [];
+      this.refrechTable();
+    
     });
   }
 
+  private modifierBudget(id, budget){
+    this.budgetService.update(id, budget).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  
+  private deleteBudget(id){
+    this.budgetService.delete(id).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  private refrechTable(){
+    this.fetchAllChapitre(
+      this.chapitreService.filterCompte(6, this.etablissement_id),
+      this.tableFonctionnement,
+      "fct",
+      this.datepipe.transform(Date.now(), "yyyy")
+    );
+
+    this.fetchAllChapitre(
+      this.chapitreService.filterCompte(2, this.etablissement_id),
+      this.tableInvestissement,
+      "investi",
+      this.datepipe.transform(Date.now(), "yyyy")
+    );
+    this.fetchEtablissementPgrogramme(
+      this.programmeService.filterPorgamme(this.etablissement_id)
+    );
+  }
 
 }
 

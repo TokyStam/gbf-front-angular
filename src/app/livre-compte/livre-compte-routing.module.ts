@@ -28,6 +28,10 @@ const routes: Routes = [
         path: 'compte',
         loadChildren: () => import('./compte/compte.module').then(m => m.CompteModule)
       },
+      {
+        path: 'all-compte',
+        loadChildren: () => import('./all-compte/all-compte.module').then(m => m.AllCompteModule)
+      },
     ]
   },
  

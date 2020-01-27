@@ -1,11 +1,10 @@
-
-
 <ul class="list-group list-group-horizontal text-center" style="cursor: pointer;">
-        <li class="list-group-item"  routerLinkActive="active" [routerLink]="['/livre-compte/categorie']">Catégorie</li>
-        <li class="list-group-item" routerLinkActive="active" [routerLink]="['/livre-compte/chapitre']">Chapitre</li>
-        <li class="list-group-item"routerLinkActive="active" [routerLink]="['/livre-compte/section']">Section</li>
-        <li class="list-group-item"routerLinkActive="active" [routerLink]="['/livre-compte/article']">Article</li>
-        <li class="list-group-item" routerLinkActive="active" [routerLink]="['/livre-compte/compte']">Compte</li>
+    <li class="list-group-item" routerLinkActive="active" [routerLink]="['/livre-compte/all-compte']">Mon Livre</li>
+    <li class="list-group-item" routerLinkActive="active" [routerLink]="['/livre-compte/categorie']">Catégorie</li>
+    <li class="list-group-item" routerLinkActive="active" [routerLink]="['/livre-compte/chapitre']">Chapitre</li>
+    <li class="list-group-item" routerLinkActive="active" [routerLink]="['/livre-compte/section']">Section</li>
+    <li class="list-group-item" routerLinkActive="active" [routerLink]="['/livre-compte/article']">Article</li>
+    <li class="list-group-item" routerLinkActive="active" [routerLink]="['/livre-compte/compte']">Compte</li>
 </ul>
 <!-- ============================================================== -->
 <div class="row">
@@ -15,8 +14,8 @@
 
 
             <div class="card-body">
-                    <router-outlet></router-outlet>
+                <router-outlet></router-outlet>
             </div>
         </div>
-    </div>            
-</div>        
+    </div>
+</div>

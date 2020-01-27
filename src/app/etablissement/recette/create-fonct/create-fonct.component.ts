@@ -104,7 +104,7 @@ export class CreateFonctComponent implements OnInit {
       };
       this.createNewRecette(elem.compte, recette);
     });
-    this.router.navigateByUrl(`etablissement/recette/recette-annuel`)
+    this.router.navigateByUrl(`/etablissement/recette/recette-annuel`);
   }
 
   private createNewRecette(id, recette) {

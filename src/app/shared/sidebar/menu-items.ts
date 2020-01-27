@@ -54,7 +54,7 @@ export const ROUTES: RouteInfo[] = [
     admin: true
   },
   {
-    path: '/livre-compte/categorie',
+    path: '/livre-compte/all-compte',
     title: 'Livre comptable',
     icon: 'mdi mdi-book-open-page-variant',
     class: '',

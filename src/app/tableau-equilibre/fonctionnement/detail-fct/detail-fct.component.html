@@ -22,7 +22,7 @@
                                         (dateChange)="onYearChose($event)"  
                                         mode="YEAR" label="Choisir année" 
                                         class="text-right"
-                                        [max]="dateMax"></jp-multi-datepicker><br>
+                                       ></jp-multi-datepicker><br>
                             </div>
                     </div>
           </div>
@@ -49,7 +49,9 @@
                                 <table class="table-sm mt-n1" *ngIf="totalFctDepense > 0 ">
                                 <thead>
                                     <tr>
-                                        <th class="tg-0pky card-header p-1 mb-1 bg-danger text-white"  colspan="5">DEPENSE</th>
+                                        <th class="tg-0pky card-header p-1 mb-1 bg-danger text-white"  colspan="5">
+                                            DEPENSE - {{ yearSearch }}
+                                        </th>
                                         <th class="tg-0pky card-header text-right alert p-1 mb-1 bg-danger text-white">Ar</th>
                                     </tr>
                                     <tr>
@@ -135,7 +137,9 @@
                                     <table class="table-sm mt-n1" *ngIf="totalFctRecette > 0">
                                         <thead>
                                             <tr>
-                                                <th class="tg-0pky card-header p-1 mb-1 bg-success text-white"  colspan="5">RECETTE</th>
+                                                <th class="tg-0pky card-header p-1 mb-1 bg-success text-white"  colspan="5">
+                                                    RECETTE - {{ yearSearch }}
+                                                </th>
                                                 <th class="tg-0pky card-header text-right alert p-1 mb-1 bg-success text-white">Ar</th>
                                             </tr>
                                             <tr>

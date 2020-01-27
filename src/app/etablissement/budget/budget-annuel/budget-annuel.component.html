@@ -14,7 +14,8 @@
         <div class="card-body">
             <h5 class="m-b-0"(click)="openDialog()">Documenet de dépenses</h5>
             <p class="card-text">Dépense par programme</p>
-            <p class="card-text font-weight-bold">{{ etablissementInfo.nom }}</p>
+            <p class="card-text font-weight-bold m-b-0">{{ etablissementInfo.nom }}</p>
+            <p class="card-text font-weight-bold m-b-0">Année : {{ yearSearch}}</p>
         </div>
       </div>
     </div>
@@ -30,7 +31,7 @@
                                     (change)="onYearChose($event)" 
                                     (dateChange)="onYearChose($event)"  
                                     mode="YEAR" label="Choisir année" 
-                                    [max]="dateMax"></jp-multi-datepicker><br>
+                                   ></jp-multi-datepicker><br>
                           </div>
                 </div>
                   
@@ -57,12 +58,13 @@
                             <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="5">
                                 <span *ngIf="totalFct > 0">FONTIONNEMENT</span>
                             </th>
-                            <th class="tg-0pky card-header text-right alert alert-danger"  colspan="5">En Ariary</th>
+                            <th class="tg-0pky card-header text-right alert alert-danger" >En Ariary</th>
+                            <th class="tg-0pky card-header text-right alert alert-danger" >ACTIONS</th>
                         </tr>
                         <tr>
                             <th class="tg-0pky" scope="col" colspan="4">N° Comptes  </th>
                             <th class="tg-0pky" scope="col">Intitulés</th>
-                            <th class="tg-0pky text-right" scope="col">PREVISION 2019</th>
+                            <th class="tg-0pky text-right" scope="col">PREVISION {{ yearSearch }}</th>
                         </tr>
                     </thead>  
 
@@ -94,6 +96,16 @@
 
                         <td class="tg-0pky">{{ compte.intitule }}</td>
                         <td class="tg-0pky text-right">{{ compte.montant }}</td>
+
+                        <td class="tg-0pky text-right"  *ngIf="compte.type == 'compte'">
+                            <button type="button"  (click)="onDelete(compte.id)" class="btn btn-outline-danger btn-sm rounded m-r-5">
+                                <i class="mdi mdi-delete-empty"></i>
+                            </button>
+                            <button type="button" (click)="openDialog(compte)" class="btn btn-outline-secondary btn-sm rounded">
+                                <i class="mdi mdi-table-edit"></i>
+                            </button>
+                        </td>
+
                     </tr>
                     <tr *ngIf="totalFct > 0">
                         <td class="tg-0pky" colspan="4"></td>
@@ -103,7 +115,7 @@
 
 
                     <tr>
-                        <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="6">
+                        <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="7">
                             <span *ngIf="totalInvesti > 0">INVESTISSEMENT</span>
                         </td>
                     </tr>
@@ -135,11 +147,22 @@
 
                     <td class="tg-0pky">{{ compte.intitule }}</td>
                     <td class="tg-0pky text-right">{{ compte.montant }}</td>
+
+                    <td class="tg-0pky text-right"  *ngIf="compte.type == 'compte'">
+                        <button type="button"  (click)="onDelete(compte.id)" class="btn btn-outline-danger btn-sm rounded m-r-5">
+                            <i class="mdi mdi-delete-empty"></i>
+                        </button>
+                        <button type="button" (click)="openDialog(compte)" class="btn btn-outline-secondary btn-sm rounded">
+                            <i class="mdi mdi-table-edit"></i>
+                        </button>
+                    </td>
+
                 </tr>
                 <tr *ngIf="totalInvesti > 0">
                     <td class="tg-0pky" colspan="4"></td>
                     <td class="tg-0pky font-weight-bold">TOTAL INVESTISSEMENT</td>
                     <td class="tg-0pky text-right">{{ totalInvesti }}</td>
+                    <td class="tg-0pky"></td>
                 </tr>
 
                 <tr  class="text-danger" *ngIf="totalInvesti + totalFct > 0">

@@ -12,3 +12,13 @@
 .mt-modif{
     margin-left: -5rem!important;
 }
+
+ .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+   
