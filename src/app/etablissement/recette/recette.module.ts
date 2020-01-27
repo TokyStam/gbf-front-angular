@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoMaterialModule } from 'src/app/material-module';
 import { CreateFonctComponent } from './create-fonct/create-fonct.component';
 import { CreateInvestiComponent } from './create-investi/create-investi.component';
-import { RecetteAnnuelComponent, DialogRecetteComponent } from './recette-annuel/recette-annuel.component';
+import { RecetteAnnuelComponent, DialogRecette } from './recette-annuel/recette-annuel.component';
 import { MultiDatepickerModule } from 'src/app/multidatepicker/multidatepicker.module';
 
 
@@ -19,8 +19,10 @@ import { MultiDatepickerModule } from 'src/app/multidatepicker/multidatepicker.m
     CreateFonctComponent,
     CreateInvestiComponent,
     RecetteAnnuelComponent,
-    DialogRecetteComponent
+    DialogRecette
+
   ],
+  entryComponents:[DialogRecette],
   imports: [
     CommonModule,
     ReactiveFormsModule,

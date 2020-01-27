@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { BudgetComponent } from './budget.component';
 import { CreateInvestiComponent } from './create-investi/create-investi.component';
-import { BudgetAnnuelComponent } from './budget-annuel/budget-annuel.component';
+import { BudgetAnnuelComponent, DialogOverviewExampleDialog,  } from './budget-annuel/budget-annuel.component';
 import { MultiDatepickerModule } from 'src/app/multidatepicker/multidatepicker.module';
 
 @NgModule({
@@ -17,9 +17,12 @@ import { MultiDatepickerModule } from 'src/app/multidatepicker/multidatepicker.m
     CreatBudgetComponent,
     BudgetComponent,
     CreateInvestiComponent,
-    BudgetAnnuelComponent
+    BudgetAnnuelComponent,
+    DialogOverviewExampleDialog
+    
 
   ],
+  entryComponents:[DialogOverviewExampleDialog],
   imports: [
     ReactiveFormsModule,
     CommonModule,

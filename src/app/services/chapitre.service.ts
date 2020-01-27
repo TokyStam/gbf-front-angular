@@ -120,6 +120,9 @@ export class ChapitreService {
   public get(id: any, filter = {}) {
     return this.http.get('/chapitres/' + id + '?filter=' + JSON.stringify(filter));
   }
+  public updateRecette(id: any, data: any) {
+    return this.http.patch('/recettes/' + id, data);
+  }
 
   public update(id: any, data: any) {
     return this.http.patch('/chapitres/' + id, data);

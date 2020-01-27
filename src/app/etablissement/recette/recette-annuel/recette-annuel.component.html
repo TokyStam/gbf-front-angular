@@ -53,12 +53,9 @@
                 <table class="table table-borderless table-sm ">
                 <thead>
                     <tr>
-                        <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="5">FONTIONNEMENT</th>
+                        <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="5"><span *ngIf="totalFct > 0">FONTIONNEMENT</span></th>
                         <th class="tg-0pky card-header text-right alert alert-danger"  colspan="1">En Ariary</th>
                         <th class="tg-0pky card-header text-right mt-modif alert alert-danger">Modifier</th>
-                    </tr>
-                    <tr>
-                        <th class="tg-0pky"  colspan="6">SECTIONS</th>
                     </tr>
                     <tr>
                         <th class="tg-0pky" scope="col" colspan="4">N° Comptes  </th>
@@ -101,13 +98,13 @@
                         <button type="button" class="btn btn-outline-danger btn-sm rounded m-r-5">
                             <i class="mdi mdi-delete-empty"></i>
                         </button>
-                        <button type="button" (click)="openDialog()" class="btn btn-outline-secondary btn-sm rounded">
+                        <button type="button" (click)="openDialog(compte)" class="btn btn-outline-secondary btn-sm rounded">
                             <i class="mdi mdi-table-edit"></i>
                         </button>
                     </td>
                   
                 </tr>
-                <tr>
+                <tr  *ngIf="totalFct > 0">
                     <td class="tg-0pky" colspan="4"></td>
                     <td class="tg-0pky font-weight-bold">TOTAL FONCTIONNEMENT</td>
                     <td class="tg-0pky text-right">{{ totalFct }}</td>
@@ -115,7 +112,9 @@
 
 
                 <tr>
-                    <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="6">Investissement</td>
+                    <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="6">
+                       <span *ngIf="totalFct > 0"> Investissement</span>
+                    </td>
                 </tr>
                 <tr *ngFor="let compte of tableInvestissement" 
                 [ngClass]="(compte.type == 'chapitre')? ' alert alert-primary':'' ||
@@ -151,25 +150,34 @@
                     <button type="button" (click)="openDialog()" class="btn btn-outline-danger btn-sm rounded m-r-5">
                         <i class="mdi mdi-delete-empty"></i>
                     </button>
-                    <button type="button" (click)="openDialog()" class="btn btn-outline-secondary btn-sm rounded">
+                    <button type="button" (click)="openDialog(compte)" class="btn btn-outline-secondary btn-sm rounded">
                         <i class="mdi mdi-table-edit"></i>
                     </button>
                 </td>
 
             </tr>
-            <tr>
+            <tr *ngIf="totalInvesti > 0 ">
                 <td class="tg-0pky" colspan="4"></td>
                 <td class="tg-0pky font-weight-bold">TOTAL INVESTISSEMENT</td>
                 <td class="tg-0pky text-right">{{ totalInvesti }}</td>
             </tr>
 
-            <tr  class=" text-danger">
+            <tr  class=" text-danger"  *ngIf="totalFct + totalInvesti > 0">
                 <td class="tg-0pky font-weight-bold" colspan="5">TOTAL DES DEPENSES DU PROGRAMME 310(ENI)</td>
                 <td class="tg-0pky text-right">{{ totalFct + totalInvesti }}</td>
             </tr>
 
                 </table>
             </div>
+
+            <div class="card" *ngIf="totalFct + totalInvesti == 0">
+                <div class="card-body text-center">
+                  <h6><i class=" mdi mdi-package-variant"></i>
+                     Aucun élément à afficher pour l'année {{ yearSearch }}
+                 </h6>
+                </div>
+              </div>
+
         </div>
     </div>
 </div>

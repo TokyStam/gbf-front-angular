@@ -17,6 +17,7 @@ export class DetailFctComponent implements OnInit {
   totalFctRecette = 0;
   table1 = [];
   dateMax;
+  yearSearch;
   constructor(private programmeService: ProgrammeService,
               private chapitreService: ChapitreService,
               private datepipe: DatePipe) { }
@@ -324,6 +325,7 @@ export class DetailFctComponent implements OnInit {
 
   // recherhe par date
   onYearChose(e){
+    this.yearSearch = this.datepipe.transform(e, 'yyyy');
     this.tableFonctionnementDepense = [];
     this.tableFonctionnementRecette = [];
  

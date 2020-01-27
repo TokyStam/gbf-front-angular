@@ -12,7 +12,7 @@
     <div class="col-sm-4">
       <div class="card border rounde">
         <div class="card-body">
-            <h5 class="m-b-0">Documenet de dépenses</h5>
+            <h5 class="m-b-0"(click)="openDialog()">Documenet de dépenses</h5>
             <p class="card-text">Dépense par programme</p>
             <p class="card-text font-weight-bold">{{ etablissementInfo.nom }}</p>
         </div>
@@ -54,12 +54,10 @@
                     <table class="table table-borderless table-sm ">
                     <thead>
                         <tr>
-                            <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="5">FONTIONNEMENT</th>
+                            <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="5">
+                                <span *ngIf="totalFct > 0">FONTIONNEMENT</span>
+                            </th>
                             <th class="tg-0pky card-header text-right alert alert-danger"  colspan="5">En Ariary</th>
-                        </tr>
-                        <tr>
-                            <th class="tg-0pky"  colspan="5">SECTIONS</th>
-                            <th class="tg-0pky"></th>
                         </tr>
                         <tr>
                             <th class="tg-0pky" scope="col" colspan="4">N° Comptes  </th>
@@ -97,15 +95,17 @@
                         <td class="tg-0pky">{{ compte.intitule }}</td>
                         <td class="tg-0pky text-right">{{ compte.montant }}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="totalFct > 0">
                         <td class="tg-0pky" colspan="4"></td>
                         <td class="tg-0pky font-weight-bold">TOTAL FONCTIONNEMENT</td>
                         <td class="tg-0pky text-right">{{ totalFct }}</td>
                     </tr>
 
 
-                    <tr *ngIf="totalInvesti > 0">
-                        <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="6">INVESTISSEMENT</td>
+                    <tr>
+                        <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="6">
+                            <span *ngIf="totalInvesti > 0">INVESTISSEMENT</span>
+                        </td>
                     </tr>
                     <tr *ngFor="let compte of tableInvestissement" 
                     [ngClass]="(compte.type == 'chapitre')? 'alert alert-primary':'' ||
@@ -142,13 +142,23 @@
                     <td class="tg-0pky text-right">{{ totalInvesti }}</td>
                 </tr>
 
-                <tr  class="text-danger">
+                <tr  class="text-danger" *ngIf="totalInvesti + totalFct > 0">
                     <td class="tg-0pky font-weight-bold" colspan="5">TOTAL DES DEPENSES DU PROGRAMME {{ etablissementInfo.programme}} ({{ etablissementInfo.nom }})</td>
                     <td class="tg-0pky text-right ">{{ totalFct + totalInvesti }}</td>
                 </tr>
 
                     </table>
                 </div>
+
+                <div class="card" *ngIf="totalFct + totalInvesti == 0">
+                    <div class="card-body text-center">
+                      <h6><i class=" mdi mdi-package-variant"></i>
+                         Aucun élément à afficher pour l'année {{ yearSearch }}
+                     </h6>
+                    </div>
+                  </div>
+
+                  
             </div>
         </div>
     </div>

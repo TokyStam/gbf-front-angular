@@ -39,7 +39,9 @@
                         <th class="tg-0pky"></th>
                     </tr>
                     <tr>
-                        <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="7">FONTIONNEMENT</th>
+                        <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="7">
+                            <span *ngIf="totalFct > 0">FONTIONNEMENT</span>
+                        </th>
                         <th class="tg-0pky card-header text-right alert alert-danger">En Ariary</th>
                     </tr>
                     <tr class="font-weight-bold">
@@ -83,7 +85,7 @@
                     <td class="tg-0pky text-right">{{ compte.prog310 }}</td>
                     <td class="tg-0pky text-right">{{ compte.prevision }}</td>
                 </tr>
-                <tr>
+                <tr *ngIf="totalFct > 0">
                     <td class="tg-0pky" colspan="4"></td>
                     <td class="tg-0pky font-weight-bold">TOTAL FONCTIONNEMENT</td>
                     <td class="tg-0pky text-right">{{ totalF028 }}</td>
@@ -95,7 +97,10 @@
 
 
                 <tr>
-                    <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="8">INVESTISSEMENT</td>
+                    <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="8">
+                        <span *ngIf="totalInvesti > 0">
+                            INVESTISSEMENT</span>
+                        </td>
                 </tr>
 
                 <tr *ngFor="let compte of tableInvestissement" 
@@ -130,7 +135,7 @@
                 <td class="tg-0pky text-right">{{ compte.prog310 }}</td>
                 <td class="tg-0pky text-right">{{ compte.prevision }}</td>
             </tr>
-            <tr>
+            <tr *ngIf="totalInvesti > 0">
                 <td class="tg-0pky" colspan="4"></td>
                 <td class="tg-0pky font-weight-bold">TOTAL INVESTISSEMENT</td>
                 <td class="tg-0pky text-right">{{ totalI028 }}</td>
@@ -140,7 +145,7 @@
                 
             </tr>
 
-            <tr  class="text-danger">
+            <tr  class="text-danger" *ngIf="totalFct + totalInvesti > 0">
                 <td class="tg-0pky font-weight-bold" colspan="5">TOTAL DES DEPENSES DU PROGRAMME 310(ENI)</td>
                 <td class="tg-0pky text-right">{{totalF028 + totalI028}}</td>
                 <td class="tg-0pky text-right">{{ totalF310 + totalI310 }}</td>
@@ -149,6 +154,14 @@
 
                 </table>
             </div>
+            <div class="card" *ngIf="totalFct + totalInvesti == 0">
+                <div class="card-body text-center">
+                  <h6><i class=" mdi mdi-package-variant"></i>
+                     Aucun élément à afficher pour l'année {{ yearSearch }}
+                 </h6>
+                </div>
+              </div>
+
         </div>
     </div>
 </div>

@@ -5,8 +5,10 @@ import { ChapitreService } from 'src/app/services/chapitre.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 
 export interface DialogData {
-  animal: string;
-  name: string;
+  numCompte: string;
+  intitule: string;
+  montant: number;
+  idBudget: string;
 }
 
 
@@ -24,9 +26,9 @@ export class RecetteAnnuelComponent implements OnInit {
   dateMax;
   totalInvesti = 0;
   dateNow ;
+  yearSearch
 
-  animal: string;
-  name: string;
+  compteInfo: DialogData;
 
   constructor(private datepipe: DatePipe,
               public dialog: MatDialog,
@@ -128,11 +130,13 @@ export class RecetteAnnuelComponent implements OnInit {
               // Compte
               for (let comptes of articles.comptes) {
                 var valeur4 = 0;
+                var recettesId: string;
                 ////////////debut calcule hapitre//////////////
                       for (let recettes of comptes.recettes) {
                             const date1 = new Date(recettes.annee);
                             this.datepipe.transform(date1, 'yyyy')  === yearsearch ?
-                            valeur4 += recettes.montant: '';
+                            valeur4 = recettes.montant: '';
+                            recettesId = recettes.id;
                            
                       };
                   ////////////fin calcule chapitre///////////
@@ -140,6 +144,7 @@ export class RecetteAnnuelComponent implements OnInit {
                   numCompte: comptes.numCompte,
                   intitule: comptes.intitule,
                   montant: valeur4,
+                  id: recettesId,
                   type: 'compte'
                 };
                 compte.montant > 0 ? table.push(compte):'';
@@ -155,6 +160,7 @@ export class RecetteAnnuelComponent implements OnInit {
   }
 
   onYearChose(e){
+    this.yearSearch = this.datepipe.transform(e, 'yyyy');
     this.tableFonctionnement = [];
     this.tableInvestissement = [];
 
@@ -171,31 +177,60 @@ export class RecetteAnnuelComponent implements OnInit {
     );
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogRecetteComponent, {
-      width: '100%',
-      data: {name: this.name, animal: this.animal}
+  openDialog(compte): void {
+    const dialogRef = this.dialog.open(DialogRecette, {
+      width: '340px',
+      data: {
+        numCompte: compte.numCompte, 
+        intitule: compte.intitule,
+        montant: compte.montant,
+        idBudget: compte.id
+      }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //     const recette = {
+    //       montant: result
+    //     }
+    //   this.modifierRecette(compte.id, recette);
+
+      
+    // this.fetchAllChapitre(
+    //   this.chapitreService.filterRecette(7),
+    //   this.tableFonctionnement, 'fct',
+    //   this.datepipe.transform(Date.now(), 'yyyy')
+    // );
+
+    // this.fetchAllChapitre(
+    //   this.chapitreService.filterRecette(1),
+    //   this.tableInvestissement, 'investi',
+    //   this.datepipe.transform(Date.now(), 'yyyy')
+    // );
+    
+    // });
+  }
+
+  private modifierRecette(id, recette){
+    this.chapitreService.updateRecette(id, recette).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
-
 
 
 @Component({
   selector: 'app-dialog-recette',
   templateUrl: './dialog-recette.component.html',
-  styleUrls: ['./recette-annuel.component.css'],
-  providers: [DatePipe]
 })
-export class DialogRecetteComponent {
+export class DialogRecette {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogRecetteComponent>,
+    public dialogRef: MatDialogRef<DialogRecette>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {

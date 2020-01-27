@@ -19,6 +19,7 @@ export class DetailDepenseComponent implements OnInit {
   totalI028 = 0;
   totalI310 = 0;
   table1 = [];
+  yearSearch;
   dateMax;
   constructor(
     private chapitreService: ChapitreService,
@@ -237,6 +238,7 @@ export class DetailDepenseComponent implements OnInit {
 
   // recherhe par date
   onYearChose(e){
+    this.yearSearch = this.datepipe.transform(e, 'yyyy');
     this.tableFonctionnement = [];
     this.tableInvestissement = [];
     

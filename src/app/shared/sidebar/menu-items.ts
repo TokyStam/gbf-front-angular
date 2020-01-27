@@ -17,15 +17,7 @@ export const ROUTES: RouteInfo[] = [
   //   extralink: false,
   //   submenu: []
   // },
-  {
-    path: '/etablissement/recette/recette-annuel',
-    title: 'Recette',
-    icon: 'mdi mdi-download',
-    class: '',
-    extralink: false,
-    submenu: [],
-    admin: true
-  },
+
   {
     path: '/etablissement',
     title: 'Budget prévisionnel',
@@ -35,9 +27,9 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/livre-compte/categorie',
-    title: 'Livre comptable',
-    icon: 'mdi mdi-book-open-page-variant',
+    path: '/etablissement/recette/recette-annuel',
+    title: 'Recette',
+    icon: 'mdi mdi-download',
     class: '',
     extralink: false,
     submenu: [],
@@ -55,7 +47,16 @@ export const ROUTES: RouteInfo[] = [
   {
     path: '/tableau-equilibre/fonctionnement/detail-fct',
     title: 'Tableau d\'équilibre',
-    icon: 'mdi mdi-image-filter-vintage',
+    icon: 'mdi mdi-scale-balance',
+    class: '',
+    extralink: false,
+    submenu: [],
+    admin: true
+  },
+  {
+    path: '/livre-compte/categorie',
+    title: 'Livre comptable',
+    icon: 'mdi mdi-book-open-page-variant',
     class: '',
     extralink: false,
     submenu: [],

@@ -44,7 +44,7 @@
                             <div class="card-body">
                 
                                 <div class="tg-wrap">
-                                <table class="table-sm mt-n1">
+                                <table class="table-sm mt-n1" *ngIf="totalFctDepense > 0">
                                 <thead>
                                     <tr>
                                         <th class="tg-0pky card-header p-1 mb-1 bg-danger text-white"  colspan="5">DEPENSE</th>
@@ -99,6 +99,16 @@
                 
                                 </table>
                             </div>
+
+                              <!-- Message d'erreur S'il y a Aucun element afficher -->
+                              <div class="card" *ngIf="totalFctDepense == 0">
+                                <div class="card-body text-center">
+                                  <h4><i class=" mdi mdi-package-variant"></i>
+                                     Aucun élément à afficher pour l'année {{ yearSearch }}
+                                 </h4>
+                                </div>
+                              </div>
+
                         </div>
                     </div>
                 </div>
@@ -120,7 +130,7 @@
                             <div class="card-body">
                 
                                 <div class="tg-wrap">
-                                    <table class="table-sm mt-n1">
+                                    <table class="table-sm mt-n1" *ngIf="totalFctRecette > 0">
                                         <thead>
                                             <tr>
                                                 <th class="tg-0pky card-header p-1 mb-1 bg-success text-white"  colspan="5">RECETTE</th>
@@ -176,6 +186,16 @@
                 
                                 </table>
                             </div>
+
+                              <!-- Message d'erreur S'il y a Aucun element afficher -->
+                              <div class="card" *ngIf="totalFctRecette == 0">
+                                <div class="card-body text-center">
+                                  <h4><i class=" mdi mdi-package-variant"></i>
+                                     Aucun élément à afficher pour l'année {{ yearSearch }}
+                                 </h4>
+                                </div>
+                              </div>
+
                         </div>
                     </div>
                 </div>
