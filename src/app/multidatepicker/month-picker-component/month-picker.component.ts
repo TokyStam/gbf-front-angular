@@ -113,7 +113,7 @@ export class MonthPickerComponent
 
   _customFilter: (d: Moment) => boolean;
 
-  @ViewChild(MatDatepicker) _picker: MatDatepicker<Moment>;
+  // @ViewChild(MatDatepicker) _picker: MatDatepicker<Moment>;
 
   _inputCtrl: FormControl = new FormControl();
 
@@ -158,13 +158,13 @@ export class MonthPickerComponent
   }
 
   // Allows Angular to disable the input.
-  setDisabledState(isDisabled: boolean): void {
-    isDisabled
-      ? (this._picker.disabled = true)
-      : (this._picker.disabled = false);
+  // setDisabledState(isDisabled: boolean): void {
+  //   isDisabled
+  //     ? (this._picker.disabled = true)
+  //     : (this._picker.disabled = false);
 
-    isDisabled ? this._inputCtrl.disable() : this._inputCtrl.enable();
-  }
+  //   isDisabled ? this._inputCtrl.disable() : this._inputCtrl.enable();
+  // }
 
   _yearSelectedHandler(
     chosenMonthDate: Moment,

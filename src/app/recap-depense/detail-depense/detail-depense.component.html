@@ -31,74 +31,75 @@
 </div>
 
                 <div class="tg-wrap">
-                <table class="table table-borderless table-sm ">
-                <thead>
-                   
-                    <tr>
-                        <th class="tg-0pky"  colspan="7">SECTIONS</th>
-                        <th class="tg-0pky"></th>
-                    </tr>
-                    <tr>
-                        <th class="tg-0pky card-header font-weight-bold alert alert-danger"  colspan="7">
-                            <span *ngIf="totalFct > 0">FONTIONNEMENT</span>
-                        </th>
-                        <th class="tg-0pky card-header text-right alert alert-danger">En Ariary</th>
-                    </tr>
-                    <tr class="font-weight-bold">
-                        <th class="tg-0pky font-weight-bold text-c" scope="col" colspan="4">N° Comptes  </th>
-                        <th class="tg-0pky font-weight-bold text-c" scope="col">Intitulés</th>
-                        <th class="tg-0pky font-weight-bold text-c text-right" scope="col">PROG 028</th>
-                        <th class="tg-0pky font-weight-bold text-c text-right" scope="col">PROG 310</th>
-                        <th class="tg-0pky font-weight-bold text-c text-right text-danger" scope="col">
-                            PREVISION {{ yearSearch }}</th>
-                    </tr>
-                </thead>  
+<table class="table table-borderless table-sm ">
+<thead>
+    
+    <tr>
+        <th class="tg-0pky"  colspan="7">SECTIONS</th>
+        <th class="tg-0pky"></th>
+    </tr>
+    <tr>
+        <th class="tg-0pky card-header  alert alert-danger"  colspan="7">
+            <span *ngIf="totalFct > 0">FONTIONNEMENT</span>
+        </th>
+        <th class="tg-0pky card-header text-right alert alert-danger">En Ariary</th>
+    </tr>
+    <tr class="">
+        <th class="tg-0pky text-c" scope="col" colspan="4">N° Comptes  </th>
+        <th class="tg-0pky text-c" scope="col">Intitulés</th>
+        <th class="tg-0pky text-c text-right" scope="col">PROG 028</th>
+        <th class="tg-0pky text-c text-right" scope="col">PROG 310</th>
+        <th class="tg-0pky text-c text-right text-danger" scope="col">
+            PREVISION {{ yearSearch }}</th>
+    </tr>
+</thead>  
 
-                <tr *ngFor="let compte of tableFonctionnement" 
-                    [ngClass]="(compte.type == 'chapitre')? ' alert-primary':'' ||
-                               (compte.type == 'section')? ' alert-success':'' || 
-                               (compte.type == 'article')? 'alert alert-warning':'' || 
-                               (compte.type == 'compte')? 'alert alert-secondary':''"
-                    >
-                    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'">{{ compte.numCompte }}</td>
-                    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
-                    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td> 
-                    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
+<tr *ngFor="let compte of tableFonctionnement" 
+    [ngClass]="(compte.type == 'chapitre')? ' alert-primary':'' ||
+                (compte.type == 'section')? ' alert-success':'' || 
+                (compte.type == 'article')? 'alert alert-warning':'' || 
+                (compte.type == 'compte')? 'alert alert-secondary':''"
+    >
+    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'">{{ compte.numCompte }}</td>
+    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
+    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td> 
+    <td class="tg-0pky" *ngIf="compte.type == 'chapitre'"></td>
 
-                    <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
-                    <td class="tg-0pky" *ngIf="compte.type == 'section'">{{ compte.numCompte }}</td>
-                    <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
-                    <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+    <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+    <td class="tg-0pky" *ngIf="compte.type == 'section'">{{ compte.numCompte }}</td>
+    <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
+    <td class="tg-0pky" *ngIf="compte.type == 'section'"></td>
 
-                    <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
-                    <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
-                    <td class="tg-0pky" *ngIf="compte.type == 'article'">{{ compte.numCompte }}</td>
-                    <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+    <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+    <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
+    <td class="tg-0pky" *ngIf="compte.type == 'article'">{{ compte.numCompte }}</td>
+    <td class="tg-0pky" *ngIf="compte.type == 'article'"></td>
 
-                    <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
-                    <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
-                    <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
-                    <td class="tg-0pky" *ngIf="compte.type == 'compte'">{{ compte.numCompte }}</td>
+    <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+    <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+    <td class="tg-0pky" *ngIf="compte.type == 'compte'"></td>
+    <td class="tg-0pky" *ngIf="compte.type == 'compte'">{{ compte.numCompte }}</td>
 
-                    <td class="tg-0pky">{{ compte.intitule }}</td>
-                    <td class="tg-0pky text-right">{{ compte.prog028 }}</td>
+    <td class="tg-0pky">{{ compte.intitule }}</td>
+    <td class="tg-0pky text-right">{{ compte.prog028 }}</td>
 
-                    <td class="tg-0pky text-right">{{ compte.prog310 }}</td>
-                    <td class="tg-0pky text-right">{{ compte.prevision }}</td>
-                </tr>
-                <tr *ngIf="totalFct > 0">
-                    <td class="tg-0pky" colspan="4"></td>
-                    <td class="tg-0pky font-weight-bold">TOTAL FONCTIONNEMENT</td>
-                    <td class="tg-0pky text-right">{{ totalF028 }}</td>
+    <td class="tg-0pky text-right">{{ compte.prog310 }}</td>
+    <td class="tg-0pky text-right">{{ compte.prevision }}</td>
+    
+</tr>
+<tr *ngIf="totalFct > 0">
+    <td class="tg-0pky" colspan="4"></td>
+    <td class="tg-0pky ">TOTAL FONCTIONNEMENT</td>
+    <td class="tg-0pky text-right">{{ totalF028 }}</td>
 
-                    <td class="tg-0pky text-right">{{ totalF310 }}</td>
-                    <td class="tg-0pky text-right">{{ totalFct }}</td>
-                    
-                </tr>
+    <td class="tg-0pky text-right">{{ totalF310 }}</td>
+    <td class="tg-0pky text-right">{{ totalFct }}</td>
+    
+</tr>
 
 
                 <tr>
-                    <td class="tg-0pky card-header font-weight-bold alert alert-danger" colspan="8">
+                    <td class="tg-0pky card-header  alert alert-danger" colspan="8">
                         <span *ngIf="totalInvesti > 0">
                             INVESTISSEMENT</span>
                         </td>

@@ -24,7 +24,7 @@ export class TokenInterceptorService implements HttpInterceptor {
       });
       return next.handle(authReq).pipe(
         tap((event) => {}, (error) => {
-          if (error.status == 401) {
+          if (error.status === 401) {
             this.authenticationService.logout().subscribe((data) => {
               this.router.navigate(['/login']);
             });

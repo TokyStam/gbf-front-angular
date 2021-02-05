@@ -8,10 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from '../material-module';
 import { CategorieModule } from './categorie/categorie.module';
+import { CreateSectionComponent } from './article/create-article/create-section.component';
 
 
 @NgModule({
-  declarations: [LivreCompteComponent],
+  declarations: [LivreCompteComponent, CreateSectionComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

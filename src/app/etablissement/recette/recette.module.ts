@@ -11,6 +11,7 @@ import { CreateFonctComponent } from './create-fonct/create-fonct.component';
 import { CreateInvestiComponent } from './create-investi/create-investi.component';
 import { RecetteAnnuelComponent, DialogRecette } from './recette-annuel/recette-annuel.component';
 import { MultiDatepickerModule } from 'src/app/multidatepicker/multidatepicker.module';
+import { ListeRecetteComponent } from './liste-recette/liste-recette.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MultiDatepickerModule } from 'src/app/multidatepicker/multidatepicker.m
     CreateFonctComponent,
     CreateInvestiComponent,
     RecetteAnnuelComponent,
-    DialogRecette
+    DialogRecette,
+    ListeRecetteComponent
 
   ],
   entryComponents:[DialogRecette],
